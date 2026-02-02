@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
               <div className="space-y-6">
                 <h2 className="text-4xl md:text-7xl font-bold text-white leading-[1.1] tracking-tighter uppercase">
-                  READY TO <span className="chrome-text">SCALE</span> YOUR BUSINESS?
+                  READY TO <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">SCALE</span> YOUR BUSINESS?
                 </h2>
                 <p className="text-text-secondary text-lg md:text-xl font-body max-w-lg mx-auto lg:mx-0">
                   Let's discuss how AI automation can unlock your team's true potential and drive measurable ROI.
