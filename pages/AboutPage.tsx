@@ -1,11 +1,17 @@
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import TestimonialVideo from '../components/TestimonialVideo';
 import { CLIENT_LOGOS } from '../constants';
 
 const AboutPage: React.FC = () => {
+  const pillarsRef = useRef<HTMLDivElement>(null);
+
+  const scrollToPillars = () => {
+    pillarsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="pt-32 pb-24 px-6 animate-fade-in relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -28,7 +34,7 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
             <div className="pt-6">
-              <Button variant="primary" glow className="px-10 py-5">Our Method</Button>
+              <Button variant="primary" glow className="px-10 py-5" onClick={scrollToPillars}>Our Method</Button>
             </div>
           </div>
 
@@ -57,7 +63,7 @@ const AboutPage: React.FC = () => {
         </div>
 
         {/* The Pillars */}
-        <div className="mb-32">
+        <div className="mb-32" ref={pillarsRef}>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 uppercase">OUR CORE <span className="text-accent">PILLARS</span></h2>
             <div className="w-24 h-1 bg-accent mx-auto" />

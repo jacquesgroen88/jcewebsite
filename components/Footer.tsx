@@ -19,16 +19,16 @@ const Footer: React.FC = () => {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/20 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 -z-10 animate-pulse-glow" />
             <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/10 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2 -z-10" />
 
-            <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl md:text-7xl font-bold text-white leading-[1.1] mb-8 tracking-tighter uppercase">
+            <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center text-center md:text-left">
+              <div className="space-y-6">
+                <h2 className="text-4xl md:text-7xl font-bold text-white leading-[1.1] tracking-tighter uppercase">
                   READY TO <span className="chrome-text">SCALE</span> YOUR BUSINESS?
                 </h2>
-                <p className="text-text-secondary text-lg md:text-xl font-body max-w-lg">
+                <p className="text-text-secondary text-lg md:text-xl font-body max-w-lg mx-auto md:mx-0">
                   Let's discuss how AI automation can unlock your team's true potential and drive measurable ROI.
                 </p>
               </div>
-              <div className="flex flex-col gap-4 items-center md:items-end">
+              <div className="flex flex-col gap-4 items-center md:items-end w-full">
                 <Button variant="primary" glow className="px-12 py-6 text-xl w-full md:w-auto shadow-2xl shadow-accent/20" onClick={() => window.location.hash = '#contact'}>
                   Book a Strategy Call
                 </Button>

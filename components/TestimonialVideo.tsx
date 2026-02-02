@@ -17,6 +17,7 @@ const TestimonialVideo: React.FC = () => {
                         <video
                             className="w-full h-full object-cover"
                             controls
+                            preload="metadata"
                             poster="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
                         >
                             <source
@@ -31,13 +32,7 @@ const TestimonialVideo: React.FC = () => {
                         <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-accent/40 rounded-br-xl pointer-events-none" />
                     </div>
 
-                    <div className="mt-8 flex items-center justify-between text-xs font-mono text-white/40 uppercase tracking-widest">
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
-                            <span>LIVE_PLAYBACK_SYSTEM.MP4</span>
-                        </div>
-                        <span>HD_RES_ENCODED</span>
-                    </div>
+
                 </Card>
             </div>
         </div>

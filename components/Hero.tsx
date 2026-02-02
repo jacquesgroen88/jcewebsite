@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="reveal opacity-0 translate-y-10 transition-all duration-1000 delay-500 relative flex justify-center items-center">
+        <div className="reveal opacity-0 translate-y-10 transition-all duration-1000 delay-500 relative hidden lg:flex justify-center items-center">
           <div className="relative w-full aspect-square max-w-lg">
             <div className="absolute inset-0 bg-accent/20 blur-[100px] animate-pulse-glow" />
             <div className="relative z-10 w-full h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl backdrop-blur-sm group">
