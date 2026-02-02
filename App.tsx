@@ -5,7 +5,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Stats from './components/Stats';
-import BrandCarousel from './components/BrandCarousel';
+import TestimonialVideo from './components/TestimonialVideo';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
 import ServicesPage from './pages/ServicesPage';
@@ -81,8 +81,8 @@ const App: React.FC = () => {
           <>
             <Hero />
             <Services onDetailClick={() => navigateTo('services')} />
-            <BrandCarousel />
             <Stats />
+            <TestimonialVideo />
             <Projects />
           </>
         )}

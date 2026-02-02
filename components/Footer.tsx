@@ -10,23 +10,7 @@ const Footer: React.FC = () => {
     <footer className="pt-24 pb-12 px-6 border-t border-border bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
-        {/* Logo Cloud - Infinite Scroll */}
-        <div className="mb-32 overflow-hidden relative">
-          <p className="text-center text-xs font-mono uppercase tracking-[0.3em] text-text-secondary mb-12">Global Partnerships & Trusted Brands</p>
-          <div className="flex gap-16 whitespace-nowrap animate-infinite-scroll">
-            {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, i) => (
-              <img
-                key={i}
-                src={logo}
-                alt="Client Logo"
-                className="h-8 md:h-12 w-auto opacity-40 hover:opacity-100 transition-opacity filter grayscale brightness-200"
-              />
-            ))}
-          </div>
-          {/* Gradient Masks for fade effect */}
-          <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-10" />
-        </div>
+
 
         {/* Redesigned CTA Section */}
         <div className="mb-24 relative">

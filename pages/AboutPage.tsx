@@ -2,7 +2,7 @@
 import React from 'react';
 import Card from '../components/Card';
 import Button from '../components/Button';
-import BrandCarousel from '../components/BrandCarousel';
+import TestimonialVideo from '../components/TestimonialVideo';
 import { CLIENT_LOGOS } from '../constants';
 
 const AboutPage: React.FC = () => {
@@ -140,16 +140,8 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Global Partners / Brands */}
-        <div className="mb-32">
-          <div className="text-center mb-12">
-            <span className="text-accent font-mono text-sm uppercase tracking-[0.3em]">Global Impact</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-4 uppercase">Trusted By Industry Leaders</h2>
-          </div>
-
-          {/* 2. Replace the manual "Global Partners" section with <BrandCarousel /> */}
-          <BrandCarousel />
-        </div>
+        {/* Global Testimonial */}
+        <TestimonialVideo />
 
         {/* Global Impact Grid */}
         <div className="py-24 border-y border-border">

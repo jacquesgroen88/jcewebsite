@@ -1,10 +1,20 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Button from './Button';
 
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const words = ["MARKETING", "SALES", "OPERATIONS"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prev) => (prev + 1) % words.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,7 +45,7 @@ const Hero: React.FC = () => {
               Automate up to 80% of Marketing, Sales & Operations
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter uppercase">
-              WE BUILD <span className="chrome-text">AI SYSTEMS</span> THAT <span className="text-accent">SCALE</span> BUSINESSES.
+              WE BUILD <span key={currentWordIndex} className="chrome-text animate-pop-in-up inline-block min-w-[300px] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">{words[currentWordIndex]}</span> SYSTEMS THAT <span className="text-accent">SCALE</span> BUSINESSES.
             </h1>
             <p className="mt-6 text-xl text-text-secondary max-w-lg leading-relaxed font-body">
               282,000+ leads generated. $15M in budgets managed. 416% average ROI. Transforming marketing, sales, and operations with AI-first strategies that deliver measurable results.
@@ -84,3 +94,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
