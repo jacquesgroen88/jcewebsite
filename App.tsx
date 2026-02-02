@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Stats from './components/Stats';
+import BrandCarousel from './components/BrandCarousel';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
 import ServicesPage from './pages/ServicesPage';
@@ -17,24 +18,43 @@ const App: React.FC = () => {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash;
-      if (hash === '#services-detail') {
+      if (hash === '#services-detail' || hash.startsWith('#services-detail?')) {
         setCurrentPage('services');
         window.scrollTo(0, 0);
-      } else if (hash === '#about') {
+      } else if (hash === '#about' || hash.startsWith('#about?')) {
         setCurrentPage('about');
         window.scrollTo(0, 0);
-      } else if (hash === '#contact') {
+      } else if (hash === '#contact' || hash.startsWith('#contact?')) {
         setCurrentPage('contact');
         window.scrollTo(0, 0);
       } else {
         setCurrentPage('home');
       }
     };
-    
+
     window.addEventListener('hashchange', handleHash);
-    handleHash(); 
-    
+    handleHash();
+
     return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  // Update page title on navigation
+  useEffect(() => {
+    const titles = {
+      home: 'JCE Media | AI-Powered Marketing & Business Automation',
+      services: 'Our Services | JCE Media',
+      about: 'About Us | JCE Media',
+      contact: 'Contact Us | JCE Media',
+    };
+    document.title = titles[currentPage];
+  }, [currentPage]);
+
+  // Respect prefers-reduced-motion
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) {
+      document.documentElement.style.setProperty('--animation-duration', '0.01ms');
+    }
   }, []);
 
   const navigateTo = (page: 'home' | 'services' | 'about' | 'contact') => {
@@ -49,7 +69,7 @@ const App: React.FC = () => {
   return (
     <div className="relative min-h-screen">
       <AnimatedBackground />
-      
+
       <div className="fixed top-0 left-0 w-full h-[2px] z-[60]">
         <div id="scroll-bar" className="h-full bg-accent transition-all duration-100 w-0" />
       </div>
@@ -61,6 +81,7 @@ const App: React.FC = () => {
           <>
             <Hero />
             <Services onDetailClick={() => navigateTo('services')} />
+            <BrandCarousel />
             <Stats />
             <Projects />
           </>
@@ -72,7 +93,8 @@ const App: React.FC = () => {
 
       <Footer />
 
-      <script dangerouslySetInnerHTML={{ __html: `
+      <script dangerouslySetInnerHTML={{
+        __html: `
         window.onscroll = function() {
           var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
           var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;

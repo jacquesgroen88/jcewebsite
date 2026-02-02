@@ -1,8 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { CASE_STUDIES } from '../constants';
+import { CaseStudy } from '../types';
+import CaseStudyModal from './CaseStudyModal';
 
 const Projects: React.FC = () => {
+  const [selectedProject, setSelectedProject] = useState<CaseStudy | null>(null);
+
   return (
     <section id="projects" className="py-24 overflow-hidden bg-surface/30">
       <div className="max-w-7xl mx-auto px-6 mb-12 flex items-end justify-between">
@@ -13,34 +17,51 @@ const Projects: React.FC = () => {
           <p className="text-text-secondary text-lg font-body">From zero to high-converting marketing engines. Real data, real impact.</p>
         </div>
         <div className="hidden md:flex gap-4">
-           <div className="h-[2px] w-24 bg-border relative">
-              <div className="absolute h-full bg-accent w-1/3 left-0 animate-pulse" />
-           </div>
-           <span className="text-[10px] font-mono text-accent uppercase tracking-widest">Scroll to Explore</span>
+          <button
+            onClick={() => {
+              const el = document.getElementById('projects-scroll-container');
+              if (el) el.scrollBy({ left: -400, behavior: 'smooth' });
+            }}
+            className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-accent hover:border-accent hover:text-black transition-all cursor-pointer"
+            aria-label="Scroll left"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <button
+            onClick={() => {
+              const el = document.getElementById('projects-scroll-container');
+              if (el) el.scrollBy({ left: 400, behavior: 'smooth' });
+            }}
+            className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-accent hover:border-accent hover:text-black transition-all cursor-pointer"
+            aria-label="Scroll right"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          </button>
         </div>
       </div>
 
-      <div className="flex gap-8 overflow-x-auto pb-12 px-6 no-scrollbar snap-x snap-mandatory">
+      <div id="projects-scroll-container" className="flex gap-8 overflow-x-auto pb-12 px-6 no-scrollbar snap-x snap-mandatory scroll-smooth">
         {CASE_STUDIES.map((project) => (
-          <div 
-            key={project.id} 
+          <div
+            key={project.id}
             className="flex-shrink-0 w-[85vw] md:w-[500px] snap-center group cursor-pointer"
+            onClick={() => setSelectedProject(project)}
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-border shadow-2xl bg-background">
-              <img 
-                src={project.image} 
-                alt={project.client} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-40 group-hover:opacity-70 grayscale group-hover:grayscale-0"
+              <img
+                src={project.thumbnail || project.image}
+                alt={project.client}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0"
               />
               {/* Overlay content */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent p-8 flex flex-col justify-end">
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent p-8 flex flex-col justify-end">
                 <div className="mb-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                   <span className="px-3 py-1 rounded-full bg-accent/20 border border-accent/40 text-[10px] font-bold uppercase tracking-widest text-accent">
                     {project.category}
                   </span>
                   <h3 className="text-3xl font-bold mt-2 leading-tight">{project.client}</h3>
                 </div>
-                
+
                 <div className="flex items-center justify-between border-t border-white/10 pt-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
                   <div>
                     <p className="text-4xl font-bold text-white">{project.stat}</p>
@@ -57,6 +78,12 @@ const Projects: React.FC = () => {
           </div>
         ))}
       </div>
+
+      <CaseStudyModal
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+        caseStudy={selectedProject}
+      />
     </section>
   );
 };

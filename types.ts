@@ -16,8 +16,18 @@ export interface CaseStudy {
   client: string;
   category: string;
   image: string;
+  thumbnail?: string;
+  tags?: string[];
+  description?: string;
   stat: string;
   statLabel: string;
+  testimonial?: string;
+  gallery?: string[];
+  video?: string;
+  challenge?: string;
+  solution?: string;
+  features?: string[];
+  results?: string;
 }
 
 export interface Stat {

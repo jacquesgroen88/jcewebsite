@@ -13,7 +13,7 @@ const Button: React.FC<ButtonProps> = ({
   className = '', 
   ...props 
 }) => {
-  const baseStyles = "relative px-6 py-3 font-semibold rounded-full transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden group";
+  const baseStyles = "relative px-6 py-3 font-semibold rounded-full transition-all duration-200 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer overflow-hidden group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background";
   
   const variants = {
     primary: "bg-accent text-white hover:scale-[1.02] hover:-translate-y-0.5 shadow-lg hover:shadow-accent/40",
