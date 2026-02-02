@@ -10,11 +10,11 @@ const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-24 overflow-hidden bg-surface/30">
       <div className="max-w-7xl mx-auto px-6 mb-12 flex items-end justify-between">
-        <div>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 uppercase">
-            Proven <span className="chrome-text">Case Studies</span>
+        <div className="reveal opacity-0 translate-y-10 transition-all duration-700">
+          <h2 className="text-4xl md:text-7xl font-bold tracking-tighter mb-4 uppercase leading-[1.1]">
+            PROVEN <span className="chrome-text">RESULTS</span> DATA <span className="text-accent">&</span> IMPACT
           </h2>
-          <p className="text-text-secondary text-lg font-body">From zero to high-converting marketing engines. Real data, real impact.</p>
+          <p className="text-text-secondary text-lg md:text-xl font-body max-w-2xl">From zero to high-converting marketing engines. We don't just guess—we engineer growth.</p>
         </div>
         <div className="hidden md:flex gap-4">
           <button
@@ -40,11 +40,11 @@ const Projects: React.FC = () => {
         </div>
       </div>
 
-      <div id="projects-scroll-container" className="flex gap-8 overflow-x-auto pb-12 px-6 no-scrollbar snap-x snap-mandatory scroll-smooth">
+      <div id="projects-scroll-container" className="grid grid-rows-2 grid-flow-col gap-6 overflow-x-auto pb-12 px-6 no-scrollbar snap-x snap-mandatory scroll-smooth">
         {CASE_STUDIES.map((project) => (
           <div
             key={project.id}
-            className="flex-shrink-0 w-[85vw] md:w-[500px] snap-center group cursor-pointer"
+            className="flex-shrink-0 w-[85vw] md:w-[480px] snap-center group cursor-pointer"
             onClick={() => setSelectedProject(project)}
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-border shadow-2xl bg-background">
