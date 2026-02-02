@@ -155,18 +155,30 @@ const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ isOpen, onClose, caseSt
                     {/* Gallery Section */}
                     {caseStudy.gallery && caseStudy.gallery.length > 0 && (
                         <div className="p-8 md:p-12 border-t border-white/10 bg-background/50">
-                            <h3 className="text-2xl font-bold uppercase mb-8 flex items-center gap-3">
-                                <span className="w-2 h-8 bg-accent block" />
-                                Campaign Visuals
-                            </h3>
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="flex items-center justify-between mb-8">
+                                <h3 className="text-2xl font-bold uppercase flex items-center gap-3">
+                                    <span className="w-2 h-8 bg-accent block" />
+                                    Campaign Visuals
+                                </h3>
+                                <span className="text-xs font-mono text-text-secondary uppercase tracking-widest bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                                    {caseStudy.gallery.length} Assets
+                                </span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {caseStudy.gallery.map((img, idx) => (
-                                    <div key={idx} className="rounded-2xl overflow-hidden border border-white/10 shadow-lg group cursor-pointer">
+                                    <div
+                                        key={idx}
+                                        className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-lg group bg-black/40"
+                                    >
                                         <img
                                             src={img}
-                                            alt={`Gallery ${idx + 1}`}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                            alt={`${caseStudy.client} Visual ${idx + 1}`}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-90 group-hover:opacity-100"
                                         />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                        <div className="absolute bottom-4 left-4 right-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                            <p className="text-[10px] font-mono text-white/60 uppercase tracking-widest">Asset_0{idx + 1}.PNG</p>
+                                        </div>
                                     </div>
                                 ))}
                             </div>

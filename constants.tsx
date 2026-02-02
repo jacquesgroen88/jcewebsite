@@ -57,8 +57,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'c1',
     client: 'Financial Services',
-    image: '/assets/case-studies/c1-main.png',
-    thumbnail: '/assets/case-studies/c1-main.png',
+    image: '/assets/case-studies/financial-services/main.png',
+    thumbnail: '/assets/case-studies/financial-services/main.png',
     category: '340+ Event Registrations',
     stat: '416%',
     statLabel: 'ROI Increase',
@@ -72,8 +72,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'c2',
     client: 'Investor Funding',
-    image: '/assets/case-studies/c2-main.png',
-    thumbnail: '/assets/case-studies/c2-graphic1.png',
+    image: '/assets/case-studies/investor-funding/main.png',
+    thumbnail: '/assets/case-studies/investor-funding/graphic1.png',
     category: 'Facebook Ads & AI Email',
     stat: '$4.2M',
     statLabel: 'Revenue Generated',
@@ -82,13 +82,17 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge: "Sales team was wasting time on unqualified leads, missing out on high-value opportunities.",
     solution: "Deployed predictive lead scoring models and automated personalized outreach sequences.",
     features: ["Predictive Lead Scoring", "Automated Nurture Sequences", "Salesforce Integration"],
-    results: "Generated $4.2M in new pipeline revenue and increased sales team efficiency by 40%."
+    results: "Generated $4.2M in new pipeline revenue and increased sales team efficiency by 40%.",
+    gallery: [
+      '/assets/case-studies/investor-funding/graphic1.png',
+      '/assets/case-studies/investor-funding/testimonial.png'
+    ]
   },
   {
     id: 'c3',
     client: 'B2B Services',
-    image: '/assets/case-studies/c3-main.png',
-    thumbnail: '/assets/case-studies/c3-main.png',
+    image: '/assets/case-studies/b2b-services/main.png',
+    thumbnail: '/assets/case-studies/b2b-services/main.png',
     category: 'LinkedIn Ads Optimization',
     stat: '28k+',
     statLabel: 'Patient Appointments',
@@ -102,8 +106,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'c4',
     client: 'AeroCRS Aviation',
-    image: '/assets/case-studies/c4-graphic2.png',
-    thumbnail: '/assets/case-studies/c4-graphic1.png',
+    image: '/assets/case-studies/aerocrs-aviation/main.png',
+    thumbnail: '/assets/case-studies/aerocrs-aviation/thumbnail.png',
     category: 'Hyper-Personalized Outreach',
     stat: '300%',
     statLabel: 'Lead Volume',
@@ -112,13 +116,16 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge: "Slow response times were causing high lead drop-off rates.",
     solution: "Built an AI surveyor chatbot to instantly qualify and book leads 24/7.",
     features: ["Messenger Chatbot", "Instant Qualification", "Calendar Sync"],
-    results: "Tripled lead volume and reduced cost per booking by 50%."
+    results: "Tripled lead volume and reduced cost per booking by 50%",
+    gallery: [
+      '/assets/case-studies/aerocrs-aviation/thumbnail.png'
+    ]
   },
   {
     id: 'c5',
     client: 'Tech/Aerospace',
-    image: '/assets/case-studies/c5-main.png',
-    thumbnail: '/assets/case-studies/c5-main.png',
+    image: '/assets/case-studies/tech-aerospace/main.png',
+    thumbnail: '/assets/case-studies/tech-aerospace/main.png',
     category: 'Precision LinkedIn Campaign',
     stat: '8.5x',
     statLabel: 'ROAS',
@@ -132,8 +139,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'c6',
     client: 'Public Speaking Coach',
-    image: '/assets/case-studies/c6-graphic2.png',
-    thumbnail: '/assets/case-studies/c6-graphic1.png',
+    image: '/assets/case-studies/public-speaking-coach/main.png',
+    thumbnail: '/assets/case-studies/public-speaking-coach/graphic1.png',
     category: 'Chatbot Innovation',
     stat: '65%',
     statLabel: 'Lower CPL',
@@ -142,13 +149,17 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge: "General targeting was failing to reach key decision makers in enterprise accounts.",
     solution: "Executed a precision Account-Based Marketing (ABM) campaign on LinkedIn.",
     features: ["ABM Targeting", "LinkedIn Lead Gen Forms", "Content Syndication"],
-    results: "lowered Cost Per Lead by 65% while increasing deal size by 2x."
+    results: "lowered Cost Per Lead by 65% while increasing deal size by 2x.",
+    gallery: [
+      '/assets/case-studies/public-speaking-coach/graphic1.png',
+      '/assets/case-studies/public-speaking-coach/graphic3.png'
+    ]
   },
   {
     id: 'c7',
     client: 'Engineering Plastics B2B',
-    image: '/assets/case-studies/c7-main.png',
-    thumbnail: '/assets/case-studies/c7-graphic1.png',
+    image: '/assets/case-studies/engineering-plastics/main.png',
+    thumbnail: '/assets/case-studies/engineering-plastics/graphic1.png',
     category: 'Social Media Strategy',
     stat: '120%',
     statLabel: 'ARR Growth',
@@ -157,13 +168,16 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge: "High churn rate during the trial period.",
     solution: "Developed an adaptive onboarding experience driven by user behavior data.",
     features: ["Behavioral Triggers", "Churn Prediction Model", "In-app Guidance"],
-    results: "Doubled Annual Recurring Revenue (ARR) growth year-over-year."
+    results: "Doubled Annual Recurring Revenue (ARR) growth year-over-year.",
+    gallery: [
+      '/assets/case-studies/engineering-plastics/graphic1.png'
+    ]
   },
   {
     id: 'c8',
     client: 'Multi-Industry',
-    image: '/assets/case-studies/c8-graphic3.png',
-    thumbnail: '/assets/case-studies/c8-graphic1.png',
+    image: '/assets/case-studies/multi-industry/main.png',
+    thumbnail: '/assets/case-studies/multi-industry/graphic1.png',
     category: 'Automated LinkedIn Outreach',
     stat: '$12M',
     statLabel: 'Pipeline Added',
@@ -172,13 +186,18 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge: "Cold outreach was yielding low response rates.",
     solution: "Leveraged intent data to trigger timely, relevant outreach sequences.",
     features: ["Intent Data Integration", "Cold Email Automation", "Sales Enablement Tools"],
-    results: "Added $12M to the sales pipeline in 6 months."
+    results: "Added $12M to the sales pipeline in 6 months.",
+    gallery: [
+      '/assets/case-studies/multi-industry/graphic1.png',
+      '/assets/case-studies/multi-industry/graphic2.png',
+      '/assets/case-studies/multi-industry/graphic4.png'
+    ]
   },
   {
     id: 'c9',
     client: 'America Outbound Summit',
-    image: '/assets/case-studies/c9-main.png',
-    thumbnail: '/assets/case-studies/c9-graphic1.png',
+    image: '/assets/case-studies/america-outbound/main.png',
+    thumbnail: '/assets/case-studies/america-outbound/graphic1.png',
     category: 'Targeted Email Marketing',
     stat: '55%',
     statLabel: 'Repeat Rate',
@@ -187,7 +206,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge: "Low customer lifetime value (LTV) and repeat purchase rate.",
     solution: "Launched a comprehensive SMS retention and loyalty program.",
     features: ["SMS Flows", "Loyalty Rewards", "Win-back Campaigns"],
-    results: "Increased repeat customer rate by 55%."
+    results: "Increased repeat customer rate by 55%.",
+    gallery: [
+      '/assets/case-studies/america-outbound/graphic1.png'
+    ]
   },
   {
     id: 'c10',
@@ -207,8 +229,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'c11',
     client: 'Legal Services',
-    image: '/assets/case-studies/c11-main.png',
-    thumbnail: '/assets/case-studies/c11-graphic1.png',
+    image: '/assets/case-studies/legal-services/main.png',
+    thumbnail: '/assets/case-studies/legal-services/graphic1.png',
     category: 'Workflow Automation',
     stat: '90%',
     statLabel: 'Admin Saved',
@@ -217,13 +239,17 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge: "Lawyers were buried in paperwork and manual intake processes.",
     solution: "Automated client intake and document processing with AI.",
     features: ["Document AI", "Automated Intake Forms", "Case Management Sync"],
-    results: "Reduced non-billable administrative hours by 90%."
+    results: "Reduced non-billable administrative hours by 90%.",
+    gallery: [
+      '/assets/case-studies/legal-services/graphic1.png',
+      '/assets/case-studies/legal-services/graphic2.png'
+    ]
   },
   {
     id: 'c12',
     client: 'Summit Education',
-    image: '/assets/case-studies/c12-main.jpg',
-    thumbnail: '/assets/case-studies/c12-graphic2.png',
+    image: '/assets/case-studies/summit-education/main.jpg',
+    thumbnail: '/assets/case-studies/summit-education/graphic2.png',
     category: 'Education Funnel',
     stat: '200%',
     statLabel: 'Enrollment',
@@ -232,7 +258,12 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge: "High cost per student enrollment and low webinar attendance.",
     solution: "Optimized webinar funnel with YouTube ads and automated follow-up.",
     features: ["YouTube Ad Scale", "Evergreen Webinar", "Behavioral Email Nurture"],
-    results: "Increased course enrollment by 200% year-over-year."
+    results: "Increased course enrollment by 200% year-over-year.",
+    gallery: [
+      '/assets/case-studies/summit-education/graphic1.jpg',
+      '/assets/case-studies/summit-education/graphic2.png',
+      '/assets/case-studies/summit-education/graphic3.png'
+    ]
   }
 ];
 
