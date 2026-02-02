@@ -12,7 +12,7 @@ const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 mb-12 flex items-end justify-between">
         <div className="reveal opacity-0 translate-y-10 transition-all duration-700">
           <h2 className="text-4xl md:text-7xl font-bold tracking-tighter mb-4 uppercase leading-[1.1]">
-            PROVEN <span className="chrome-text">RESULTS</span> DATA <span className="text-accent">&</span> IMPACT
+            CLIENT <span className="chrome-text">CASE</span> STUDIES
           </h2>
           <p className="text-text-secondary text-lg md:text-xl font-body max-w-2xl">From zero to high-converting marketing engines. We don't just guess—we engineer growth.</p>
         </div>
@@ -51,18 +51,18 @@ const Projects: React.FC = () => {
               <img
                 src={project.thumbnail || project.image}
                 alt={project.client}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0"
+                className="w-full h-full object-cover transition-all duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0 group-hover:scale-105"
               />
-              {/* Overlay content */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent p-8 flex flex-col justify-end">
-                <div className="mb-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+              {/* Overlay content - now persistent */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent p-8 flex flex-col justify-end">
+                <div className="mb-4 transition-all duration-500">
                   <span className="px-3 py-1 rounded-full bg-accent/20 border border-accent/40 text-[10px] font-bold uppercase tracking-widest text-accent">
                     {project.category}
                   </span>
                   <h3 className="text-3xl font-bold mt-2 leading-tight">{project.client}</h3>
                 </div>
 
-                <div className="flex items-center justify-between border-t border-white/10 pt-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                <div className="flex items-center justify-between border-t border-white/10 pt-6 transition-all duration-500">
                   <div>
                     <p className="text-4xl font-bold text-white">{project.stat}</p>
                     <p className="text-[10px] font-mono uppercase text-accent tracking-widest">{project.statLabel}</p>
