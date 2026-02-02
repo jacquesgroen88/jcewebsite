@@ -20,17 +20,17 @@ const AboutPage: React.FC = () => {
           <div className="space-y-8">
             <span className="text-accent font-mono text-sm uppercase tracking-[0.3em]">The JCE Story</span>
             <h1 className="text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-none">
-              REDEFINING <span className="chrome-text">GROWTH</span> THROUGH <span className="text-accent">AI</span>
+              REDEFINING <span className="chrome-text">GROWTH</span> THROUGH <span className="text-accent">SYSTEMS</span>
             </h1>
             <div className="space-y-6 text-xl text-text-secondary font-body leading-relaxed">
               <p>
                 In a world drowning in noise, JCE Media was born from a singular realization: <span className="text-white font-semibold">Traditional marketing is broken.</span>
               </p>
               <p>
-                Most agencies focus on vanity metrics. We focus on <span className="text-white font-semibold">Systems.</span> We build autonomous, AI-driven engines that don't just "generate buzz"—they generate scalable, predictable ROI.
+                Most agencies focus on vanity metrics. We focus on <span className="text-white font-semibold">Architecture.</span> We build autonomous, systems-driven engines that don't just "generate buzz"—they generate scalable, predictable ROI.
               </p>
               <p>
-                From automating 949 Facebook leads in 60 days to moving 70,000 prospects into active pipelines, our mission is to eliminate the guesswork from business expansion.
+                From automating 949 Facebook leads in 60 days to moving 70,000 prospects into active pipelines, our mission is to eliminate the guesswork by engineering growth through robust systems.
               </p>
             </div>
             <div className="pt-6">
@@ -42,7 +42,7 @@ const AboutPage: React.FC = () => {
             <div className="aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group">
               <img
                 src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop"
-                alt="Modern AI Lab"
+                alt="Modern Systems Architecture"
                 className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 transition-all duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
@@ -72,9 +72,9 @@ const AboutPage: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <Card hasBeam className="p-10 space-y-6">
               <div className="text-4xl">01</div>
-              <h3 className="text-2xl font-bold uppercase text-accent">AI-FIRST</h3>
+              <h3 className="text-2xl font-bold uppercase text-accent">SYSTEMS-ENGINEERED</h3>
               <p className="text-text-secondary leading-relaxed font-body">
-                We don't use AI as a buzzword. It's the core of every system we build, ensuring maximum speed and hyper-personalization at scale.
+                We don't just "run ads"—we build autonomous growth architectures. Our systems leverage AI to ensure maximum speed and hyper-personalization at scale.
               </p>
             </Card>
 

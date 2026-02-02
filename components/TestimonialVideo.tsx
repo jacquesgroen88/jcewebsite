@@ -14,18 +14,15 @@ const TestimonialVideo: React.FC = () => {
 
                 <Card hasBeam className="bg-surface/30 border-white/5 backdrop-blur-2xl p-4 md:p-8 rounded-[2.5rem] overflow-hidden shadow-2xl">
                     <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-inner">
-                        <video
+                        <iframe
                             className="w-full h-full object-cover"
-                            controls
-                            preload="metadata"
-                            poster="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
-                        >
-                            <source
-                                src="/assets/testimonialvideo/JCE-Media-Digital-Ad-Campaign-Specialists.mp4"
-                                type="video/mp4"
-                            />
-                            Your browser does not support the video tag.
-                        </video>
+                            src="https://www.youtube.com/embed/2d5--NEjXRQ?si=kGyxt_qOUI75OakI"
+                            title="JCE Media Testimonial"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                        ></iframe>
 
                         {/* Decoractive Y2K Corner Elements */}
                         <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-accent/40 rounded-tl-xl pointer-events-none" />

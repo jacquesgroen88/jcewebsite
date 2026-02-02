@@ -68,9 +68,9 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 bg-accent/20 blur-[100px] animate-pulse-glow" />
             <div className="relative z-10 w-full h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl backdrop-blur-sm group">
               <img
-                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
-                alt="High-tech scale automation systems"
-                className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                src="/assets/hero-ai-system.png"
+                alt="AI-Powered Scaling Systems"
+                className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 
