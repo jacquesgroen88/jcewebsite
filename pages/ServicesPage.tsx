@@ -51,7 +51,7 @@ const ServicesPage: React.FC = () => {
         <div className="mb-24 text-center md:text-left">
           <span className="text-accent font-mono text-sm uppercase tracking-[0.3em] mb-4 block">Our Expertise</span>
           <h1 className="text-5xl md:text-8xl font-bold tracking-tighter uppercase mb-8">
-            SYSTEMS FOR <span className="chrome-text">SCALE</span>
+            <span className="gradient-shimmer">SYSTEMS FOR SCALE</span>
           </h1>
           <p className="text-xl text-text-secondary max-w-2xl font-body leading-relaxed">
             We don't just provide services; we build autonomous engines that power your business growth while you sleep.
