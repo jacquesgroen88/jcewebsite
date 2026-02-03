@@ -26,7 +26,7 @@ const ContactPage: React.FC = () => {
         <div className="mb-20">
           <span className="text-accent font-mono text-sm uppercase tracking-[0.3em] mb-4 block">Connect with JCE</span>
           <h1 className="text-5xl md:text-8xl font-bold tracking-tighter uppercase mb-8 leading-none">
-            LET'S BUILD THE <span className="chrome-text">FUTURE</span>
+            LET'S BUILD THE <span className="gradient-shimmer">FUTURE TOGETHER</span>
           </h1>
           <p className="text-xl text-text-secondary max-w-2xl font-body leading-relaxed">
             Ready to integrate autonomous systems into your business? Our team is standing by to audit your current workflows and identify massive growth opportunities.
@@ -99,29 +99,6 @@ const ContactPage: React.FC = () => {
 
           {/* Sidebar Info */}
           <div className="lg:col-span-2 space-y-12">
-            <div className="space-y-6">
-              <h3 className="text-xs font-mono uppercase tracking-[0.4em] text-accent">Contact Details</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4 group cursor-pointer">
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                  </div>
-                  <div>
-                    <p className="text-sm font-mono text-text-secondary uppercase">Email</p>
-                    <p className="text-lg font-bold">hello@jcemedia.com</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4 group cursor-pointer">
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  </div>
-                  <div>
-                    <p className="text-sm font-mono text-text-secondary uppercase">Location</p>
-                    <p className="text-lg font-bold">London | New York | Remote</p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div className="space-y-6">
               <h3 className="text-xs font-mono uppercase tracking-[0.4em] text-accent">System Status</h3>

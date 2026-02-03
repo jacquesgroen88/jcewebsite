@@ -20,7 +20,7 @@ const AboutPage: React.FC = () => {
           <div className="space-y-8">
             <span className="text-accent font-mono text-sm uppercase tracking-[0.3em]">The JCE Story</span>
             <h1 className="text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-none">
-              REDEFINING <span className="chrome-text">GROWTH</span> THROUGH <span className="text-accent">SYSTEMS</span>
+              REDEFINING <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">GROWTH</span> THROUGH <span className="text-accent">SYSTEMS</span>
             </h1>
             <div className="space-y-6 text-xl text-text-secondary font-body leading-relaxed">
               <p>
