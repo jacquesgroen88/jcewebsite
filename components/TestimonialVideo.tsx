@@ -8,7 +8,7 @@ const TestimonialVideo: React.FC = () => {
                 <div className="text-center mb-16 space-y-4">
                     <span className="text-accent font-mono text-sm uppercase tracking-[0.3em] block reveal opacity-100 translate-y-0 transition-all duration-700">Testimonial</span>
                     <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter reveal opacity-100 translate-y-0 transition-all duration-700 delay-100">
-                        What it's like <span className="chrome-text">Working</span> with us
+                        What it's like <span className="gradient-shimmer">Working with us</span>
                     </h2>
                 </div>
 
