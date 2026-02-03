@@ -70,21 +70,11 @@ const Hero: React.FC = () => {
               <img
                 src="/assets/hero-ai-system.png"
                 alt="AI-Powered Scaling Systems"
-                className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                className="w-full h-full object-cover transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 
               {/* Floating Elements (Y2K Geometric) */}
-              <div className="absolute top-8 right-8 w-24 h-24 border-2 border-accent rounded-full opacity-20 animate-spin" style={{ animationDuration: '10s' }} />
-              <div className="absolute bottom-12 left-8 p-4 bg-white/5 backdrop-blur-md rounded-xl border border-white/10 space-y-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-accent-green rounded-full animate-pulse" />
-                  <span className="text-[10px] font-mono text-white/60">LIVE SYSTEM PERFORMANCE</span>
-                </div>
-                <div className="w-32 h-2 bg-accent rounded-full" />
-                <div className="w-24 h-2 bg-white/20 rounded-full" />
-                <div className="w-40 h-2 bg-white/10 rounded-full" />
-              </div>
             </div>
           </div>
         </div>

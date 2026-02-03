@@ -43,16 +43,10 @@ const AboutPage: React.FC = () => {
               <img
                 src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop"
                 alt="Modern Systems Architecture"
-                className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 transition-all duration-1000"
+                className="w-full h-full object-cover transition-all duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 
-              {/* Y2K Geometric Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-64 h-64 border border-accent/30 rounded-full animate-pulse flex items-center justify-center">
-                  <div className="w-48 h-48 border border-accent/20 rounded-full animate-ping" />
-                </div>
-              </div>
 
               <div className="absolute bottom-8 left-8 p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl max-w-xs">
                 <p className="text-xs font-mono uppercase text-accent mb-2 tracking-widest">Philosophy</p>
@@ -112,7 +106,7 @@ const AboutPage: React.FC = () => {
                 <img
                   src="/assets/case-studies/jacques.jpg"
                   alt="Jacques Groenewald"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transpose to-transparent opacity-60" />
                 <div className="absolute bottom-0 left-0 p-6 w-full">
@@ -131,7 +125,7 @@ const AboutPage: React.FC = () => {
                 <img
                   src="/assets/case-studies/diane.png"
                   alt="Diane Colquhoun"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transpose to-transparent opacity-60" />
                 <div className="absolute bottom-0 left-0 p-6 w-full">
