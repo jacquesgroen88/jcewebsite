@@ -23,6 +23,9 @@ const Icons = {
   ),
   Content: (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.5 8.5 0 0 1 7.6 11.7Z" /><path d="m15.5 5.5 3 3-3 3" /></svg>
+  ),
+  Gtm: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>
   )
 };
 
@@ -50,6 +53,12 @@ export const SERVICES: ServiceItem[] = [
     title: 'Full-Funnel Lead Generation',
     description: 'Data analytics combined with targeted outreach to deliver high-quality leads across industries.',
     icon: 'content',
+  },
+  {
+    id: 's5',
+    title: 'Go To Market Strategy',
+    description: 'Data-driven launch strategies and market mapping to ensure your product segments and scales profitably from day one.',
+    icon: 'gtm',
   },
 ];
 

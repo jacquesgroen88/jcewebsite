@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Zap, Rocket, Settings, PenTool } from 'lucide-react';
+import { Zap, Rocket, Settings, PenTool, Target } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 
@@ -31,12 +31,16 @@ const ServicesPage: React.FC = () => {
       color: "bg-purple-500/10 text-purple-400"
     },
     {
-      title: "Content Automation",
-      subtitle: "Human Creativity, AI Speed",
-      description: "Scale your content without losing your brand voice. We integrate Gen-AI workflows that produce months of high-quality content in minutes.",
-      features: ["Brand Voice Training", "Multi-Channel Scheduling", "Automated Video Generation", "SEO Topic Clustering"],
       icon: <PenTool className="w-8 h-8" />,
       color: "bg-pink-500/10 text-pink-400"
+    },
+    {
+      title: "Go To Market Strategy",
+      subtitle: "Full-Cycle Growth Architecture",
+      description: "Data-driven launch strategies and market mapping to ensure your product segments and scales profitably from day one. We bridge the gap between product-market fit and full-scale adoption.",
+      features: ["Precision Market Mapping", "Competitor Intelligence", "Launch Sequence Automation", "Revenue Infrastructure"],
+      icon: <Target className="w-8 h-8" />,
+      color: "bg-orange-500/10 text-orange-400"
     }
   ];
 
