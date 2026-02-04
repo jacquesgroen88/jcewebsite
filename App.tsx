@@ -12,9 +12,10 @@ import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import GtmOnboardingPage from './pages/GtmOnboardingPage';
+import GtmThankYouPage from './pages/GtmThankYouPage';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'services' | 'about' | 'contact' | 'gtm-onboarding'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'services' | 'about' | 'contact' | 'gtm-onboarding' | 'gtm-thank-you'>('home');
 
   useEffect(() => {
     const handleHash = () => {
@@ -30,6 +31,9 @@ const App: React.FC = () => {
         window.scrollTo(0, 0);
       } else if (hash === '#gtm-onboarding' || hash.startsWith('#gtm-onboarding?')) {
         setCurrentPage('gtm-onboarding');
+        window.scrollTo(0, 0);
+      } else if (hash === '#gtm-thank-you' || hash.startsWith('#gtm-thank-you?')) {
+        setCurrentPage('gtm-thank-you');
         window.scrollTo(0, 0);
       } else {
         setCurrentPage('home');
@@ -50,6 +54,7 @@ const App: React.FC = () => {
       about: 'About Us | JCE Media',
       contact: 'Contact Us | JCE Media',
       'gtm-onboarding': 'GTM Onboarding | JCE Media',
+      'gtm-thank-you': 'Thank You | JCE Media',
     };
     document.title = titles[currentPage];
   }, [currentPage]);
@@ -62,12 +67,13 @@ const App: React.FC = () => {
     }
   }, []);
 
-  const navigateTo = (page: 'home' | 'services' | 'about' | 'contact' | 'gtm-onboarding') => {
+  const navigateTo = (page: 'home' | 'services' | 'about' | 'contact' | 'gtm-onboarding' | 'gtm-thank-you') => {
     setCurrentPage(page);
     if (page === 'services') window.location.hash = 'services-detail';
     else if (page === 'about') window.location.hash = 'about';
     else if (page === 'contact') window.location.hash = 'contact';
     else if (page === 'gtm-onboarding') window.location.hash = 'gtm-onboarding';
+    else if (page === 'gtm-thank-you') window.location.hash = 'gtm-thank-you';
     else window.location.hash = '';
     window.scrollTo(0, 0);
   };
@@ -96,6 +102,7 @@ const App: React.FC = () => {
         {currentPage === 'about' && <AboutPage />}
         {currentPage === 'contact' && <ContactPage />}
         {currentPage === 'gtm-onboarding' && <GtmOnboardingPage />}
+        {currentPage === 'gtm-thank-you' && <GtmThankYouPage />}
       </main>
 
       <Footer />
