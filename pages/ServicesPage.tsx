@@ -31,6 +31,10 @@ const ServicesPage: React.FC = () => {
       color: "bg-purple-500/10 text-purple-400"
     },
     {
+      title: "Content Automation",
+      subtitle: "Human Creativity, AI Speed",
+      description: "Scale your content without losing your brand voice. We integrate Gen-AI workflows that produce months of high-quality content in minutes.",
+      features: ["Brand Voice Training", "Multi-Channel Scheduling", "Automated Video Generation", "SEO Topic Clustering"],
       icon: <PenTool className="w-8 h-8" />,
       color: "bg-pink-500/10 text-pink-400"
     },
