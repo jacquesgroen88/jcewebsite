@@ -11,9 +11,10 @@ import AnimatedBackground from './components/AnimatedBackground';
 import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import GtmOnboardingPage from './pages/GtmOnboardingPage';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'services' | 'about' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'services' | 'about' | 'contact' | 'gtm-onboarding'>('home');
 
   useEffect(() => {
     const handleHash = () => {
@@ -26,6 +27,9 @@ const App: React.FC = () => {
         window.scrollTo(0, 0);
       } else if (hash === '#contact' || hash.startsWith('#contact?')) {
         setCurrentPage('contact');
+        window.scrollTo(0, 0);
+      } else if (hash === '#gtm-onboarding' || hash.startsWith('#gtm-onboarding?')) {
+        setCurrentPage('gtm-onboarding');
         window.scrollTo(0, 0);
       } else {
         setCurrentPage('home');
@@ -45,6 +49,7 @@ const App: React.FC = () => {
       services: 'Our Services | JCE Media',
       about: 'About Us | JCE Media',
       contact: 'Contact Us | JCE Media',
+      'gtm-onboarding': 'GTM Onboarding | JCE Media',
     };
     document.title = titles[currentPage];
   }, [currentPage]);
@@ -57,11 +62,12 @@ const App: React.FC = () => {
     }
   }, []);
 
-  const navigateTo = (page: 'home' | 'services' | 'about' | 'contact') => {
+  const navigateTo = (page: 'home' | 'services' | 'about' | 'contact' | 'gtm-onboarding') => {
     setCurrentPage(page);
     if (page === 'services') window.location.hash = 'services-detail';
     else if (page === 'about') window.location.hash = 'about';
     else if (page === 'contact') window.location.hash = 'contact';
+    else if (page === 'gtm-onboarding') window.location.hash = 'gtm-onboarding';
     else window.location.hash = '';
     window.scrollTo(0, 0);
   };
@@ -89,6 +95,7 @@ const App: React.FC = () => {
         {currentPage === 'services' && <ServicesPage />}
         {currentPage === 'about' && <AboutPage />}
         {currentPage === 'contact' && <ContactPage />}
+        {currentPage === 'gtm-onboarding' && <GtmOnboardingPage />}
       </main>
 
       <Footer />
