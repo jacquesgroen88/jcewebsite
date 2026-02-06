@@ -78,6 +78,8 @@ const Projects: React.FC = () => {
               <img
                 src={project.thumbnail || project.image}
                 alt={project.client}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover grayscale transition-all duration-700 opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
               />
               {/* Persistent Overlay content */}

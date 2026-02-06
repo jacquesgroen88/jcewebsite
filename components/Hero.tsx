@@ -71,6 +71,8 @@ const Hero: React.FC = () => {
                 src="/assets/hero-ai-system.png"
                 alt="AI-Powered Scaling Systems"
                 className="w-full h-full object-cover transition-all duration-700"
+                loading="eager"
+                {...{ fetchpriority: "high" } as any}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 

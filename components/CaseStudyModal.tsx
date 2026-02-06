@@ -74,6 +74,8 @@ const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ isOpen, onClose, caseSt
                                 <img
                                     src={caseStudy.image}
                                     alt={caseStudy.client}
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-full object-contain bg-black/20"
                                 />
                             )}
@@ -173,6 +175,8 @@ const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ isOpen, onClose, caseSt
                                         <img
                                             src={img}
                                             alt={`${caseStudy.client} Visual ${idx + 1}`}
+                                            loading="lazy"
+                                            decoding="async"
                                             className="w-full h-full object-contain transition-transform duration-1000 opacity-90 group-hover:opacity-100"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

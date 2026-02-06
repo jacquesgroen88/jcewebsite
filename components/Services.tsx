@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { TrendingUp, BarChart3, Zap, PenTool, Target } from 'lucide-react';
+import { TrendingUp, BarChart3, Zap, PenTool, Target, Layers, ShoppingBag, Globe } from 'lucide-react';
 import { SERVICES } from '../constants';
 import Card from './Card';
 
@@ -14,6 +14,9 @@ const IconMap: Record<string, React.ReactNode> = {
   automation: <Zap size={24} />,
   content: <PenTool size={24} />,
   gtm: <Target size={24} />,
+  strategy: <Layers size={24} />,
+  ecommerce: <ShoppingBag size={24} />,
+  globe: <Globe size={24} />,
 };
 
 const Services: React.FC<ServicesProps> = ({ onDetailClick }) => {

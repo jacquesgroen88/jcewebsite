@@ -26,6 +26,15 @@ const Icons = {
   ),
   Gtm: (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>
+  ),
+  Strategy: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+  ),
+  Ecommerce: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
+  ),
+  Globe: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
   )
 };
 
@@ -59,6 +68,24 @@ export const SERVICES: ServiceItem[] = [
     title: 'Go To Market Strategy',
     description: 'Data-driven launch strategies and market mapping to ensure your product segments and scales profitably from day one.',
     icon: 'gtm',
+  },
+  {
+    id: 's6',
+    title: 'Digital Marketing Strategy',
+    description: 'Customized full-funnel marketing roadmaps that align your brand with market intent and drive sustainable growth.',
+    icon: 'strategy',
+  },
+  {
+    id: 's8',
+    title: 'Ecommerce Systems',
+    description: 'High-converting online storefronts integrated with AI inventory management and personalized shopping experiences.',
+    icon: 'ecommerce',
+  },
+  {
+    id: 's9',
+    title: 'International Scaling Strategy',
+    description: 'Blueprint for global expansion, managing cross-border logistics, localization, and multi-market penetration.',
+    icon: 'globe',
   },
 ];
 
@@ -223,8 +250,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'c10',
     client: 'Real Estate Services',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
-    thumbnail: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop',
+    thumbnail: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400&auto=format&fit=crop',
     category: 'Automated Email Workflows',
     stat: '400',
     statLabel: 'New Members',

@@ -41,8 +41,10 @@ const AboutPage: React.FC = () => {
           <div className="relative">
             <div className="aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group">
               <img
-                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop"
                 alt="Modern Systems Architecture"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-all duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
@@ -106,6 +108,8 @@ const AboutPage: React.FC = () => {
                 <img
                   src="/assets/case-studies/jacques.jpg"
                   alt="Jacques Groenewald"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transpose to-transparent opacity-60" />
@@ -115,7 +119,7 @@ const AboutPage: React.FC = () => {
                 </div>
               </div>
               <p className="text-text-secondary text-sm leading-relaxed text-center md:text-left">
-                Visionary leader focused on leveraging AI to disrupt traditional marketing models.
+                With over 17 years of experience, Jacques has spearheaded growth initiatives for global brands like Microsoft, Vodafone, and Ensinger Plastics, specializing in systems-driven marketing architecture.
               </p>
             </div>
 
@@ -125,6 +129,8 @@ const AboutPage: React.FC = () => {
                 <img
                   src="/assets/case-studies/diane.png"
                   alt="Diane Colquhoun"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transpose to-transparent opacity-60" />

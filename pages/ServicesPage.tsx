@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Zap, Rocket, Settings, PenTool, Target } from 'lucide-react';
+import { Zap, Rocket, Settings, PenTool, Target, Layers, ShoppingBag, Globe } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 
@@ -12,7 +12,8 @@ const ServicesPage: React.FC = () => {
       description: "Stop guessing and start predicting. We build AI systems that analyze user behavior in real-time to deliver the right message at the perfect moment.",
       features: ["Predictive Analytics", "Dynamic Content Personalization", "Automated Ad Optimization", "Sentiment Analysis"],
       icon: <Zap className="w-8 h-8" />,
-      color: "bg-blue-500/10 text-blue-400"
+      color: "bg-blue-500/10 text-blue-400",
+      imageId: "1460925895917-afdab827c52f"
     },
     {
       title: "Intelligent Sales",
@@ -20,7 +21,8 @@ const ServicesPage: React.FC = () => {
       description: "Bridge the gap between lead generation and revenue. Our AI-driven sales systems identify your highest-value prospects and automate follow-ups that sound human.",
       features: ["AI Lead Scoring", "Automated Outreach Sequences", "CRM Data Enrichment", "Predictive Forecasting"],
       icon: <Rocket className="w-8 h-8" />,
-      color: "bg-green-500/10 text-green-400"
+      color: "bg-green-500/10 text-green-400",
+      imageId: "1551288049-bebda4e38f71"
     },
     {
       title: "Business Automation",
@@ -28,7 +30,8 @@ const ServicesPage: React.FC = () => {
       description: "Free your team from repetitive tasks. We automate cross-departmental workflows, reducing human error and boosting efficiency by up to 80%.",
       features: ["Internal Process Mapping", "Cross-Platform Integrations", "AI Document Processing", "Custom Slack/Teams Bots"],
       icon: <Settings className="w-8 h-8" />,
-      color: "bg-purple-500/10 text-purple-400"
+      color: "bg-purple-500/10 text-purple-400",
+      imageId: "1518770660439-4636190af475"
     },
     {
       title: "Content Automation",
@@ -36,15 +39,44 @@ const ServicesPage: React.FC = () => {
       description: "Scale your content without losing your brand voice. We integrate Gen-AI workflows that produce months of high-quality content in minutes.",
       features: ["Brand Voice Training", "Multi-Channel Scheduling", "Automated Video Generation", "SEO Topic Clustering"],
       icon: <PenTool className="w-8 h-8" />,
-      color: "bg-pink-500/10 text-pink-400"
+      color: "bg-pink-500/10 text-pink-400",
+      imageId: "1499951360447-b19be8fe80f5"
     },
     {
       title: "Go To Market Strategy",
-      subtitle: "Full-Cycle Growth Architecture",
-      description: "Data-driven launch strategies and market mapping to ensure your product segments and scales profitably from day one. We bridge the gap between product-market fit and full-scale adoption.",
-      features: ["Precision Market Mapping", "Competitor Intelligence", "Launch Sequence Automation", "Revenue Infrastructure"],
+      subtitle: "Precision Launch Frameworks",
+      description: "Don't just launch—dominate. We build data-driven GTM strategies that map your ideal customer profile and ensure a profitable scale from day one.",
+      features: ["Market Mapping", "ICP Identification", "Competitive Intelligence", "Pricing Strategy AI"],
       icon: <Target className="w-8 h-8" />,
-      color: "bg-orange-500/10 text-orange-400"
+      color: "bg-orange-500/10 text-orange-400",
+      imageId: "1553877522-43269d4ea984"
+    },
+    {
+      title: "Digital Marketing Strategy",
+      subtitle: "Omnichannel Growth Engineering",
+      description: "We design multi-layered marketing frameworks that capture intent throughout the entire customer journey, ensuring no lead is left behind.",
+      features: ["Funnel Architecture", "Cross-Channel Attribution", "Budget Allocation AI", "Customer Journey Mapping"],
+      icon: <Layers className="w-8 h-8" />,
+      color: "bg-indigo-500/10 text-indigo-400",
+      imageId: "1460927233221-c54d38e3493e"
+    },
+    {
+      title: "Ecommerce Systems",
+      subtitle: "Frictionless AI Commerce",
+      description: "Next-gen storefronts that learn from every visitor. We build high-performance ecommerce platforms optimized for conversion and repeat loyalty.",
+      features: ["Dynamic Product Recommendations", "AI Inventory Forecasting", "Personalized Checkout Flows", "Visual Search Integration"],
+      icon: <ShoppingBag className="w-8 h-8" />,
+      color: "bg-yellow-500/10 text-yellow-400",
+      imageId: "1516321497487-e288fb19713f"
+    },
+    {
+      title: "International Scaling",
+      subtitle: "Global Dominance Framework",
+      description: "Take your business beyond borders. We provide the technical and strategic blueprint for rapid localization and multi-market expansion.",
+      features: ["Multi-Currency Infrastructure", "Dynamic Content Translation", "Cross-Border Logistics AI", "Local Market Intelligence"],
+      icon: <Globe className="w-8 h-8" />,
+      color: "bg-cyan-500/10 text-cyan-400",
+      imageId: "1454167440306-218108333423"
     }
   ];
 
@@ -106,8 +138,9 @@ const ServicesPage: React.FC = () => {
               <div className="flex-1 w-full relative">
                 <div className="aspect-video rounded-3xl overflow-hidden border border-border bg-surface shadow-2xl group">
                   <img
-                    src={`https://images.unsplash.com/photo-${index === 0 ? '1460925895917-afdab827c52f' : index === 1 ? '1551288049-bebda4e38f71' : index === 2 ? '1518770660439-4636190af475' : '1551288049-bebda4e38f71'}?q=80&w=2070&auto=format&fit=crop`}
+                    src={`https://images.unsplash.com/photo-${service.imageId}?q=80&w=800&auto=format&fit=crop`}
                     alt={service.title}
+                    loading="lazy"
                     className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />

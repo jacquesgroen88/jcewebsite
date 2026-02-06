@@ -20,7 +20,7 @@ const BrandCarousel: React.FC = () => {
                 <div className="flex gap-16 animate-scroll whitespace-nowrap items-center hover:pause-animation">
                     {displayLogos.map((logo, idx) => (
                         <div key={idx} className="w-32 h-16 md:w-48 md:h-20 flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-50 hover:opacity-100 flex items-center justify-center">
-                            <img src={logo} alt="Partner Brand" className="max-w-full max-h-full object-contain" />
+                            <img src={logo} alt="Partner Brand" loading="lazy" className="max-w-full max-h-full object-contain" />
                         </div>
                     ))}
                 </div>
