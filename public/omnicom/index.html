@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReviewTap × Omnicom | Client Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #070E1C;
+    --bg2:      #0D1829;
+    --card:     #111D30;
+    --border:   rgba(255,255,255,0.07);
+    --gold:     #F2A919;
+    --gold2:    #FFD600;
+    --blue:     #2563EB;
+    --green:    #00C755;
+    --text:     #F0F4FF;
+    --text-2:   #8A9BBE;
+    --r:        16px;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  /* ── animated mesh background ── */
+  .mesh {
+    position: fixed; inset: 0; z-index: 0;
+    overflow: hidden; pointer-events: none;
+  }
+  .mesh::before {
+    content: '';
+    position: absolute; top: -40%; left: -20%;
+    width: 80%; height: 80%;
+    background: radial-gradient(ellipse, rgba(37,99,235,0.18) 0%, transparent 65%);
+    animation: drift1 18s ease-in-out infinite alternate;
+  }
+  .mesh::after {
+    content: '';
+    position: absolute; bottom: -30%; right: -15%;
+    width: 70%; height: 70%;
+    background: radial-gradient(ellipse, rgba(0,199,85,0.12) 0%, transparent 65%);
+    animation: drift2 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift1 { to { transform: translate(8%, 12%); } }
+  @keyframes drift2 { to { transform: translate(-6%, -10%); } }
+
+  /* ── layout ── */
+  .page {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 24px;
+  }
+
+  /* ── logo lockup ── */
+  .logo-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+  }
+  .rt-logo svg { display: block; }
+  .logo-text {
+    font-size: 18px; font-weight: 700; letter-spacing: -0.3px;
+    background: linear-gradient(135deg, #F2A919 0%, #FFD600 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .divider-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--text-2); margin: 0 4px;
+  }
+  .omnicom-text {
+    font-size: 18px; font-weight: 500; color: var(--text-2);
+  }
+
+  /* ── card ── */
+  .card {
+    width: 100%; max-width: 440px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px 40px 40px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  }
+
+  .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text-2);
+    margin-bottom: 12px; text-align: center;
+  }
+  .heading {
+    font-size: 26px; font-weight: 800; line-height: 1.2;
+    text-align: center; margin-bottom: 8px;
+  }
+  .subheading {
+    font-size: 14px; color: var(--text-2); text-align: center;
+    margin-bottom: 36px; line-height: 1.6;
+  }
+
+  /* ── password form ── */
+  .field-label {
+    font-size: 12px; font-weight: 600; color: var(--text-2);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 8px; display: block;
+  }
+  .input-wrap {
+    position: relative; margin-bottom: 16px;
+  }
+  .pw-input {
+    width: 100%; padding: 14px 48px 14px 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text); font-size: 16px; font-family: inherit;
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-text-security: disc;
+  }
+  .pw-input:focus {
+    border-color: rgba(242,169,25,0.5);
+    box-shadow: 0 0 0 3px rgba(242,169,25,0.1);
+  }
+  .pw-input.error {
+    border-color: rgba(255,87,87,0.6);
+    box-shadow: 0 0 0 3px rgba(255,87,87,0.1);
+    animation: shake 0.4s ease;
+  }
+  .toggle-pw {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    cursor: pointer; color: var(--text-2); background: none; border: none;
+    padding: 4px; display: flex; align-items: center;
+    transition: color 0.2s;
+  }
+  .toggle-pw:hover { color: var(--text); }
+  @keyframes shake {
+    0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)} 60%{transform:translateX(8px)}
+  }
+  .error-msg {
+    font-size: 12px; color: #FF5757; margin-top: -8px; margin-bottom: 12px;
+    display: none;
+  }
+  .error-msg.show { display: block; }
+
+  .btn-primary {
+    width: 100%; padding: 15px;
+    background: linear-gradient(135deg, #F2A919 0%, #e6930d 100%);
+    border: none; border-radius: 12px;
+    color: #0D0D0D; font-size: 15px; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+    transition: opacity 0.2s, transform 0.1s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+
+  /* ── options view (hidden until auth) ── */
+  .options-view { display: none; }
+  .options-view.show { display: block; }
+  .login-view.hide { display: none; }
+
+  .options-heading {
+    font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 6px;
+  }
+  .options-sub {
+    font-size: 13px; color: var(--text-2); text-align: center; margin-bottom: 32px;
+  }
+  .options-grid {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .opt-card {
+    display: flex; align-items: center; gap: 18px;
+    padding: 20px 22px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-decoration: none; color: var(--text);
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    cursor: pointer;
+  }
+  .opt-card:hover {
+    border-color: rgba(242,169,25,0.4);
+    background: rgba(242,169,25,0.05);
+    transform: translateY(-2px);
+  }
+  .opt-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .opt-icon.pres { background: rgba(37,99,235,0.15); }
+  .opt-icon.dash { background: rgba(0,199,85,0.12); }
+  .opt-title {
+    font-size: 15px; font-weight: 700; margin-bottom: 3px;
+  }
+  .opt-desc {
+    font-size: 12px; color: var(--text-2); line-height: 1.4;
+  }
+  .opt-arrow {
+    margin-left: auto; color: var(--text-2); flex-shrink: 0;
+    transition: transform 0.2s, color 0.2s;
+  }
+  .opt-card:hover .opt-arrow {
+    transform: translateX(4px); color: var(--gold);
+  }
+
+  /* ── footer ── */
+  .portal-footer {
+    margin-top: 28px; text-align: center;
+    font-size: 11px; color: rgba(138,155,190,0.4);
+    letter-spacing: 0.5px;
+  }
+  .portal-footer a {
+    color: rgba(138,155,190,0.6); text-decoration: none;
+  }
+
+  /* ── welcome badge ── */
+  .welcome-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 99px;
+    background: rgba(0,199,85,0.1); border: 1px solid rgba(0,199,85,0.2);
+    font-size: 12px; color: #00C755; font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .welcome-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #00C755;
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:0.4;transform:scale(0.8)}
+  }
+</style>
+</head>
+<body>
+
+<div class="mesh"></div>
+
+<div class="page">
+
+  <!-- Logo row -->
+  <div class="logo-row" style="margin-bottom:32px;">
+    <!-- ReviewTap hexagon logo -->
+    <div class="rt-logo">
+      <svg width="32" height="32" viewBox="0 0 100 100">
+        <path d="M 12,28 L 50,6 L 88,28 L 73,37 L 50,24 L 27,37 Z" fill="#FA8231"/>
+        <path d="M 88,28 L 88,72 L 50,94 L 50,76 L 73,63 L 73,37 Z" fill="#2563EB"/>
+        <path d="M 50,94 L 12,72 L 12,28 L 27,37 L 27,63 L 50,76 Z" fill="#00C755"/>
+      </svg>
+    </div>
+    <span class="logo-text">ReviewTap</span>
+    <span class="divider-dot"></span>
+    <span class="omnicom-text">Omnicom</span>
+  </div>
+
+  <!-- Main card -->
+  <div class="card">
+
+    <!-- ══ LOGIN VIEW ══ -->
+    <div class="login-view" id="loginView">
+      <p class="eyebrow">Client Portal</p>
+      <h1 class="heading">Confidential Briefing</h1>
+      <p class="subheading">This presentation is intended for Omnicom Media Group partners only. Please enter your access code to continue.</p>
+
+      <label class="field-label" for="pwInput">Access Code</label>
+      <div class="input-wrap">
+        <input
+          class="pw-input"
+          id="pwInput"
+          type="password"
+          placeholder="Enter access code"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button class="toggle-pw" id="toggleBtn" onclick="toggleVisibility()" tabindex="-1" aria-label="Toggle visibility">
+          <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <p class="error-msg" id="errMsg">Incorrect access code. Please try again.</p>
+
+      <button class="btn-primary" onclick="checkPassword()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Access Presentation
+      </button>
+    </div>
+
+    <!-- ══ OPTIONS VIEW ══ -->
+    <div class="options-view" id="optionsView">
+      <div style="text-align:center;margin-bottom:24px;">
+        <div class="welcome-badge">
+          <span class="welcome-dot"></span>
+          Access Granted
+        </div>
+        <h2 class="options-heading">Welcome to the Briefing</h2>
+        <p class="options-sub">Select what you'd like to view below.</p>
+      </div>
+
+      <div class="options-grid">
+        <a class="opt-card" href="presentation.html">
+          <div class="opt-icon pres">📊</div>
+          <div>
+            <div class="opt-title">ReviewTap × Omnicom Presentation</div>
+            <div class="opt-desc">Full 15-slide strategy deck — partnership models, pricing, pilot program & next steps.</div>
+          </div>
+          <svg class="opt-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a class="opt-card" href="dashboard.html">
+          <div class="opt-icon dash">🖥</div>
+          <div>
+            <div class="opt-title">MTN Portfolio Dashboard</div>
+            <div class="opt-desc">Live dashboard mockup — 1,000+ store portfolio, review growth, tap analytics & alerts.</div>
+          </div>
+          <svg class="opt-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="portal-footer">
+    Prepared by <a href="https://jcemedia.com">JCE Media</a> &nbsp;·&nbsp; Confidential &amp; Proprietary
+  </p>
+
+</div>
+
+<script>
+  // ── Auth check on load ──
+  (function(){
+    if(sessionStorage.getItem('omnicom_auth')){
+      showOptions();
+    }
+  })();
+
+  // ── Enter key support ──
+  document.getElementById('pwInput').addEventListener('keydown', function(e){
+    if(e.key === 'Enter') checkPassword();
+  });
+
+  function checkPassword(){
+    const val = document.getElementById('pwInput').value;
+    const err = document.getElementById('errMsg');
+    const inp = document.getElementById('pwInput');
+    if(val === 'Conraad'){
+      sessionStorage.setItem('omnicom_auth','1');
+      inp.classList.remove('error');
+      err.classList.remove('show');
+      showOptions();
+    } else {
+      inp.classList.add('error');
+      err.classList.add('show');
+      inp.value = '';
+      setTimeout(()=>{ inp.classList.remove('error'); },600);
+    }
+  }
+
+  function showOptions(){
+    document.getElementById('loginView').classList.add('hide');
+    document.getElementById('optionsView').classList.add('show');
+  }
+
+  // ── Password visibility toggle ──
+  let visible = false;
+  function toggleVisibility(){
+    visible = !visible;
+    const inp = document.getElementById('pwInput');
+    const icon = document.getElementById('eyeIcon');
+    if(visible){
+      inp.style.webkitTextSecurity = 'none';
+      inp.type = 'text';
+      icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+    } else {
+      inp.type = 'password';
+      icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    }
+  }
+</script>
+
+</body>
+</html>
