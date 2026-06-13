@@ -6,6 +6,18 @@ import Card from '../components/Card';
 import Button from '../components/Button';
 import BrandVisual from '../components/BrandVisual';
 
+// Brand-generated visuals, in the same order as detailedServices below.
+const SERVICE_IMAGES = [
+  '/assets/services/ai-powered-marketing.webp',
+  '/assets/services/intelligent-sales.webp',
+  '/assets/services/business-automation.webp',
+  '/assets/services/content-automation.webp',
+  '/assets/services/go-to-market.webp',
+  '/assets/services/digital-marketing-strategy.webp',
+  '/assets/services/ecommerce-systems.webp',
+  '/assets/services/international-scaling.webp',
+];
+
 const ServicesPage: React.FC = () => {
   const navigate = useNavigate();
   const detailedServices = [
@@ -140,7 +152,8 @@ const ServicesPage: React.FC = () => {
 
               <div className="flex-1 w-full relative">
                 <BrandVisual
-                  icon={service.icon}
+                  image={SERVICE_IMAGES[index]}
+                  alt={service.title}
                   label={`0${index + 1} / 0${detailedServices.length}`}
                   className="aspect-video shadow-2xl"
                 />
