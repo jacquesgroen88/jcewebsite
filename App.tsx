@@ -2,8 +2,6 @@ import React, { Suspense, lazy, useEffect, useLayoutEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -12,7 +10,6 @@ import Stats from './components/Stats';
 import TestimonialVideo from './components/TestimonialVideo';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
-import CustomCursor from './components/CustomCursor';
 
 // Secondary pages are code-split so the landing bundle stays lean.
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
@@ -20,8 +17,6 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const GtmOnboardingPage = lazy(() => import('./pages/GtmOnboardingPage'));
 const GtmThankYouPage = lazy(() => import('./pages/GtmThankYouPage'));
-
-gsap.registerPlugin(ScrollTrigger);
 
 const REDUCE = typeof window !== 'undefined'
   && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -72,8 +67,6 @@ const RouteView: React.FC<{ location: ReturnType<typeof useLocation> }> = ({ loc
   // previous page's exit, thanks to AnimatePresence mode="wait").
   useLayoutEffect(() => {
     scrollTop();
-    const id = window.setTimeout(() => ScrollTrigger.refresh(), 250);
-    return () => window.clearTimeout(id);
   }, []);
 
   return (
@@ -97,17 +90,19 @@ const Layout: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Smooth scroll (Lenis) wired into GSAP's ticker + ScrollTrigger.
+  // Smooth scroll (Lenis), driven by its own rAF loop.
   useEffect(() => {
     if (REDUCE) return;
     const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
-    lenis.on('scroll', ScrollTrigger.update);
-    const onRaf = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(onRaf);
-    gsap.ticker.lagSmoothing(0);
+    let raf = 0;
+    const loop = (time: number) => {
+      lenis.raf(time);
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
     return () => {
-      gsap.ticker.remove(onRaf);
+      cancelAnimationFrame(raf);
       lenis.destroy();
       (window as unknown as { __lenis?: Lenis }).__lenis = undefined;
     };
@@ -145,7 +140,6 @@ const Layout: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
-      <CustomCursor />
       <AnimatedBackground />
 
       <div className="fixed top-0 left-0 w-full h-[2px] z-[60]">

@@ -34,12 +34,6 @@ html {
   background: #444444;
 }
 
-/* When the custom cursor is active, hide the native one everywhere. */
-.cursor-none,
-.cursor-none * {
-  cursor: none !important;
-}
-
 /* Hide horizontal scrollbar but keep functionality for carousels */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
