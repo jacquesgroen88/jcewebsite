@@ -11,6 +11,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Display typeface for all headings — gives the brand a distinct voice
+   instead of Inter everywhere. */
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
 }

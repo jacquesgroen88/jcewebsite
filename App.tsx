@@ -142,7 +142,7 @@ const Layout: React.FC = () => {
     <div className="relative min-h-screen">
       <AnimatedBackground />
 
-      <div className="fixed top-0 left-0 w-full h-[2px] z-[60]">
+      <div className="fixed top-0 left-0 w-full h-[2px] z-[60]" aria-hidden="true">
         <div id="scroll-bar" className="h-full bg-accent transition-all duration-100 w-0" />
       </div>
 

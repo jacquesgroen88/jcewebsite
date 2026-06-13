@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Zap, Rocket, Settings, PenTool, Target, Layers, ShoppingBag, Globe } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import BrandVisual from '../components/BrandVisual';
 
 const ServicesPage: React.FC = () => {
   const navigate = useNavigate();
@@ -138,18 +139,11 @@ const ServicesPage: React.FC = () => {
               </div>
 
               <div className="flex-1 w-full relative">
-                <div className="aspect-video rounded-3xl overflow-hidden border border-border bg-surface shadow-2xl group">
-                  <img
-                    src={`https://images.unsplash.com/photo-${service.imageId}?q=80&w=800&auto=format&fit=crop`}
-                    alt={service.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                  <div className="absolute bottom-6 left-6 font-mono text-[10px] text-white/40 tracking-widest">
-                    SYSTEM_MODULE_{index + 1}.EXE
-                  </div>
-                </div>
+                <BrandVisual
+                  icon={service.icon}
+                  label={`0${index + 1} / 0${detailedServices.length}`}
+                  className="aspect-video shadow-2xl"
+                />
               </div>
             </div>
           ))}
@@ -162,20 +156,20 @@ const ServicesPage: React.FC = () => {
 
             <div className="relative z-10 space-y-8">
               <span className="inline-block py-1 px-3 border border-accent/30 rounded-full bg-accent/5 text-accent font-mono text-xs uppercase tracking-[0.2em] mb-4">
-                System Status: Ready for Deployment
+                Ready when you are
               </span>
 
               <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tighter uppercase leading-none">
-                INITIATE <span className="text-accent">SEQUENCE</span>
+                LET'S BUILD YOUR <span className="text-accent">GROWTH ENGINE</span>
               </h2>
 
               <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
-                Your competition is still operating manually. Secure your advantage by deploying autonomous growth engines today.
+                Book a free strategy call and we'll map the highest-leverage automations for your business—no jargon, no obligation.
               </p>
 
               <div className="flex flex-col md:flex-row justify-center gap-6 pt-4">
                 <Button variant="primary" glow className="px-10 py-5 text-lg shadow-[0_0_30px_rgba(59,130,246,0.2)]" onClick={() => navigate('/contact')}>
-                  Initialize Transmission
+                  Book a Strategy Call
                 </Button>
               </div>
             </div>

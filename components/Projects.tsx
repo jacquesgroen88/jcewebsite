@@ -19,7 +19,7 @@ const Projects: React.FC = () => {
             Proven Results &amp; ROI
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-4 uppercase leading-[1.1]">
-            CLIENT <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">CASE STUDIES</span>
+            CLIENT <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-accent">CASE STUDIES</span>
           </h2>
           <p className="text-text-secondary text-base md:text-xl font-body max-w-2xl leading-relaxed">
             From zero to high-converting marketing engines. We don't just guess—we engineer growth that lasts.

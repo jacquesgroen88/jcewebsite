@@ -240,21 +240,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     ]
   },
   {
-    id: 'c10',
-    client: 'Real Estate Services',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop',
-    thumbnail: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400&auto=format&fit=crop',
-    category: 'Automated Email Workflows',
-    stat: '400',
-    statLabel: 'New Members',
-    tags: ['Geo-Fencing', 'Instagram Ads', 'Offer Testing'],
-    description: "We used hyper-local geo-fencing ads around competitor gyms and local health processing centers to drive highly aware traffic to an irresistible offer page.",
-    challenge: 'Struggling to attract members in a competitive local market.',
-    solution: 'Deployed hyper-local geo-fencing campaigns with aggressive offer testing.',
-    features: ["Geo-fencing", "Instagram Reels Ads", "Landing Page Optimization"],
-    results: 'Signed up 400 new members in a single quarter.'
-  },
-  {
     id: 'c11',
     client: 'Legal Services',
     image: '/assets/case-studies/legal-services/main.png',

@@ -1,24 +1,24 @@
-
 import React from 'react';
 
+/**
+ * Ambient background glow. Deliberately restrained — two low-opacity tones in
+ * the brand's blue family (not the old four-hue blue/purple/pink/green mesh
+ * that read as a generic "AI" gradient).
+ */
 const AnimatedBackground: React.FC = () => {
   return (
-    <div className="mesh-gradient">
-      <div 
+    <div className="mesh-gradient" aria-hidden="true">
+      <div
         className="mesh-ball bg-accent animate-mesh-slow"
-        style={{ width: '600px', height: '600px', top: '10%', left: '-10%' }}
+        style={{ width: '620px', height: '620px', top: '4%', left: '-12%', opacity: 0.22 }}
       />
-      <div 
-        className="mesh-ball bg-purple-600 animate-mesh-slow"
-        style={{ width: '500px', height: '500px', bottom: '10%', right: '-5%', animationDelay: '-10s' }}
+      <div
+        className="mesh-ball bg-indigo-700 animate-mesh-slow"
+        style={{ width: '560px', height: '560px', bottom: '4%', right: '-8%', animationDelay: '-20s', opacity: 0.2 }}
       />
-      <div 
-        className="mesh-ball bg-pink-500 animate-mesh-slow"
-        style={{ width: '400px', height: '400px', top: '40%', left: '30%', animationDelay: '-20s' }}
-      />
-      <div 
-        className="mesh-ball bg-accent-green animate-mesh-slow"
-        style={{ width: '550px', height: '550px', top: '60%', right: '20%', animationDelay: '-30s' }}
+      <div
+        className="mesh-ball bg-blue-900 animate-mesh-slow"
+        style={{ width: '480px', height: '480px', top: '48%', left: '38%', animationDelay: '-38s', opacity: 0.18 }}
       />
     </div>
   );

@@ -86,6 +86,7 @@ const Navbar: React.FC = () => {
       <div
         className={`fixed inset-0 z-[60] md:hidden bg-background/95 backdrop-blur-xl transition-opacity duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         aria-hidden={!isOpen}
+        inert={!isOpen}
       >
         <button
           onClick={closeMenu}

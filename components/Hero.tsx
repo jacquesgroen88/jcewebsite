@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
               Automate up to 80% of Marketing, Sales & Operations
             </span>
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.12] md:leading-tight tracking-tighter uppercase">
-              WE BUILD <span key={currentWordIndex} className="chrome-text animate-pop-in-up inline-block min-w-[120px] sm:min-w-[180px] md:min-w-[240px] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">{words[currentWordIndex]}</span> SYSTEMS THAT <span className="text-accent">SCALE</span> BUSINESSES.
+              WE BUILD <span key={currentWordIndex} className="chrome-text animate-pop-in-up inline-block min-w-[120px] sm:min-w-[180px] md:min-w-[240px] text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-accent">{words[currentWordIndex]}</span> SYSTEMS THAT <span className="text-accent">SCALE</span> BUSINESSES.
             </h1>
             <p className="mt-5 text-base sm:text-lg md:text-xl text-text-secondary max-w-lg leading-relaxed font-body">
               282,000+ leads generated. $15M in budgets managed. 416% average ROI. Transforming marketing, sales, and operations with AI-first strategies that deliver measurable results.

@@ -1,9 +1,10 @@
 
 import React, { useRef } from 'react';
+import { Activity } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import TestimonialVideo from '../components/TestimonialVideo';
-import { CLIENT_LOGOS } from '../constants';
+import BrandVisual from '../components/BrandVisual';
 
 const AboutPage: React.FC = () => {
   const pillarsRef = useRef<HTMLDivElement>(null);
@@ -20,7 +21,7 @@ const AboutPage: React.FC = () => {
           <div className="space-y-8">
             <span className="text-accent font-mono text-sm uppercase tracking-[0.3em]">The JCE Story</span>
             <h1 className="text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-none">
-              REDEFINING <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">GROWTH</span> THROUGH <span className="text-accent">SYSTEMS</span>
+              REDEFINING <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-accent">GROWTH</span> THROUGH <span className="text-accent">SYSTEMS</span>
             </h1>
             <div className="space-y-6 text-xl text-text-secondary font-body leading-relaxed">
               <p>
@@ -39,21 +40,10 @@ const AboutPage: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group">
-              <img
-                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop"
-                alt="Modern Systems Architecture"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-all duration-1000"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-
-              <div className="absolute bottom-8 left-8 p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl max-w-xs">
-                <p className="text-xs font-mono uppercase text-accent mb-2 tracking-widest">Philosophy</p>
-                <p className="text-sm italic text-white/80">"Efficiency is the only true competitive advantage in the 21st century."</p>
-              </div>
+            <BrandVisual icon={<Activity />} className="aspect-[3/4] shadow-2xl" />
+            <div className="absolute bottom-8 left-8 right-8 p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl max-w-xs">
+              <p className="text-xs font-mono uppercase text-accent mb-2 tracking-widest">Philosophy</p>
+              <p className="text-sm italic text-white/80">"Efficiency is the only true competitive advantage in the 21st century."</p>
             </div>
           </div>
         </div>

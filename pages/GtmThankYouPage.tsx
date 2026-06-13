@@ -39,7 +39,7 @@ const GtmThankYouPage: React.FC = () => {
                                 className="px-10 py-4"
                                 onClick={() => navigate('/')}
                             >
-                                Return to Command Center
+                                Return Home
                             </Button>
                         </div>
                     </div>
