@@ -1,5 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, lazy, useEffect, useLayoutEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import Lenis from 'lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -8,11 +12,19 @@ import Stats from './components/Stats';
 import TestimonialVideo from './components/TestimonialVideo';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
-import ServicesPage from './pages/ServicesPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import GtmOnboardingPage from './pages/GtmOnboardingPage';
-import GtmThankYouPage from './pages/GtmThankYouPage';
+import CustomCursor from './components/CustomCursor';
+
+// Secondary pages are code-split so the landing bundle stays lean.
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const GtmOnboardingPage = lazy(() => import('./pages/GtmOnboardingPage'));
+const GtmThankYouPage = lazy(() => import('./pages/GtmThankYouPage'));
+
+gsap.registerPlugin(ScrollTrigger);
+
+const REDUCE = typeof window !== 'undefined'
+  && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const PAGE_TITLES: Record<string, string> = {
   '/': 'JCE Media | AI-Powered Marketing & Business Automation',
@@ -23,8 +35,6 @@ const PAGE_TITLES: Record<string, string> = {
   '/gtm-thank-you': 'Thank You | JCE Media',
 };
 
-// Map legacy hash routes (#about, #services-detail, …) to their new paths so
-// old links and bookmarks keep working after the move to path-based routing.
 const LEGACY_HASH_ROUTES: Record<string, string> = {
   '#about': '/about',
   '#services-detail': '/services',
@@ -32,6 +42,11 @@ const LEGACY_HASH_ROUTES: Record<string, string> = {
   '#gtm-onboarding': '/gtm-onboarding',
   '#gtm-thank-you': '/gtm-thank-you',
 };
+
+const pageVariants = REDUCE
+  ? { initial: { opacity: 1 }, animate: { opacity: 1 }, exit: { opacity: 1 } }
+  : { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -10 } };
+const pageTransition = REDUCE ? { duration: 0 } : { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const };
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -46,11 +61,59 @@ const HomePage: React.FC = () => {
   );
 };
 
+const scrollTop = () => {
+  const lenis = (window as unknown as { __lenis?: Lenis }).__lenis;
+  if (lenis) lenis.scrollTo(0, { immediate: true });
+  else window.scrollTo(0, 0);
+};
+
+const RouteView: React.FC<{ location: ReturnType<typeof useLocation> }> = ({ location }) => {
+  // Reset scroll + recalc triggers when this page instance mounts (after the
+  // previous page's exit, thanks to AnimatePresence mode="wait").
+  useLayoutEffect(() => {
+    scrollTop();
+    const id = window.setTimeout(() => ScrollTrigger.refresh(), 250);
+    return () => window.clearTimeout(id);
+  }, []);
+
+  return (
+    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
+      <Suspense fallback={<div className="min-h-screen" />}>
+        <Routes location={location}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/gtm-onboarding" element={<GtmOnboardingPage />} />
+          <Route path="/gtm-thank-you" element={<GtmThankYouPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Suspense>
+    </motion.div>
+  );
+};
+
 const Layout: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Redirect any legacy hash URL to its new path (runs once on initial load).
+  // Smooth scroll (Lenis) wired into GSAP's ticker + ScrollTrigger.
+  useEffect(() => {
+    if (REDUCE) return;
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+    lenis.on('scroll', ScrollTrigger.update);
+    const onRaf = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(onRaf);
+    gsap.ticker.lagSmoothing(0);
+    return () => {
+      gsap.ticker.remove(onRaf);
+      lenis.destroy();
+      (window as unknown as { __lenis?: Lenis }).__lenis = undefined;
+    };
+  }, []);
+
+  // Redirect legacy hash URLs once on initial load.
   useEffect(() => {
     const hash = window.location.hash;
     if (!hash) return;
@@ -68,19 +131,6 @@ const Layout: React.FC = () => {
     document.title = PAGE_TITLES[location.pathname] ?? 'JCE Media';
   }, [location.pathname]);
 
-  // Scroll to top on route change, unless there's an in-page anchor to honor.
-  useEffect(() => {
-    if (!location.hash) window.scrollTo(0, 0);
-  }, [location.pathname, location.hash]);
-
-  // Respect prefers-reduced-motion.
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq.matches) {
-      document.documentElement.style.setProperty('--animation-duration', '0.01ms');
-    }
-  }, []);
-
   // Scroll-progress bar.
   useEffect(() => {
     const onScroll = () => {
@@ -89,12 +139,13 @@ const Layout: React.FC = () => {
       const bar = document.getElementById('scroll-bar');
       if (bar) bar.style.width = (height > 0 ? (winScroll / height) * 100 : 0) + '%';
     };
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <div className="relative min-h-screen">
+      <CustomCursor />
       <AnimatedBackground />
 
       <div className="fixed top-0 left-0 w-full h-[2px] z-[60]">
@@ -104,15 +155,9 @@ const Layout: React.FC = () => {
       <Navbar />
 
       <main className="transition-opacity duration-500">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/gtm-onboarding" element={<GtmOnboardingPage />} />
-          <Route path="/gtm-thank-you" element={<GtmThankYouPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <RouteView key={location.pathname} location={location} />
+        </AnimatePresence>
       </main>
 
       <Footer />

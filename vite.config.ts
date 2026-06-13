@@ -13,6 +13,18 @@ export default defineConfig({
     // prefix with the static images in public/assets (which keep stable names).
     // Lets netlify.toml cache /_assets immutably without freezing real images.
     assetsDir: '_assets',
+    rollupOptions: {
+      output: {
+        // Split heavy libs into separate, independently-cacheable chunks.
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+          if (id.includes('gsap')) return 'gsap';
+          if (id.includes('framer-motion') || id.includes('motion-dom') || id.includes('motion-utils')) return 'motion';
+          if (id.includes('lenis')) return 'lenis';
+          if (id.includes('react-router') || id.includes('react-dom') || id.includes('/react/')) return 'react';
+        },
+      },
+    },
   },
   resolve: {
     alias: {
