@@ -1,10 +1,12 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Zap, Rocket, Settings, PenTool, Target, Layers, ShoppingBag, Globe } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 
 const ServicesPage: React.FC = () => {
+  const navigate = useNavigate();
   const detailedServices = [
     {
       title: "AI-Powered Marketing",
@@ -81,7 +83,7 @@ const ServicesPage: React.FC = () => {
   ];
 
   const handleDiscussClick = (serviceTitle: string) => {
-    window.location.hash = `#contact?service=${encodeURIComponent(serviceTitle)}`;
+    navigate(`/contact?service=${encodeURIComponent(serviceTitle)}`);
   };
 
   return (
@@ -172,7 +174,7 @@ const ServicesPage: React.FC = () => {
               </p>
 
               <div className="flex flex-col md:flex-row justify-center gap-6 pt-4">
-                <Button variant="primary" glow className="px-10 py-5 text-lg shadow-[0_0_30px_rgba(59,130,246,0.2)]" onClick={() => window.location.hash = '#contact'}>
+                <Button variant="primary" glow className="px-10 py-5 text-lg shadow-[0_0_30px_rgba(59,130,246,0.2)]" onClick={() => navigate('/contact')}>
                   Initialize Transmission
                 </Button>
               </div>

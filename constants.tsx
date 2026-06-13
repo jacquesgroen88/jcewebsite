@@ -1,14 +1,6 @@
 
 import React from 'react';
-import { NavItem, ServiceItem, CaseStudy, Stat } from './types';
-
-export const NAV_ITEMS: NavItem[] = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '#contact' },
-];
+import { ServiceItem, CaseStudy, Stat } from './types';
 
 // Modern SVG Icons for Services
 const Icons = {

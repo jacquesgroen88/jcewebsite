@@ -1,0 +1,41 @@
+# Netlify build & deploy config for jcemedia.com
+# Previously these settings lived only in the Netlify dashboard — committing
+# them here makes the deploy reproducible and adds SPA routing + headers.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA fallback — every route serves index.html so client-side routing works
+# on deep links / hard refreshes (e.g. /about, /services).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers (conservative — no strict CSP yet so Google Fonts,
+# YouTube embeds, and Unsplash images keep working; CSP is a later hardening pass).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Long-cache fingerprinted build output (Vite hashes these filenames, so a
+# year-long immutable cache is safe — a new build emits new names).
+[[headers]]
+  for = "/_assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Static images in public/assets keep stable filenames across deploys, so cache
+# them for a day with revalidation rather than freezing them for a year.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"

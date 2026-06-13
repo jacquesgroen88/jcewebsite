@@ -1,5 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -14,69 +14,84 @@ import ContactPage from './pages/ContactPage';
 import GtmOnboardingPage from './pages/GtmOnboardingPage';
 import GtmThankYouPage from './pages/GtmThankYouPage';
 
-const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'services' | 'about' | 'contact' | 'gtm-onboarding' | 'gtm-thank-you'>('home');
+const PAGE_TITLES: Record<string, string> = {
+  '/': 'JCE Media | AI-Powered Marketing & Business Automation',
+  '/services': 'Our Services | JCE Media',
+  '/about': 'About Us | JCE Media',
+  '/contact': 'Contact Us | JCE Media',
+  '/gtm-onboarding': 'GTM Onboarding | JCE Media',
+  '/gtm-thank-you': 'Thank You | JCE Media',
+};
 
+// Map legacy hash routes (#about, #services-detail, …) to their new paths so
+// old links and bookmarks keep working after the move to path-based routing.
+const LEGACY_HASH_ROUTES: Record<string, string> = {
+  '#about': '/about',
+  '#services-detail': '/services',
+  '#contact': '/contact',
+  '#gtm-onboarding': '/gtm-onboarding',
+  '#gtm-thank-you': '/gtm-thank-you',
+};
+
+const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+  return (
+    <>
+      <Hero />
+      <Services onDetailClick={() => navigate('/services')} />
+      <Stats />
+      <TestimonialVideo />
+      <Projects />
+    </>
+  );
+};
+
+const Layout: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Redirect any legacy hash URL to its new path (runs once on initial load).
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash;
-      if (hash === '#services-detail' || hash.startsWith('#services-detail?')) {
-        setCurrentPage('services');
-        window.scrollTo(0, 0);
-      } else if (hash === '#about' || hash.startsWith('#about?')) {
-        setCurrentPage('about');
-        window.scrollTo(0, 0);
-      } else if (hash === '#contact' || hash.startsWith('#contact?')) {
-        setCurrentPage('contact');
-        window.scrollTo(0, 0);
-      } else if (hash === '#gtm-onboarding' || hash.startsWith('#gtm-onboarding?')) {
-        setCurrentPage('gtm-onboarding');
-        window.scrollTo(0, 0);
-      } else if (hash === '#gtm-thank-you' || hash.startsWith('#gtm-thank-you?')) {
-        setCurrentPage('gtm-thank-you');
-        window.scrollTo(0, 0);
-      } else {
-        setCurrentPage('home');
-      }
-    };
-
-    window.addEventListener('hashchange', handleHash);
-    handleHash();
-
-    return () => window.removeEventListener('hashchange', handleHash);
+    const hash = window.location.hash;
+    if (!hash) return;
+    const base = hash.split('?')[0];
+    const target = LEGACY_HASH_ROUTES[base];
+    if (target) {
+      const query = hash.includes('?') ? '?' + hash.split('?').slice(1).join('?') : '';
+      navigate(target + query, { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Update page title on navigation
+  // Per-route document title.
   useEffect(() => {
-    const titles = {
-      home: 'JCE Media | AI-Powered Marketing & Business Automation',
-      services: 'Our Services | JCE Media',
-      about: 'About Us | JCE Media',
-      contact: 'Contact Us | JCE Media',
-      'gtm-onboarding': 'GTM Onboarding | JCE Media',
-      'gtm-thank-you': 'Thank You | JCE Media',
-    };
-    document.title = titles[currentPage];
-  }, [currentPage]);
+    document.title = PAGE_TITLES[location.pathname] ?? 'JCE Media';
+  }, [location.pathname]);
 
-  // Respect prefers-reduced-motion
+  // Scroll to top on route change, unless there's an in-page anchor to honor.
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (prefersReducedMotion.matches) {
+    if (!location.hash) window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
+
+  // Respect prefers-reduced-motion.
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq.matches) {
       document.documentElement.style.setProperty('--animation-duration', '0.01ms');
     }
   }, []);
 
-  const navigateTo = (page: 'home' | 'services' | 'about' | 'contact' | 'gtm-onboarding' | 'gtm-thank-you') => {
-    setCurrentPage(page);
-    if (page === 'services') window.location.hash = 'services-detail';
-    else if (page === 'about') window.location.hash = 'about';
-    else if (page === 'contact') window.location.hash = 'contact';
-    else if (page === 'gtm-onboarding') window.location.hash = 'gtm-onboarding';
-    else if (page === 'gtm-thank-you') window.location.hash = 'gtm-thank-you';
-    else window.location.hash = '';
-    window.scrollTo(0, 0);
-  };
+  // Scroll-progress bar.
+  useEffect(() => {
+    const onScroll = () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const bar = document.getElementById('scroll-bar');
+      if (bar) bar.style.width = (height > 0 ? (winScroll / height) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <div className="relative min-h-screen">
@@ -86,39 +101,29 @@ const App: React.FC = () => {
         <div id="scroll-bar" className="h-full bg-accent transition-all duration-100 w-0" />
       </div>
 
-      <Navbar onNavigate={navigateTo} />
+      <Navbar />
 
       <main className="transition-opacity duration-500">
-        {currentPage === 'home' && (
-          <>
-            <Hero />
-            <Services onDetailClick={() => navigateTo('services')} />
-            <Stats />
-            <TestimonialVideo />
-            <Projects />
-          </>
-        )}
-        {currentPage === 'services' && <ServicesPage />}
-        {currentPage === 'about' && <AboutPage />}
-        {currentPage === 'contact' && <ContactPage />}
-        {currentPage === 'gtm-onboarding' && <GtmOnboardingPage />}
-        {currentPage === 'gtm-thank-you' && <GtmThankYouPage />}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/gtm-onboarding" element={<GtmOnboardingPage />} />
+          <Route path="/gtm-thank-you" element={<GtmThankYouPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
       <Footer />
-
-      <script dangerouslySetInnerHTML={{
-        __html: `
-        window.onscroll = function() {
-          var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-          var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          var scrolled = (winScroll / height) * 100;
-          var bar = document.getElementById("scroll-bar");
-          if(bar) bar.style.width = scrolled + "%";
-        };
-      `}} />
     </div>
   );
 };
+
+const App: React.FC = () => (
+  <BrowserRouter>
+    <Layout />
+  </BrowserRouter>
+);
 
 export default App;

@@ -1,20 +1,44 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# JCE Media — Agency Website
 
-# Run and deploy your AI Studio app
+Marketing site for **JCE Media** (Duel Digital (Pty) Ltd), live at **[jcemedia.com](https://jcemedia.com)**.
 
-This contains everything you need to run your app locally.
+## Stack
 
-View your app in AI Studio: https://ai.studio/apps/drive/1EhuMHtMZpwZ_L4-zLRRspOIfXGJXcdqw
+- **React 19** + **TypeScript**
+- **Vite 6** (build + dev server)
+- **Tailwind CSS 3** (PostCSS build — config in `tailwind.config.js`, global styles in `index.css`)
+- **lucide-react** (icons)
 
-## Run Locally
+## Run locally
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
 
+## Build
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm run build      # outputs to dist/  (fingerprinted bundles in dist/_assets/)
+npm run preview    # serve the production build locally
+```
+
+## Deploy
+
+Auto-deploys to Netlify from the `main` branch. Build settings live in
+[`netlify.toml`](./netlify.toml) (build command, SPA redirect, headers, caching).
+
+## Structure
+
+```
+index.html          # app shell (fonts, meta, #root)
+index.tsx           # React entry — mounts App, imports index.css
+App.tsx             # hash-based page switching + layout
+index.css           # Tailwind directives + global keyframes & component classes
+tailwind.config.js  # theme tokens (colors, fonts, animations)
+constants.tsx       # site content: services, case studies, stats, logos
+types.ts            # shared TypeScript types
+components/          # Navbar, Hero, Services, Projects, Stats, Footer, etc.
+pages/              # Services, About, Contact, GTM onboarding/thank-you
+public/             # static assets (images, logo, /omnicom client portal)
+```

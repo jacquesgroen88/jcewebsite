@@ -1,9 +1,11 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import Card from '../components/Card';
 
 const GtmThankYouPage: React.FC = () => {
+    const navigate = useNavigate();
     return (
         <div className="pt-32 pb-24 px-6 animate-fade-in flex items-center justify-center min-h-[80vh]">
             <div className="max-w-3xl w-full mx-auto">
@@ -35,7 +37,7 @@ const GtmThankYouPage: React.FC = () => {
                                 variant="primary"
                                 glow
                                 className="px-10 py-4"
-                                onClick={() => window.location.hash = ''}
+                                onClick={() => navigate('/')}
                             >
                                 Return to Command Center
                             </Button>

@@ -1,9 +1,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Button from './Button';
 
 const Hero: React.FC = () => {
+  const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const words = ["MARKETING", "SALES", "OPERATIONS"];
@@ -53,11 +55,11 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 flex flex-wrap gap-4">
-            <Button variant="primary" glow className="px-8 py-4 text-lg" onClick={() => window.location.hash = '#contact'}>
+            <Button variant="primary" glow className="px-8 py-4 text-lg" onClick={() => navigate('/contact')}>
               Book a Strategy Call
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" className="px-8 py-4 text-lg" onClick={() => window.location.hash = '#projects'}>
+            <Button variant="outline" className="px-8 py-4 text-lg" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Results
             </Button>
           </div>
@@ -72,7 +74,7 @@ const Hero: React.FC = () => {
                 alt="AI-Powered Scaling Systems"
                 className="w-full h-full object-cover transition-all duration-700"
                 loading="eager"
-                {...{ fetchpriority: "high" } as any}
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 

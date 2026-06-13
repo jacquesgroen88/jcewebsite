@@ -1,11 +1,13 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import { CLIENT_LOGOS } from '../constants';
 import Button from './Button';
 import Card from './Card';
 
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <footer className="pt-24 pb-12 px-6 border-t border-border bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -29,7 +31,7 @@ const Footer: React.FC = () => {
                 </p>
               </div>
               <div className="flex flex-col gap-4 items-center lg:items-end w-full">
-                <Button variant="primary" glow className="px-12 py-6 text-xl w-full md:w-auto shadow-2xl shadow-accent/20" onClick={() => window.location.hash = '#contact'}>
+                <Button variant="primary" glow className="px-12 py-6 text-xl w-full md:w-auto shadow-2xl shadow-accent/20" onClick={() => navigate('/contact')}>
                   Book a Strategy Call
                 </Button>
                 <p className="text-xs font-mono text-text-secondary uppercase tracking-widest mt-2">Zero commitment. Total clarity.</p>

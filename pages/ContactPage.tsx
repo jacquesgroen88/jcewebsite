@@ -1,23 +1,21 @@
 
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Card from '../components/Card';
 import Button from '../components/Button';
 
 const ContactPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [subject, setSubject] = useState('General Inquiry');
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash.includes('?service=')) {
-      const serviceParam = hash.split('?service=')[1];
-      if (serviceParam) {
-        const decodedService = decodeURIComponent(serviceParam);
-        setSubject(decodedService);
-        setMessage(`I'm interested in learning more about ${decodedService}...`);
-      }
+    const service = searchParams.get('service');
+    if (service) {
+      setSubject(service);
+      setMessage(`I'm interested in learning more about ${service}...`);
     }
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="pt-32 pb-24 px-6 animate-fade-in relative overflow-hidden">
