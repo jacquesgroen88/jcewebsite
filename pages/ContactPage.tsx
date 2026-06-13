@@ -1,15 +1,22 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Globe, Mail, MessageCircle } from 'lucide-react';
+import { Globe, Mail, MessageCircle, ChevronDown } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import BrandVisual from '../components/BrandVisual';
 
+type Status = 'idle' | 'submitting' | 'success' | 'error';
+
 const ContactPage: React.FC = () => {
   const [searchParams] = useSearchParams();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('General Inquiry');
   const [message, setMessage] = useState('');
+  const [company, setCompany] = useState(''); // honeypot
+  const [status, setStatus] = useState<Status>('idle');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const service = searchParams.get('service');
@@ -18,6 +25,30 @@ const ContactPage: React.FC = () => {
       setMessage(`I'm interested in learning more about ${service}...`);
     }
   }, [searchParams]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status === 'submitting') return;
+    setError('');
+    setStatus('submitting');
+    try {
+      const res = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message, company_website: company }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+        setError(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setStatus('error');
+      setError('Network error. Please try again or email us directly.');
+    }
+  };
 
   return (
     <div className="pt-32 pb-24 px-6 animate-fade-in relative overflow-hidden">
@@ -37,7 +68,25 @@ const ContactPage: React.FC = () => {
           {/* Contact Form */}
           <div className="lg:col-span-3">
             <Card hasBeam className="p-8 md:p-12 bg-surface/40 backdrop-blur-xl border-white/5">
-              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+              {status === 'success' ? (
+                <div className="text-center py-10 space-y-5">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent-green/10 border border-accent-green/20 text-accent-green">
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  </div>
+                  <h3 className="text-2xl font-bold">Message sent</h3>
+                  <p className="text-text-secondary font-body max-w-md mx-auto">
+                    Thanks{name ? `, ${name.split(' ')[0]}` : ''} — we've got it. A strategist will be in touch within one business day.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => { setStatus('idle'); setMessage(''); }}
+                    className="text-accent text-sm font-mono uppercase tracking-widest hover:underline cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+                  >
+                    Send another message
+                  </button>
+                </div>
+              ) : (
+              <form className="space-y-8" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="group space-y-2">
                     <label htmlFor="contact-name" className="text-xs font-mono uppercase tracking-widest text-text-secondary group-focus-within:text-accent transition-colors">Full Name</label>
@@ -45,7 +94,10 @@ const ContactPage: React.FC = () => {
                       id="contact-name"
                       name="name"
                       type="text"
+                      required
                       autoComplete="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       placeholder="John Doe"
                       className="w-full bg-background/50 border border-border rounded-xl px-4 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all hover:border-white/20"
                     />
@@ -56,7 +108,10 @@ const ContactPage: React.FC = () => {
                       id="contact-email"
                       name="email"
                       type="email"
+                      required
                       autoComplete="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="john@company.com"
                       className="w-full bg-background/50 border border-border rounded-xl px-4 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all hover:border-white/20"
                     />
@@ -65,19 +120,26 @@ const ContactPage: React.FC = () => {
 
                 <div className="group space-y-2">
                   <label htmlFor="contact-subject" className="text-xs font-mono uppercase tracking-widest text-text-secondary group-focus-within:text-accent transition-colors">How can we help?</label>
-                  <select
-                    id="contact-subject"
-                    name="subject"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                    className="w-full bg-background/50 border border-border rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="AI-Powered Marketing">AI-Powered Marketing</option>
-                    <option value="Intelligent Sales">Intelligent Sales</option>
-                    <option value="Business Automation">Business Automation</option>
-                    <option value="Content Automation">Content Automation</option>
-                    <option value="General Inquiry">General Inquiry</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      id="contact-subject"
+                      name="subject"
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                      className="w-full bg-background/50 border border-border rounded-xl px-4 py-4 pr-10 text-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all appearance-none cursor-pointer"
+                    >
+                      <option value="AI-Powered Marketing">AI-Powered Marketing</option>
+                      <option value="Intelligent Sales">Intelligent Sales</option>
+                      <option value="Business Automation">Business Automation</option>
+                      <option value="Content Automation">Content Automation</option>
+                      <option value="Go To Market Strategy">Go To Market Strategy</option>
+                      <option value="Digital Marketing Strategy">Digital Marketing Strategy</option>
+                      <option value="Ecommerce Systems">Ecommerce Systems</option>
+                      <option value="International Scaling">International Scaling</option>
+                      <option value="General Inquiry">General Inquiry</option>
+                    </select>
+                    <ChevronDown className="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary pointer-events-none" />
+                  </div>
                 </div>
 
                 <div className="group space-y-2">
@@ -93,13 +155,32 @@ const ContactPage: React.FC = () => {
                   ></textarea>
                 </div>
 
-                <Button variant="primary" glow className="w-full py-5 text-lg shadow-2xl shadow-accent/20">
-                  Send Message
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                {/* Honeypot — hidden from users, catches bots */}
+                <input
+                  type="text"
+                  name="company_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                  className="hidden"
+                />
+
+                {status === 'error' && (
+                  <p className="text-sm text-red-400 font-body" role="alert">{error}</p>
+                )}
+
+                <Button variant="primary" glow disabled={status === 'submitting'} className="w-full py-5 text-lg shadow-2xl shadow-accent/20">
+                  {status === 'submitting' ? 'Sending…' : 'Send Message'}
+                  {status !== 'submitting' && (
+                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  )}
                 </Button>
               </form>
+              )}
             </Card>
           </div>
 
