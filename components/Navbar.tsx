@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Button from './Button';
+import Magnetic from './Magnetic';
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
@@ -59,14 +60,17 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className="text-text-secondary hover:text-white transition-colors duration-200 text-sm font-medium cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm px-2 py-1"
+                className="group relative text-text-secondary hover:text-white transition-colors duration-200 text-sm font-medium cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm px-2 py-1"
               >
                 {link.label}
+                <span className="absolute left-2 right-2 -bottom-0.5 h-px bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </Link>
             ))}
-            <Button variant="primary" glow className="px-5 py-2 text-sm" onClick={() => goTo('/contact')}>
-              Get Started
-            </Button>
+            <Magnetic className="inline-block">
+              <Button variant="primary" glow className="px-5 py-2 text-sm" onClick={() => goTo('/contact')}>
+                Get Started
+              </Button>
+            </Magnetic>
           </div>
 
           {/* Mobile Menu Toggle */}

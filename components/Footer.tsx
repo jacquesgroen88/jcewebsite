@@ -5,6 +5,7 @@ import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import { CLIENT_LOGOS } from '../constants';
 import Button from './Button';
 import Card from './Card';
+import Magnetic from './Magnetic';
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();
@@ -33,9 +34,11 @@ const Footer: React.FC = () => {
                 </p>
               </div>
               <div className="flex flex-col gap-4 items-center lg:items-end w-full">
-                <Button variant="primary" glow className="px-12 py-6 text-xl w-full md:w-auto shadow-2xl shadow-accent/20" onClick={() => navigate('/contact')}>
-                  Book a Strategy Call
-                </Button>
+                <Magnetic className="w-full md:w-auto">
+                  <Button variant="primary" glow className="px-12 py-6 text-xl w-full shadow-2xl shadow-accent/20" onClick={() => navigate('/contact')}>
+                    Book a Strategy Call
+                  </Button>
+                </Magnetic>
                 <p className="text-xs font-mono text-text-secondary uppercase tracking-widest mt-2">Zero commitment. Total clarity.</p>
               </div>
             </div>

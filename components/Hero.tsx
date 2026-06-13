@@ -1,15 +1,27 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Button from './Button';
 import HeroCanvas from './HeroCanvas';
+import Magnetic from './Magnetic';
+
+const REDUCE =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
+  const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const words = ["MARKETING", "SALES", "OPERATIONS"];
+
+  // Parallax: hero content lifts + fades as you scroll past it.
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,7 +51,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 px-6">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden pt-20 px-6">
       {/* Living-system node network — the kinetic signature */}
       <HeroCanvas className="absolute inset-0 w-full h-full z-0" />
 
@@ -48,7 +60,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0 bg-gradient-to-r from-background via-background/70 to-transparent pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-40 z-0 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
-      <div ref={containerRef} className="relative z-10 max-w-7xl mx-auto w-full">
+      <motion.div ref={containerRef} style={REDUCE ? undefined : { y, opacity }} className="relative z-10 max-w-7xl mx-auto w-full">
         <div className="max-w-3xl space-y-8">
           <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-100">
             <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-widest mb-6">
@@ -63,16 +75,20 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <Button variant="primary" glow className="w-full sm:w-auto px-8 py-4 text-base sm:text-lg" onClick={() => navigate('/contact')}>
-              Book a Strategy Call
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="outline" className="w-full sm:w-auto px-8 py-4 text-base sm:text-lg" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-              View Results
-            </Button>
+            <Magnetic className="w-full sm:w-auto">
+              <Button variant="primary" glow className="w-full px-8 py-4 text-base sm:text-lg" onClick={() => navigate('/contact')}>
+                Book a Strategy Call
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Magnetic>
+            <Magnetic className="w-full sm:w-auto">
+              <Button variant="outline" className="w-full px-8 py-4 text-base sm:text-lg" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+                View Results
+              </Button>
+            </Magnetic>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -10,6 +10,7 @@ import Stats from './components/Stats';
 import TestimonialVideo from './components/TestimonialVideo';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
+import Reveal from './components/Reveal';
 
 // Secondary pages are code-split so the landing bundle stays lean.
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
@@ -49,9 +50,9 @@ const HomePage: React.FC = () => {
     <>
       <Hero />
       <Services onDetailClick={() => navigate('/services')} />
-      <Stats />
-      <TestimonialVideo />
-      <Projects />
+      <Reveal><Stats /></Reveal>
+      <Reveal><TestimonialVideo /></Reveal>
+      <Reveal><Projects /></Reveal>
     </>
   );
 };
@@ -141,6 +142,7 @@ const Layout: React.FC = () => {
   return (
     <div className="relative min-h-screen">
       <AnimatedBackground />
+      <div className="grain-overlay" aria-hidden="true" />
 
       <div className="fixed top-0 left-0 w-full h-[2px] z-[60]" aria-hidden="true">
         <div id="scroll-bar" className="h-full bg-accent transition-all duration-100 w-0" />
