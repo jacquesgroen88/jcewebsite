@@ -54,20 +54,20 @@ const Hero: React.FC = () => {
             <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-widest mb-6">
               Automate up to 80% of Marketing, Sales & Operations
             </span>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] md:leading-tight tracking-tighter uppercase">
-              WE BUILD <span key={currentWordIndex} className="chrome-text animate-pop-in-up inline-block min-w-[180px] sm:min-w-[240px] md:min-w-[300px] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">{words[currentWordIndex]}</span> SYSTEMS THAT <span className="text-accent">SCALE</span> BUSINESSES.
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.12] md:leading-tight tracking-tighter uppercase">
+              WE BUILD <span key={currentWordIndex} className="chrome-text animate-pop-in-up inline-block min-w-[120px] sm:min-w-[180px] md:min-w-[240px] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">{words[currentWordIndex]}</span> SYSTEMS THAT <span className="text-accent">SCALE</span> BUSINESSES.
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-text-secondary max-w-lg leading-relaxed font-body">
+            <p className="mt-5 text-base sm:text-lg md:text-xl text-text-secondary max-w-lg leading-relaxed font-body">
               282,000+ leads generated. $15M in budgets managed. 416% average ROI. Transforming marketing, sales, and operations with AI-first strategies that deliver measurable results.
             </p>
           </div>
 
-          <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 flex flex-wrap gap-4">
-            <Button variant="primary" glow className="px-8 py-4 text-lg" onClick={() => navigate('/contact')}>
+          <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <Button variant="primary" glow className="w-full sm:w-auto px-8 py-4 text-base sm:text-lg" onClick={() => navigate('/contact')}>
               Book a Strategy Call
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" className="px-8 py-4 text-lg" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+            <Button variant="outline" className="w-full sm:w-auto px-8 py-4 text-base sm:text-lg" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Results
             </Button>
           </div>
