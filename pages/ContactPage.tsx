@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Globe, Mail } from 'lucide-react';
+import { Globe, Mail, MessageCircle } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import BrandVisual from '../components/BrandVisual';
@@ -130,6 +130,25 @@ const ContactPage: React.FC = () => {
                   <div>
                     <p className="text-xs font-mono uppercase tracking-[0.2em] text-text-secondary">Prefer email?</p>
                     <p className="text-white font-medium group-hover:text-accent transition-colors">jacques@jcemedia.com</p>
+                  </div>
+                </div>
+              </Card>
+            </a>
+
+            <a
+              href="https://wa.me/27795124292"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-2xl"
+            >
+              <Card className="p-6 group">
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-accent-green/10 border border-accent-green/20 flex items-center justify-center text-accent-green shrink-0">
+                    <MessageCircle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-mono uppercase tracking-[0.2em] text-text-secondary">Message us on WhatsApp</p>
+                    <p className="text-white font-medium group-hover:text-accent-green transition-colors">+27 79 512 4292</p>
                   </div>
                 </div>
               </Card>

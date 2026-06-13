@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import { CLIENT_LOGOS } from '../constants';
 import Button from './Button';
@@ -8,18 +8,20 @@ import Card from './Card';
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  // Only show the big CTA on the home page — other pages already end with their
+  // own call-to-action (or the contact form itself), so it would double up.
+  const showCta = pathname === '/';
   return (
     <footer className="pt-24 pb-12 px-6 border-t border-border bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
-
-
-        {/* Redesigned CTA Section */}
+        {showCta && (
         <div className="mb-24 relative">
           <Card hasBeam className="bg-surface/50 border-white/10 p-12 md:p-20 overflow-hidden text-center md:text-left backdrop-blur-3xl rounded-[3rem]">
-            {/* Immersive mesh glow inside CTA */}
+            {/* Immersive glow inside CTA */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/20 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 -z-10 animate-pulse-glow" />
-            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/10 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2 -z-10" />
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-indigo-600/10 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2 -z-10" />
 
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
               <div className="space-y-6">
@@ -39,6 +41,7 @@ const Footer: React.FC = () => {
             </div>
           </Card>
         </div>
+        )}
 
         {/* Bottom Links */}
         <div className="grid md:grid-cols-4 gap-12 mb-16">

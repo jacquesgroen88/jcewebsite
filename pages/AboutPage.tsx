@@ -1,5 +1,6 @@
 
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Activity } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
@@ -7,10 +8,16 @@ import TestimonialVideo from '../components/TestimonialVideo';
 import BrandVisual from '../components/BrandVisual';
 
 const AboutPage: React.FC = () => {
+  const navigate = useNavigate();
   const pillarsRef = useRef<HTMLDivElement>(null);
 
   const scrollToPillars = () => {
     pillarsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const viewCaseStudies = () => {
+    navigate('/');
+    setTimeout(() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }), 120);
   };
 
   return (
@@ -31,7 +38,7 @@ const AboutPage: React.FC = () => {
                 Most agencies focus on vanity metrics. We focus on <span className="text-white font-semibold">Architecture.</span> We build autonomous, systems-driven engines that don't just "generate buzz"—they generate scalable, predictable ROI.
               </p>
               <p>
-                From automating 949 Facebook leads in 60 days to moving 70,000 prospects into active pipelines, our mission is to eliminate the guesswork by engineering growth through robust systems.
+                From generating 282,000+ leads to managing $15M in ad budgets at a 416% average ROI, our mission is to eliminate the guesswork by engineering growth through robust systems.
               </p>
             </div>
             <div className="pt-6">
@@ -147,7 +154,7 @@ const AboutPage: React.FC = () => {
               <p className="text-xs font-mono uppercase tracking-widest text-text-secondary">Countries</p>
             </div>
             <div>
-              <p className="text-5xl font-bold chrome-text mb-2">50M+</p>
+              <p className="text-5xl font-bold chrome-text mb-2">$15M</p>
               <p className="text-xs font-mono uppercase tracking-widest text-text-secondary">Ad Spend Managed</p>
             </div>
             <div>
@@ -168,8 +175,8 @@ const AboutPage: React.FC = () => {
             We are looking for partners, not just clients. Businesses who are ready to abandon the old ways and embrace the future of autonomous growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-            <Button variant="primary" glow className="px-12 py-6 text-xl">Let's Build Together</Button>
-            <Button variant="outline" className="px-12 py-6 text-xl">View Case Studies</Button>
+            <Button variant="primary" glow className="px-12 py-6 text-xl" onClick={() => navigate('/contact')}>Let's Build Together</Button>
+            <Button variant="outline" className="px-12 py-6 text-xl" onClick={viewCaseStudies}>View Case Studies</Button>
           </div>
         </div>
       </div>
