@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Button from './Button';
+import HeroCanvas from './HeroCanvas';
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
@@ -38,10 +39,17 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
-      <div ref={containerRef} className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 px-6">
+      {/* Living-system node network — the kinetic signature */}
+      <HeroCanvas className="absolute inset-0 w-full h-full z-0" />
 
-        <div className="space-y-8 z-10">
+      {/* Legibility scrim: darken left/bottom so the headline stays crisp while
+          the network breathes on the right and top. */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-background via-background/70 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-40 z-0 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+
+      <div ref={containerRef} className="relative z-10 max-w-7xl mx-auto w-full">
+        <div className="max-w-3xl space-y-8">
           <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-100">
             <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-widest mb-6">
               Automate up to 80% of Marketing, Sales & Operations
@@ -62,24 +70,6 @@ const Hero: React.FC = () => {
             <Button variant="outline" className="px-8 py-4 text-lg" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Results
             </Button>
-          </div>
-        </div>
-
-        <div className="reveal opacity-0 translate-y-10 transition-all duration-1000 delay-500 relative hidden lg:flex justify-center items-center">
-          <div className="relative w-full aspect-square max-w-lg">
-            <div className="absolute inset-0 bg-accent/20 blur-[100px] animate-pulse-glow" />
-            <div className="relative z-10 w-full h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl backdrop-blur-sm group">
-              <img
-                src="/assets/hero-ai-system.png"
-                alt="AI-Powered Scaling Systems"
-                className="w-full h-full object-cover transition-all duration-700"
-                loading="eager"
-                fetchPriority="high"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-              {/* Floating Elements (Y2K Geometric) */}
-            </div>
           </div>
         </div>
       </div>
