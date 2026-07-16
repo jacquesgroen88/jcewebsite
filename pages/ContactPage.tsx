@@ -128,6 +128,9 @@ const ContactPage: React.FC = () => {
                       onChange={(e) => setSubject(e.target.value)}
                       className="w-full bg-background/50 border border-border rounded-xl px-4 py-4 pr-10 text-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all appearance-none cursor-pointer"
                     >
+                      <option value="AI Sales Enablement">AI Sales Enablement</option>
+                      <option value="AI Marketing Enablement">AI Marketing Enablement</option>
+                      <option value="Agents Setup">AI Agents Setup</option>
                       <option value="AI-Powered Marketing">AI-Powered Marketing</option>
                       <option value="Intelligent Sales">Intelligent Sales</option>
                       <option value="Business Automation">Business Automation</option>

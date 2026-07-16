@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import { CLIENT_LOGOS } from '../constants';
 import Button from './Button';
@@ -63,10 +63,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold mb-8 uppercase text-xs tracking-[0.3em] text-accent">Solutions</h4>
             <ul className="space-y-4 text-text-secondary text-sm font-medium">
-              <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">AI Marketing Systems</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Sales Flow Automation</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Enterprise AI Integration</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Creative Content AI</a></li>
+              <li><Link to="/ai-sales-enablement" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">AI Sales Enablement</Link></li>
+              <li><Link to="/ai-marketing-enablement" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">AI Marketing Enablement</Link></li>
+              <li><Link to="/agents-setup" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">AI Agents Setup</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">All Services</Link></li>
             </ul>
           </div>
 
