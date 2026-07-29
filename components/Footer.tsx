@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-text-secondary text-sm font-medium">
               <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Our Success Stories</a></li>
               <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">The JCE Philosophy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Resources & News</a></li>
+              <li><a href="/toolkit/" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Free AI Toolkit</a></li>
               <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Privacy Policy</a></li>
             </ul>
           </div>
