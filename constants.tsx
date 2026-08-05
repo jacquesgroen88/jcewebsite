@@ -81,202 +81,164 @@ export const SERVICES: ServiceItem[] = [
   },
 ];
 
+/**
+ * Every entry below is written from the evidence in its own screenshot.
+ *
+ * Rewritten 2026-08-05 after a prospect audited the site in detail. The
+ * previous set had been generated over these images without reading them:
+ * the aviation client's story described qualifying mortgage leads, the
+ * plastics manufacturer was credited with ARR growth and churn prediction,
+ * and categories, tags and results were shuffled between unrelated entries.
+ *
+ * The rule going forward: the number in `stat` must be readable in `image`,
+ * or sourced from a specific reporting session named in a comment. If a
+ * claim cannot be evidenced, the entry does not ship. Four earlier entries
+ * were removed rather than rewritten because their images showed a forecast
+ * model, a bare creative, a 2018 analytics chart with no context, and a
+ * third party's CRM with other clients' names visible on screen.
+ */
 export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'c1',
-    client: 'Financial Services',
-    image: '/assets/case-studies/financial-services/main.png',
-    thumbnail: '/assets/case-studies/financial-services/main.png',
-    category: '340+ Event Registrations',
-    stat: '416%',
-    statLabel: 'ROI Increase',
-    tags: ['AI-Driven Ads', 'HubSpot Integration', 'Lead Scoring'],
-    description: "A financial services company needed to fill investor events. We implemented an AI-driven ad strategy that autonomously optimized bids and creatives.",
-    challenge: "High cost per acquisition (CPA) and poor lead quality were draining marketing budget with little return.",
-    solution: "Implemented an autonomous AI ad buying system integrated with HubSpot for closed-loop attribution.",
-    features: ["Real-time Bid Optimization", "Dynamic Creative Testing", "CRM Data Sync"],
-    results: "Reduced CPA by 65% while increasing overall capabilities by 4x within 90 days."
+    client: 'Dubai Off-Plan Property',
+    image: '/assets/case-studies/investor-funding/main.png',
+    thumbnail: '/assets/case-studies/investor-funding/main.png',
+    category: 'Meta Lead Generation',
+    stat: '949',
+    statLabel: 'Leads in 60 Days',
+    tags: ['Meta Lead Ads', 'Video Creative', 'Lead Forms'],
+    description: "A Dubai off-plan property brand needed qualified buyer enquiries at a workable cost. We built a video-led lead campaign on Facebook running to instant forms rather than a landing page.",
+    challenge: "Property lead costs were high and the volume was not there to keep a sales team busy.",
+    solution: "Video creative into native lead forms, with the campaign structured so the cheapest audiences could scale independently.",
+    features: ["Video Lead Ads", "Native Lead Forms", "Audience Segmentation"],
+    // 949 leads / $4.78 CPL / 607,843 reach are all readable in main.png.
+    // Cost per conversion falling from £69 to £16 is readable in the gallery image.
+    results: "949 leads in the first 60 days at $4.78 per lead, from 607,843 people reached. On the same account, cost per conversion came down from £69 to £16.",
+    gallery: [
+      '/assets/case-studies/b2b-services/main.png'
+    ]
   },
   {
     id: 'c2',
-    client: 'Investor Funding',
-    image: '/assets/case-studies/investor-funding/main.png',
-    thumbnail: '/assets/case-studies/investor-funding/graphic1.png',
-    category: 'Facebook Ads & AI Email',
-    stat: '$4.2M',
-    statLabel: 'Revenue Generated',
-    tags: ['Predictive Analytics', 'CRMA', 'Email Automation'],
-    description: "The client lacked consistent, high-quality investor leads. Our predictive model scored leads based on 50+ data points, feeding a personalized email nurture sequence.",
-    challenge: "Sales team was wasting time on unqualified leads, missing out on high-value opportunities.",
-    solution: "Deployed predictive lead scoring models and automated personalized outreach sequences.",
-    features: ["Predictive Lead Scoring", "Automated Nurture Sequences", "Salesforce Integration"],
-    results: "Generated $4.2M in new pipeline revenue and increased sales team efficiency by 40%.",
-    gallery: [
-      '/assets/case-studies/investor-funding/graphic1.png',
-      '/assets/case-studies/investor-funding/testimonial.png'
-    ]
+    client: 'AeroCRS',
+    image: '/assets/case-studies/aerocrs-aviation/main.png',
+    thumbnail: '/assets/case-studies/aerocrs-aviation/thumbnail.png',
+    category: 'LinkedIn Outreach',
+    stat: '54%',
+    statLabel: 'Of Replies Became Demos',
+    tags: ['LinkedIn Outreach', 'Airline Sector', 'Demo Booking'],
+    description: "AeroCRS sells reservation software to airlines, so the buyer list is small, senior and hard to reach through advertising. We ran targeted LinkedIn outreach to senior members of SME airlines instead.",
+    challenge: "A narrow, senior audience that paid channels could not reach efficiently.",
+    solution: "Sequenced LinkedIn connection and message campaigns aimed at named roles inside SME airlines, measured on replies rather than impressions.",
+    features: ["Role-Level Targeting", "Sequenced Messaging", "Reply-Based Reporting"],
+    // 54% of replies converting to demos, 583 profile views, 163 connections,
+    // 88 replies are all readable in main.png.
+    results: "54% of everyone who replied converted into a sales demo, from 583 profile views and 163 accepted connections.",
   },
   {
     id: 'c3',
-    client: 'B2B Services',
-    image: '/assets/case-studies/b2b-services/main.png',
-    thumbnail: '/assets/case-studies/b2b-services/main.png',
-    category: 'LinkedIn Ads Optimization',
-    stat: '28k+',
-    statLabel: 'Patient Appointments',
-    tags: ['Local SEO', 'Review Automation', 'Booking System'],
-    description: "We scaled their local presence across 40 locations using AI to manage GMB profiles and automate review requests, driving record appointment bookings.",
-    challenge: "Fragmented digital presence across multiple locations led to low local visibility.",
-    solution: "Unified local SEO management and automated review generation campaigns.",
-    features: ["Multi-location SEO", "Automated Review Management", "Unified Booking Interface"],
-    results: "Achieved #1 ranking for key terms in 35/40 locations and booked 28k+ new appointments."
+    client: 'Izi Travel',
+    image: '/assets/case-studies/izi-travel/main.png',
+    thumbnail: '/assets/case-studies/izi-travel/main.png',
+    category: 'Enquiry to Booking System',
+    stat: 'R322k',
+    statLabel: 'Travel Booked in 30 Days',
+    tags: ['Google Ads', 'WhatsApp Automation', 'CRM Pipeline'],
+    description: "A South African travel agency with a working enquiry flow but no system behind it. We built the pipeline from ad click through to quote and follow-up, then found the real bottleneck was not lead volume at all.",
+    challenge: "Quotes were going out quickly but almost none were closing. Fifty-four warm quoted leads had produced a single booking, because nothing followed up after the quote was sent.",
+    solution: "Google Ads and a WhatsApp enquiry assistant feeding a CRM pipeline, a custom quote tool for the consultants, and a follow-up engine triggered on pipeline stage rather than on anyone remembering.",
+    features: ["WhatsApp Enquiry Assistant", "Custom Quote Tool", "Stage-Triggered Follow-Up"],
+    // Figures from the 2026-07-10 monthly review with the client:
+    // 230 enquiries, 219 quotes, 6 bookings, R322k booked, 250 leads at ~R32.
+    results: "In one 30 day period: 230 enquiries and 219 quotes produced across 16 destinations, six bookings, and R322,000 in travel booked. Leads came in at roughly R32 each.",
   },
   {
     id: 'c4',
-    client: 'AeroCRS Aviation',
-    image: '/assets/case-studies/aerocrs-aviation/main.png',
-    thumbnail: '/assets/case-studies/aerocrs-aviation/thumbnail.png',
-    category: 'Hyper-Personalized Outreach',
-    stat: '300%',
-    statLabel: 'Lead Volume',
-    tags: ['Facebook Ads', 'Chatbot', 'Instant Qualify'],
-    description: "AeroCRS needed to reach senior aviation professionals. We built a Messenger bot that qualified mortgage leads 24/7 and booked calls directly.",
-    challenge: "Slow response times were causing high lead drop-off rates.",
-    solution: "Built an AI surveyor chatbot to instantly qualify and book leads 24/7.",
-    features: ["Messenger Chatbot", "Instant Qualification", "Calendar Sync"],
-    results: "Tripled lead volume and reduced cost per booking by 50%",
-    gallery: [
-      '/assets/case-studies/aerocrs-aviation/thumbnail.png'
-    ]
-  },
-  {
-    id: 'c5',
-    client: 'Tech/Aerospace',
-    image: '/assets/case-studies/tech-aerospace/main.png',
-    thumbnail: '/assets/case-studies/tech-aerospace/main.png',
-    category: 'Precision LinkedIn Campaign',
-    stat: '8.5x',
-    statLabel: 'ROAS',
-    tags: ['Google Shopping', 'Inventory Sync', 'Dynamic Pricing'],
-    description: "By syncing inventory data with Google Shopping ads, we ensured they never paid for clicks on out-of-stock items, maximizing their ad spend efficiency.",
-    challenge: "Ad spend was being wasted on out-of-stock products.",
-    solution: "Connected inventory feed to Google Ads for real-time campaign management.",
-    features: ["Real-time Inventory Sync", "Dynamic Pricing AI", "Smart Bidding"],
-    results: "Reached 8.5x ROAS and increased average order value by 25%."
-  },
-  {
-    id: 'c6',
-    client: 'Public Speaking Coach',
-    image: '/assets/case-studies/public-speaking-coach/main.png',
-    thumbnail: '/assets/case-studies/public-speaking-coach/graphic1.png',
-    category: 'Chatbot Innovation',
-    stat: '65%',
-    statLabel: 'Lower CPL',
-    tags: ['LinkedIn Ads', 'ABM', 'Content Syndication'],
-    description: "A public-speaking coach needed to generate new leads. We targeted specific decision-makers at Fortune 500 companies, delivering high-value whitepapers.",
-    challenge: "General targeting was failing to reach key decision makers in enterprise accounts.",
-    solution: "Executed a precision Account-Based Marketing (ABM) campaign on LinkedIn.",
-    features: ["ABM Targeting", "LinkedIn Lead Gen Forms", "Content Syndication"],
-    results: "lowered Cost Per Lead by 65% while increasing deal size by 2x.",
-    gallery: [
-      '/assets/case-studies/public-speaking-coach/graphic1.png',
-      '/assets/case-studies/public-speaking-coach/graphic3.png'
-    ]
-  },
-  {
-    id: 'c7',
-    client: 'Engineering Plastics B2B',
-    image: '/assets/case-studies/engineering-plastics/main.png',
-    thumbnail: '/assets/case-studies/engineering-plastics/graphic1.png',
-    category: 'Social Media Strategy',
-    stat: '120%',
-    statLabel: 'ARR Growth',
-    tags: ['PLG', 'Onboarding AI', 'Churn Prediction'],
-    description: "We implemented an AI-driven onboarding flow that personalized the user journey based on intent data, significantly reducing churn and boosting conversion.",
-    challenge: "High churn rate during the trial period.",
-    solution: "Developed an adaptive onboarding experience driven by user behavior data.",
-    features: ["Behavioral Triggers", "Churn Prediction Model", "In-app Guidance"],
-    results: "Doubled Annual Recurring Revenue (ARR) growth year-over-year.",
-    gallery: [
-      '/assets/case-studies/engineering-plastics/graphic1.png'
-    ]
-  },
-  {
-    id: 'c8',
-    client: 'Multi-Industry',
-    image: '/assets/case-studies/multi-industry/main.png',
-    thumbnail: '/assets/case-studies/multi-industry/graphic1.png',
-    category: 'Automated LinkedIn Outreach',
-    stat: '$12M',
-    statLabel: 'Pipeline Added',
-    tags: ['Intent Data', 'Cold Email', 'Sales Enablement'],
-    description: "We combined 3rd party intent data with automated cold email outreach to identify companies actively searching for logistics solutions.",
-    challenge: "Cold outreach was yielding low response rates.",
-    solution: "Leveraged intent data to trigger timely, relevant outreach sequences.",
-    features: ["Intent Data Integration", "Cold Email Automation", "Sales Enablement Tools"],
-    results: "Added $12M to the sales pipeline in 6 months.",
-    gallery: [
-      '/assets/case-studies/multi-industry/graphic1.png',
-      '/assets/case-studies/multi-industry/graphic2.png',
-      '/assets/case-studies/multi-industry/graphic4.png'
-    ]
-  },
-  {
-    id: 'c9',
     client: 'America Outbound Summit',
     image: '/assets/case-studies/america-outbound/main.png',
     thumbnail: '/assets/case-studies/america-outbound/graphic1.png',
-    category: 'Targeted Email Marketing',
-    stat: '55%',
-    statLabel: 'Repeat Rate',
-    tags: ['Retention', 'SMS Marketing', 'Loyalty Program'],
-    description: "The summit sought high-net-worth attendees. We built an SMS marketing engine that sent timely reminders and exclusive offers.",
-    challenge: "Low customer lifetime value (LTV) and repeat purchase rate.",
-    solution: "Launched a comprehensive SMS retention and loyalty program.",
-    features: ["SMS Flows", "Loyalty Rewards", "Win-back Campaigns"],
-    results: "Increased repeat customer rate by 55%.",
+    category: 'Event Registration',
+    stat: '435',
+    statLabel: 'Event Registrations',
+    tags: ['Event Marketing', 'Landing Pages', 'Multi-City Campaign'],
+    description: "An in-person summit running across multiple US cities needed attendees in seats, not just page views. We built and ran the registration funnel for each city separately.",
+    challenge: "Filling an in-person event across several cities, where a soft registration number means an empty room.",
+    solution: "Separate registration paths per city plus a general and a sponsor track, so each could be measured and optimised on its own submission rate.",
+    features: ["Per-City Landing Pages", "Sponsor Registration Track", "Submission Rate Optimisation"],
+    // 71 + 95 + 116 + 153 = 435, with 42.41% and 45.67% submission rates
+    // for Los Angeles and New York, all readable in main.png.
+    results: "435 registrations in total, with the Los Angeles and New York pages converting at 42% and 46% of everyone who landed on them.",
+  },
+  {
+    id: 'c5',
+    client: 'UK Public Speaking Coach',
+    image: '/assets/case-studies/public-speaking-coach/main.png',
+    thumbnail: '/assets/case-studies/public-speaking-coach/graphic1.png',
+    category: 'Conversational Funnel',
+    stat: '83%',
+    statLabel: 'Clicked Through',
+    tags: ['Messenger Automation', 'Lead Magnet', 'Application Flow'],
+    description: "A public speaking coach was delivering a free training guide by email and losing most people before they read it. We moved the whole delivery and qualification flow into Messenger.",
+    challenge: "Email delivery of the lead magnet meant low open rates and no way to qualify who was actually worth a conversation.",
+    solution: "A conversational sequence that delivered the guide, qualified interest in the same thread, and handed warm applicants to the coach's assistant.",
+    features: ["Guide Delivery in Thread", "Inline Qualification", "Assistant Handoff"],
+    // 909 sent, 909 delivered (100%), 906 opened (99.7%), 755 clicked (83.1%)
+    // readable in main.png. 36% interest CTR readable in graphic1.png.
+    results: "Of 909 people sent the guide, 99.7% opened it and 83.1% clicked through. On the qualifying step, 36% put themselves forward as interested.",
     gallery: [
-      '/assets/case-studies/america-outbound/graphic1.png'
+      '/assets/case-studies/public-speaking-coach/graphic1.png'
     ]
   },
   {
-    id: 'c11',
-    client: 'Legal Services',
-    image: '/assets/case-studies/legal-services/main.png',
-    thumbnail: '/assets/case-studies/legal-services/graphic1.png',
-    category: 'Workflow Automation',
-    stat: '90%',
-    statLabel: 'Admin Saved',
-    tags: ['Legal Automation', 'Document AI', 'Lead Intake'],
-    description: "We automated the client intake and document collection process using AI, allowing lawyers to spend 90% less time on admin.",
-    challenge: "Lawyers were buried in paperwork and manual intake processes.",
-    solution: "Automated client intake and document processing with AI.",
-    features: ["Document AI", "Automated Intake Forms", "Case Management Sync"],
-    results: "Reduced non-billable administrative hours by 90%.",
-    gallery: [
-      '/assets/case-studies/legal-services/graphic1.png',
-      '/assets/case-studies/legal-services/graphic2.png'
-    ]
+    id: 'c6',
+    client: 'Ensinger Plastics',
+    image: '/assets/case-studies/engineering-plastics/main.png',
+    thumbnail: '/assets/case-studies/engineering-plastics/graphic1.png',
+    category: 'Social Media Strategy',
+    stat: '35%',
+    statLabel: 'Engagement Rate Lift',
+    tags: ['B2B Social', 'LinkedIn', 'Content Programme'],
+    description: "Ensinger is a high-performance engineering plastics manufacturer. We ran their UK social presence for roughly two years, treating a technical product line as something people would actually engage with.",
+    challenge: "Technical industrial content that historically got posted and ignored.",
+    solution: "A consistent content programme across their social platforms, written with the technical audience in mind rather than around it.",
+    features: ["Technical Content Programme", "Platform Management", "Engagement Reporting"],
+    // 35% engagement rate increase, 31.9 engagement rate, 6.3k total
+    // engagements, 197 messages sent, all readable in main.png.
+    results: "A 35% increase in engagement rate across their social platforms, reaching a 31.9 engagement rate over 6,300 total engagements. The team brought the function in house in late 2025.",
   },
   {
-    id: 'c12',
-    client: 'Summit Education',
-    image: '/assets/case-studies/summit-education/main.jpg',
-    thumbnail: '/assets/case-studies/summit-education/graphic2.png',
-    category: 'Education Funnel',
-    stat: '200%',
-    statLabel: 'Enrollment',
-    tags: ['Webinar Funnel', 'YouTube Ads', 'Email Nurture'],
-    description: "To boost course enrollments, we built an automated webinar funnel driven by YouTube ads, nurturing prospects who didn't buy immediately.",
-    challenge: "High cost per student enrollment and low webinar attendance.",
-    solution: "Optimized webinar funnel with YouTube ads and automated follow-up.",
-    features: ["YouTube Ad Scale", "Evergreen Webinar", "Behavioral Email Nurture"],
-    results: "Increased course enrollment by 200% year-over-year.",
-    gallery: [
-      '/assets/case-studies/summit-education/graphic1.jpg',
-      '/assets/case-studies/summit-education/graphic2.png',
-      '/assets/case-studies/summit-education/graphic3.png'
-    ]
+    id: 'c7',
+    client: 'Google Ads Lead Generation',
+    image: '/assets/case-studies/financial-services/main.png',
+    thumbnail: '/assets/case-studies/financial-services/main.png',
+    category: 'Paid Search',
+    stat: '43',
+    statLabel: 'Conversions in 30 Days',
+    tags: ['Google Ads', 'Search', 'Conversion Tracking'],
+    description: "A twenty campaign Google Ads account where spend was going out but the conversion picture was unclear. We rebuilt the tracking first, then optimised against what it showed.",
+    challenge: "Spend was being judged on clicks because the conversion data underneath it could not be trusted.",
+    solution: "Conversion tracking corrected across the account, then budget consolidated into the campaigns that were actually producing at a sensible cost.",
+    features: ["Conversion Tracking Rebuild", "Campaign Consolidation", "Cost Per Conversion Control"],
+    // 5,005 clicks, 43 conversions, $93.54 cost per conversion across 20
+    // campaigns, all readable in main.png.
+    results: "43 conversions in 30 days at $93.54 each, from 5,005 clicks across twenty campaigns.",
+  },
+  {
+    id: 'c8',
+    client: 'B2B Precision Outreach',
+    image: '/assets/case-studies/tech-aerospace/main.png',
+    thumbnail: '/assets/case-studies/tech-aerospace/main.png',
+    category: 'LinkedIn Outreach',
+    stat: '19',
+    statLabel: 'High-Value Leads, Month One',
+    tags: ['LinkedIn Outreach', 'ABM', 'Sales Enablement'],
+    description: "A high-ticket B2B offer where a handful of the right conversations is worth more than a pipeline full of the wrong ones. We ran precision outreach to a tightly defined list.",
+    challenge: "Broad targeting was filling the funnel with people who would never buy at the price point.",
+    solution: "A narrow target list worked through profile visits, connection requests and direct messages, measured on qualified interest rather than volume.",
+    features: ["Tight List Building", "Multi-Step Touch Sequence", "Interest-Based Qualification"],
+    // 2,227 profile visits, 1,880 invites, 403 messages sent, 19 interested,
+    // all readable in main.png.
+    results: "19 high-value leads in the first month, worked out of 2,227 profile visits and 403 direct messages.",
   }
 ];
 

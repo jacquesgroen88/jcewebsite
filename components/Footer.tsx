@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
-import { CLIENT_LOGOS, SOCIAL_LINKS } from '../constants';
+import { SOCIAL_LINKS } from '../constants';
 import { SocialLink } from '../types';
 import Button from './Button';
 import Card from './Card';
