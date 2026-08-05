@@ -311,23 +311,6 @@ export const WORK: WorkItem[] = [
     region: 'ZA',
   },
   {
-    id: 'w-vaalriver',
-    name: 'Vaal River Cruises',
-    kind: 'client',
-    sector: 'Hospitality — Vaal',
-    summary: 'Website and the CRM, bot and reporting layer for a river cruise and venue operator.',
-    scope: [
-      'Client website build',
-      'CRM audit and rebuild',
-      'Conversational AI booking strategy',
-      'Meta Ads management and monthly reporting',
-    ],
-    url: 'https://vaalrivercruises.co.za',
-    urlLabel: 'vaalrivercruises.co.za',
-    status: 'Completed engagement',
-    region: 'ZA',
-  },
-  {
     id: 'w-reviewtap',
     name: 'ReviewTap',
     kind: 'in-house',
