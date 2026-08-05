@@ -21,6 +21,8 @@ const GtmThankYouPage = lazy(() => import('./pages/GtmThankYouPage'));
 const AiSalesEnablementPage = lazy(() => import('./pages/AiSalesEnablementPage'));
 const AiMarketingEnablementPage = lazy(() => import('./pages/AiMarketingEnablementPage'));
 const AgentsSetupPage = lazy(() => import('./pages/AgentsSetupPage'));
+const WorkPage = lazy(() => import('./pages/WorkPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 
 const REDUCE = typeof window !== 'undefined'
   && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -35,6 +37,8 @@ const PAGE_TITLES: Record<string, string> = {
   '/ai-sales-enablement': 'AI Sales Enablement | JCE Media',
   '/ai-marketing-enablement': 'AI Marketing Enablement | JCE Media',
   '/agents-setup': 'AI Agents Setup | JCE Media',
+  '/work': 'Our Work | JCE Media',
+  '/privacy': 'Privacy Policy | JCE Media',
 };
 
 const LEGACY_HASH_ROUTES: Record<string, string> = {
@@ -89,6 +93,8 @@ const RouteView: React.FC<{ location: ReturnType<typeof useLocation> }> = ({ loc
           <Route path="/ai-sales-enablement" element={<AiSalesEnablementPage />} />
           <Route path="/ai-marketing-enablement" element={<AiMarketingEnablementPage />} />
           <Route path="/agents-setup" element={<AgentsSetupPage />} />
+          <Route path="/work" element={<WorkPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

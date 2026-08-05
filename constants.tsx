@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ServiceItem, CaseStudy, Stat } from './types';
+import { ServiceItem, CaseStudy, Stat, WorkItem, SocialLink } from './types';
 
 // Modern SVG Icons for Services
 const Icons = {
@@ -285,6 +285,146 @@ export const STATS: Stat[] = [
   { id: 'st2', value: '20', label: 'Emails Sent', suffix: 'M' },
   { id: 'st3', value: '15', label: 'Budget Managed', suffix: 'M' },
   { id: 'st4', value: '416', label: 'Average ROI', suffix: '%' },
+];
+
+/**
+ * Live work, openable in a new tab. Every URL here was verified as returning 200
+ * on 2026-08-05. If a link dies, pull the entry — an agency page full of dead
+ * links is worse than a short page.
+ *
+ * `kind` is not decoration. Ventures we own are labelled as ours; passing them
+ * off as client work is the kind of thing prospects check and catch.
+ */
+export const WORK: WorkItem[] = [
+  {
+    id: 'w-threezero',
+    name: 'ThreeZero Cape Quarter',
+    kind: 'client',
+    sector: 'Hospitality — Cape Town',
+    summary: 'Website redesign plus the ads and reputation systems running behind it.',
+    scope: [
+      'WordPress site redesign and rebuild',
+      'Google Ads account rebuilt from Smart to Standard campaigns',
+      'Conversion tracking repaired end to end',
+      'Review collection system integrated',
+      'Ongoing monthly management',
+    ],
+    url: 'https://threezero.co.za',
+    urlLabel: 'threezero.co.za',
+    status: 'Active',
+    region: 'ZA',
+  },
+  {
+    id: 'w-izitravel',
+    name: 'Izi Travel',
+    kind: 'client',
+    sector: 'Travel — South Africa',
+    summary: 'A full enquiry-to-quote pipeline, from the ad click through to the follow-up.',
+    scope: [
+      'Lead capture forms and CRM pipeline build',
+      'WhatsApp booking assistant, live and handling enquiries',
+      'Custom quote tool built for their consultants',
+      'Google Ads management and CRO',
+      'Automated follow-up sequences',
+    ],
+    url: 'https://izitravel.co.za',
+    urlLabel: 'izitravel.co.za',
+    status: 'Active',
+    region: 'ZA',
+  },
+  {
+    id: 'w-dotcom',
+    name: 'DotCom Cafe',
+    kind: 'client',
+    sector: 'Restaurant — South Africa',
+    summary: 'New restaurant website and an AI booking assistant that takes reservations on WhatsApp.',
+    scope: [
+      'Full website design and build',
+      'AI WhatsApp booking system',
+      'Review collection built into the guest journey',
+    ],
+    url: 'https://jcereports.netlify.app/dotcom-cafe/',
+    urlLabel: 'View the site',
+    status: 'Delivered',
+    region: 'ZA',
+  },
+  {
+    id: 'w-vaalriver',
+    name: 'Vaal River Cruises',
+    kind: 'client',
+    sector: 'Hospitality — Vaal',
+    summary: 'Website and the CRM, bot and reporting layer for a river cruise and venue operator.',
+    scope: [
+      'Client website build',
+      'CRM audit and rebuild',
+      'Conversational AI booking strategy',
+      'Meta Ads management and monthly reporting',
+    ],
+    url: 'https://vaalrivercruises.co.za',
+    urlLabel: 'vaalrivercruises.co.za',
+    status: 'Completed engagement',
+    region: 'ZA',
+  },
+  {
+    id: 'w-reviewtap',
+    name: 'ReviewTap',
+    kind: 'in-house',
+    sector: 'Our own product — NFC review collection',
+    summary: 'A product we built, sell and run ourselves: tap-to-review hardware with the software behind it.',
+    scope: [
+      'Shopify storefront and full ecommerce funnel',
+      'Custom card design studio built in React',
+      'Link and destination management platform',
+      'Meta and Google Ads run in-house',
+      'Subscription billing and customer onboarding',
+    ],
+    url: 'https://reviewtap.co.za',
+    urlLabel: 'reviewtap.co.za',
+    status: 'Active',
+    region: 'ZA',
+  },
+  {
+    id: 'w-mfb',
+    name: 'MyForeverBaby',
+    kind: 'in-house',
+    sector: 'Our own store — ecommerce',
+    summary: 'An ecommerce brand we own outright, so the funnel work is run on our own money.',
+    scope: [
+      'Shopify store and conversion-focused homepage rebuild',
+      'Meta Ads managed in-house on live budget',
+      'Creative production pipeline',
+      'CRO programme with tracked before and after',
+    ],
+    url: 'https://myforeverbaby.co.za',
+    urlLabel: 'myforeverbaby.co.za',
+    status: 'Active',
+    region: 'ZA',
+  },
+  {
+    id: 'w-inspiringwomen',
+    name: 'Inspiring Women',
+    kind: 'in-house',
+    sector: 'Our own content site — organic search',
+    summary: 'A content property we own, used to prove the SEO and content playbook before selling it.',
+    scope: [
+      'Content site build and information architecture',
+      'Search-led content clusters',
+      'GA4 and Search Console measurement',
+    ],
+    url: 'https://inspiringwomen.co.za',
+    urlLabel: 'inspiringwomen.co.za',
+    status: 'Active',
+    region: 'ZA',
+  },
+];
+
+/**
+ * Only platforms with a real, working profile belong here. A social icon that
+ * goes to "#" reads as neglect on a marketing agency's own site — which is
+ * exactly the read we got from a prospect in Aug 2026.
+ */
+export const SOCIAL_LINKS: SocialLink[] = [
+  { label: 'Connect with Jacques on LinkedIn', href: 'https://www.linkedin.com/in/jacquesgroenewald/', icon: 'linkedin' },
 ];
 
 export const CLIENT_LOGOS = [

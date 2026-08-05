@@ -2,10 +2,18 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
-import { CLIENT_LOGOS } from '../constants';
+import { CLIENT_LOGOS, SOCIAL_LINKS } from '../constants';
+import { SocialLink } from '../types';
 import Button from './Button';
 import Card from './Card';
 import Magnetic from './Magnetic';
+
+const SOCIAL_ICONS: Record<SocialLink['icon'], React.ReactNode> = {
+  linkedin: <Linkedin size={20} />,
+  twitter: <Twitter size={20} />,
+  instagram: <Instagram size={20} />,
+  facebook: <Facebook size={20} />,
+};
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();
@@ -73,10 +81,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold mb-8 uppercase text-xs tracking-[0.3em] text-accent">Company</h4>
             <ul className="space-y-4 text-text-secondary text-sm font-medium">
-              <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Our Success Stories</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">The JCE Philosophy</a></li>
+              <li><Link to="/work" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Our Success Stories</Link></li>
+              <li><Link to="/about" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">The JCE Philosophy</Link></li>
               <li><a href="/toolkit/" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Free AI Toolkit</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Privacy Policy</a></li>
+              <li><Link to="/privacy" className="hover:text-white transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">Privacy Policy</Link></li>
             </ul>
           </div>
         </div>
@@ -85,19 +93,20 @@ const Footer: React.FC = () => {
           <p className="text-text-secondary text-xs uppercase tracking-[0.4em] font-mono">
             © 2026 JCE Media. Engineered for Growth.
           </p>
+          {/* Only profiles that actually exist are rendered — see SOCIAL_LINKS. */}
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary hover:bg-accent hover:text-white hover:border-accent transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background" aria-label="Follow us on LinkedIn">
-              <Linkedin size={20} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary hover:bg-accent hover:text-white hover:border-accent transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background" aria-label="Follow us on Twitter">
-              <Twitter size={20} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary hover:bg-accent hover:text-white hover:border-accent transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background" aria-label="Follow us on Instagram">
-              <Instagram size={20} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary hover:bg-accent hover:text-white hover:border-accent transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background" aria-label="Follow us on Facebook">
-              <Facebook size={20} />
-            </a>
+            {SOCIAL_LINKS.map((social) => (
+              <a
+                key={social.icon}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary hover:bg-accent hover:text-white hover:border-accent transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                aria-label={social.label}
+              >
+                {SOCIAL_ICONS[social.icon]}
+              </a>
+            ))}
           </div>
         </div>
       </div>
