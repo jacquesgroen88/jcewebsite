@@ -59,6 +59,12 @@ export interface WorkItem {
   /** Present tense for live retainers, past for finished engagements. */
   status: 'Active' | 'Delivered' | 'Completed engagement';
   region: 'ZA' | 'UK' | 'US';
+  /**
+   * Public social profiles for ventures we run ourselves. Shown so a prospect
+   * asking "do you actually do social?" can go and look, rather than take our
+   * word for it. Client work never carries these — those channels are theirs.
+   */
+  socials?: { label: string; href: string }[];
 }
 
 export interface SocialLink {

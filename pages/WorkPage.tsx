@@ -40,15 +40,30 @@ const WorkCard: React.FC<{ item: WorkItem }> = ({ item }) => (
       ))}
     </ul>
 
-    <a
-      href={item.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-white transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
-    >
-      {item.urlLabel}
-      <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-    </a>
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-white transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+      >
+        {item.urlLabel}
+        <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+      </a>
+
+      {/* Only our own ventures carry these — a client's channels are theirs. */}
+      {item.socials?.map((s) => (
+        <a
+          key={s.href}
+          href={s.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-mono uppercase tracking-widest text-text-secondary hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+        >
+          {s.label}
+        </a>
+      ))}
+    </div>
   </Card>
 );
 

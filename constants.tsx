@@ -327,6 +327,10 @@ export const WORK: WorkItem[] = [
     urlLabel: 'reviewtap.co.za',
     status: 'Active',
     region: 'ZA',
+    socials: [
+      { label: 'Instagram', href: 'https://www.instagram.com/review_tap/' },
+      { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61572881828237' },
+    ],
   },
   {
     id: 'w-mfb',
@@ -344,6 +348,10 @@ export const WORK: WorkItem[] = [
     urlLabel: 'myforeverbaby.co.za',
     status: 'Active',
     region: 'ZA',
+    socials: [
+      { label: 'Instagram', href: 'https://www.instagram.com/myforeverbaby.co.za/' },
+      { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61577330363527' },
+    ],
   },
   {
     id: 'w-inspiringwomen',
