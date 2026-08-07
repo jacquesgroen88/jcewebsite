@@ -262,7 +262,7 @@ export const WORK: WorkItem[] = [
     id: 'w-threezero',
     name: 'ThreeZero Cape Quarter',
     kind: 'client',
-    sector: 'Hospitality — Cape Town',
+    sector: 'Fitness studio — Green Point, Cape Town',
     summary: 'Website redesign plus the ads and reputation systems running behind it.',
     scope: [
       'WordPress site redesign and rebuild',
