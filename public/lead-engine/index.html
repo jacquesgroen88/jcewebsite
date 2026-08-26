@@ -418,6 +418,15 @@
   .honesty b{color:#fff}
   .guarantee{background:linear-gradient(160deg,#0c1526,#0a0f1c);border:1px solid rgba(59,130,246,.35)}
 
+  /* deep-dive teaser */
+  .deep-link{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:var(--s2);border:1px solid var(--line);border-radius:22px;padding:30px 36px;margin-top:20px;text-decoration:none;transition:border-color .2s,transform .2s}
+  .deep-link:hover{border-color:rgba(59,130,246,.45);transform:translateY(-3px)}
+  .deep-link .txt h3{font-size:19px;color:#fff;margin-bottom:5px}
+  .deep-link .txt p{font-size:14px;color:var(--muted)}
+  .deep-link .go{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:14.5px;color:var(--blue2);white-space:nowrap}
+  .deep-link:hover .go .arr{transform:translateX(4px)}
+  .deep-link .go .arr{transition:transform .2s}
+
   /* faq */
   .faq-item{background:var(--s2);border:1px solid var(--line);border-radius:16px;padding:6px 28px;margin-bottom:13px;transition:border-color .2s}
   .faq-item:hover{border-color:var(--line2)}
@@ -526,6 +535,7 @@
       <a href="#journey">How it works</a>
       <a href="#principal">For principals</a>
       <a href="#offer">The offer</a>
+      <a href="/lead-engine/inside/">Inside the engine</a>
       <a class="btn btn-nav" href="#book">Book a walkthrough</a>
     </div>
   </div>
@@ -1056,6 +1066,13 @@
         <p>No outcome theatre. No uncapped promises. A measured decision, on your own numbers.</p>
       </div>
     </div>
+    <a class="deep-link rv" href="/lead-engine/inside/">
+      <span class="txt">
+        <h3>Still weighing it up? Open the hood.</h3>
+        <p>Inside the Lead Engine: all six layers explained in detail, the escalation rules, the exact 90-day measurement, and the hard questions sharp principals ask.</p>
+      </span>
+      <span class="go">Read the deep dive <span class="arr" aria-hidden="true">→</span></span>
+    </a>
   </div>
 </section>
 
@@ -1137,7 +1154,7 @@
 
 <footer>
   <div class="wrap">
-    <span>The Lead Engine is built and run by <a href="https://jcemedia.com">JCE Media</a> · <a href="mailto:jacques@jcemedia.com">jacques@jcemedia.com</a></span>
+    <span>The Lead Engine is built and run by <a href="https://jcemedia.com">JCE Media</a> · <a href="mailto:jacques@jcemedia.com">jacques@jcemedia.com</a> · <a href="/lead-engine/inside/">Inside the engine</a></span>
     <span>Audit findings cited on this page come from live audits of South African estate agencies, dated and on file. Names withheld out of courtesy, not convenience.</span>
     <span>Conversation, report and interface previews are illustrative. Response-time research: InsideSales.com / MIT lead response studies.</span>
   </div>
