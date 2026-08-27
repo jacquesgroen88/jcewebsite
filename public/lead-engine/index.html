@@ -34,10 +34,6 @@
   ::selection{background:rgba(59,130,246,.35)}
   :focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:6px}
 
-  /* film grain, matching jcemedia.com */
-  .grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:999;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 9s steps(10) infinite}
-  @keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-2%)}80%{transform:translate(3%,3%)}}
-
   /* reveal system */
   .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.65,.25,1),transform .7s cubic-bezier(.2,.65,.25,1)}
   .rv.in{opacity:1;transform:none}
@@ -473,7 +469,6 @@
     .rv,.msg,.wa-result{opacity:1!important;transform:none!important}
     .hero h1 .w>span{transform:none;animation:none}
     .in .viz-rev .them i{width:92%}.in .viz-rev .you i{width:9%}
-    .grain{display:none}
   }
 
   @media(max-width:1000px){
@@ -521,7 +516,6 @@
 </style>
 </head>
 <body>
-<div class="grain" aria-hidden="true"></div>
 
 <nav aria-label="Main navigation">
   <div class="wrap">
