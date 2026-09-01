@@ -190,6 +190,13 @@
   .viz-flat .tag{position:absolute;top:14px;right:0;background:#101010;border:1px solid rgba(248,113,113,.35);color:#f87171;font-size:9.5px;font-weight:700;padding:3px 9px;border-radius:9999px}
   .viz-flat .draw{stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.6s ease-out .3s}
   .in .viz-flat .draw{stroke-dashoffset:0}
+  /* photo band */
+  .photo-band{position:relative;border-radius:26px;overflow:hidden;margin-top:52px;min-height:340px;display:flex;align-items:flex-end;border:1px solid var(--line2)}
+  .photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(35%) brightness(.72)}
+  .photo-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.05) 15%,rgba(10,10,10,.9) 90%),linear-gradient(90deg,rgba(9,13,24,.55),transparent 65%)}
+  .photo-band .txt{position:relative;z-index:2;padding:46px 50px;max-width:660px}
+  .photo-band .txt h3{font-size:clamp(22px,2.6vw,30px);margin-bottom:10px}
+  .photo-band .txt p{font-size:15.5px;color:#cfcfcf}
   .story{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:var(--s2);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:var(--r);padding:30px 34px;margin-top:26px}
   .story .qmark{width:52px;height:52px;border-radius:16px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .story p{font-size:17px;color:var(--muted)}
@@ -353,6 +360,7 @@
   .maths h3{font-size:24px;margin-bottom:6px}
   .maths .msub{font-size:14.5px;color:var(--muted);margin-bottom:34px}
   .mo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-bottom:18px;position:relative}
+  .mo-grid.three{grid-template-columns:repeat(3,1fr)}
   .mo-step{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:18px;padding:22px 20px;position:relative;transition:border-color .2s,transform .2s}
   .mo-step:hover{border-color:rgba(96,165,250,.4);transform:translateY(-3px)}
   .mo-step .chip{display:inline-flex;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#93c5fd;background:rgba(59,130,246,.13);border:1px solid rgba(59,130,246,.28);border-radius:9999px;padding:4.5px 12px;margin-bottom:14px}
@@ -435,7 +443,9 @@
   /* final + form */
   .final-sec{padding-bottom:100px}
   .final{border-radius:30px;padding:70px 60px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0c1526,#090d18);border:1px solid rgba(59,130,246,.3);display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  .final::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(96,165,250,.9),transparent)}
+  .final::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(96,165,250,.9),transparent);z-index:3}
+  .final .final-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.14;filter:grayscale(30%)}
+  .final>div{position:relative;z-index:2}
   .final h2{margin-bottom:16px;font-size:clamp(29px,3.6vw,42px)}
   .final .p{font-size:17px;color:var(--muted);margin-bottom:26px}
   .final .p b{color:#fff}
@@ -485,7 +495,7 @@
     .pv-left{border-right:none;border-bottom:1px solid var(--line)}
     .offer-block{grid-template-columns:1fr}
     .ob-price{border-right:none;border-bottom:1px solid var(--line)}
-    .mo-grid{grid-template-columns:1fr 1fr;gap:16px}
+    .mo-grid,.mo-grid.three{grid-template-columns:1fr 1fr;gap:16px}
     .mo-step:not(:last-child)::after{display:none}
     .calc-body{grid-template-columns:1fr;gap:32px}
     .final{grid-template-columns:1fr;padding:52px 36px}
@@ -501,7 +511,9 @@
     .story{grid-template-columns:1fr}
     .ob-cols{grid-template-columns:1fr}
     .maths{padding:32px 24px 28px}
-    .mo-grid{grid-template-columns:1fr;gap:12px;padding-left:24px}
+    .mo-grid,.mo-grid.three{grid-template-columns:1fr;gap:12px;padding-left:24px}
+    .photo-band{min-height:300px}
+    .photo-band .txt{padding:28px 24px}
     .mo-grid::before{content:"";position:absolute;left:5px;top:12px;bottom:12px;width:2px;background:linear-gradient(180deg,#2563eb,#60a5fa);opacity:.45}
     .mo-step::before{content:"";position:absolute;left:-24px;top:25px;width:12px;height:12px;border-radius:50%;background:var(--blue2);box-shadow:0 0 0 4px rgba(59,130,246,.16)}
     .mo-step:hover{transform:none}
@@ -687,6 +699,13 @@
       <div class="qmark" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12" y2="17"/></svg></div>
       <p><b>Here's the uncomfortable part: not one of these owners knew.</b> The portals report leads sent. The agents report deals closed. The gap in between, the first five minutes where the buyer picks who they'll work with, belongs to nobody. <b>That gap is what we build for.</b></p>
     </div>
+    <div class="photo-band rv">
+      <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1600&q=70&auto=format&fit=crop" alt="An estate agent handing over house keys in front of a sold property" width="1600" height="1067" loading="lazy">
+      <div class="txt">
+        <h3>Somewhere in your town tonight, a buyer is messaging three agencies.</h3>
+        <p>The one that answers first gets the viewing, and usually the sale. That race is run after hours, on weekends, while everyone is asleep. The Lead Engine is how you win it without anyone losing sleep.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -735,7 +754,7 @@
       <div class="j-line" aria-hidden="true"></div>
       <div class="j-step"><span class="num" aria-hidden="true">1</span><span class="tm">SAT 22:47:12</span><h3>Enquiry lands</h3><p>Buyer taps the WhatsApp button on your Property24 listing. On a Saturday night, naturally.</p></div>
       <div class="j-step"><span class="num" aria-hidden="true">2</span><span class="tm">SAT 22:47:50</span><h3>Engine replies</h3><p>38 seconds later. Warm, specific to the listing, and asking the first qualifying question.</p></div>
-      <div class="j-step"><span class="num" aria-hidden="true">3</span><span class="tm">SAT 22:50</span><h3>Buyer qualified</h3><p>Budget, timeline, finance status and motive, gathered in chat. No form, no friction.</p></div>
+      <div class="j-step"><span class="num" aria-hidden="true">3</span><span class="tm">SAT 22:50</span><h3>Buyer qualified</h3><p>Budget, timeline, finance status and motive, all gathered in the chat itself. The buyer never sees a form.</p></div>
       <div class="j-step"><span class="num" aria-hidden="true">4</span><span class="tm">SAT 22:51</span><h3>Viewing booked</h3><p>Sunday 10:00, written into the area specialist's diary, confirmation and reminder scheduled.</p></div>
       <div class="j-step"><span class="num" aria-hidden="true">5</span><span class="tm">SUN 08:30</span><h3>Agent takes over</h3><p>Danie wakes up to a qualified, confirmed appointment with the full conversation attached.</p></div>
     </div>
@@ -746,7 +765,7 @@
   <div class="wrap">
     <p class="kicker rv">The difference, side by side</p>
     <h2 class="rv" data-d="1">Same agency. Same leads. Different machine.</h2>
-    <p class="lede rv" data-d="2" style="margin-bottom:38px">Nothing on the left is a criticism. It is simply what happens when a growing agency runs its lead flow on handsets and memory.</p>
+    <p class="lede rv" data-d="2" style="margin-bottom:38px">The left column isn't a dig at anyone. It's just what a growing agency looks like when its lead flow runs on handsets and memory.</p>
     <div class="versus">
       <div class="vs-col before rv">
         <h3><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Without the engine</h3>
@@ -899,7 +918,7 @@
   <div class="wrap">
     <p class="kicker rv">The offer, in full</p>
     <h2 class="rv" data-d="1">Three steps. Every rand accounted for.<br>Nothing bought on faith.</h2>
-    <p class="lede rv" data-d="2">We don't ask you to buy a system off a demo. We ask you to buy <b>two weeks of evidence about your own agency</b>, and every decision after that is made on your numbers, not our promises. Here is exactly what each step costs, what happens inside it, and what you walk away with.</p>
+    <p class="lede rv" data-d="2">Nobody should buy a system off a demo. Start with <b>two weeks of evidence about your own agency</b>, then decide with your own numbers in front of you. Here's what each step is, what happens inside it, and what you walk away with.</p>
 
     <div class="offer-block rv">
       <div class="ob-price">
@@ -927,8 +946,8 @@
       <div class="ob-price">
         <span class="step">Step 2 · Weeks 3 to 5</span>
         <h3>The Pilot Office</h3>
-        <div class="amount">R12,500<span>/month</span></div>
-        <p class="terms">Plus R10,000 once-off setup, <b>less your R9,500 credit, so R500</b>. First month billed at go-live, month to month after the 90-day mark.</p>
+        <div class="amount"><span style="display:block;font-size:15px;color:var(--muted);font-weight:500;margin-bottom:5px">from</span>R9,500<span>/month</span></div>
+        <p class="terms">Managed, all-in, with your <b>R9,500 diagnostic credited in full</b> against the once-off setup. Your exact number goes in writing at the walkthrough, before anything is built. Month to month after the 90-day mark.</p>
         <div class="badge"><span>90-day stop button</span></div>
       </div>
       <div class="ob-detail">
@@ -943,7 +962,7 @@
           <div class="ob-item"><span class="ok" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Personalised onboarding, agent by agent, plus ongoing support and training</div>
           <div class="ob-item"><span class="ok" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Monthly Owner Report: agent league, source performance, second-contact rate</div>
         </div>
-        <p class="ob-foot"><b>Who runs it:</b> we do. This is a managed system, not software handed over with a manual. Tuning the engine's conversations, watching the queues, assembling the report: that is our job, every month, and it is what the monthly fee buys.</p>
+        <p class="ob-foot"><b>Who runs it:</b> we do. You never get handed software and a manual. Tuning the engine's conversations, watching the queues, assembling the report: that's our job, every month, and it's what the monthly fee buys.</p>
       </div>
     </div>
 
@@ -951,8 +970,8 @@
       <div class="ob-price">
         <span class="step">Step 3 · On the pilot's evidence</span>
         <h3>Each Additional Office</h3>
-        <div class="amount">R9,500<span>/month</span></div>
-        <p class="terms">Plus R7,500 once-off setup per office, <b>billed only as that office goes live</b>, never up front.</p>
+        <div class="amount" style="font-size:27px;line-height:1.2">Cheaper than<br>office one</div>
+        <p class="terms">Each office inherits the pilot's build, so it <b>comes in below the office before it</b>. Setup bills only as that office goes live, never up front.</p>
         <div class="badge"><span>Cheaper per office as you grow</span></div>
       </div>
       <div class="ob-detail">
@@ -963,29 +982,28 @@
           <div class="ob-item"><span class="ok" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything rolls up into one owner view across all offices</div>
           <div class="ob-item"><span class="ok" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Added one at a time, each on the previous office's evidence, never as a bundle you regret</div>
         </div>
-        <p class="ob-foot"><b>For the group principals:</b> three offices at full run rate is R31,500 a month all-in. The per-office price falls as you add offices, which is the one sentence that survives a family boardroom.</p>
+        <p class="ob-foot"><b>For the group principals:</b> the per-office price falls as you add offices, which is the one sentence that survives a family boardroom.</p>
       </div>
     </div>
 
     <div class="maths rv">
-      <h3>Month one, in actual rands</h3>
-      <p class="msub">Four moments where money moves, and not one of them is a surprise.</p>
-      <div class="mo-grid">
-        <div class="mo-step"><span class="chip">Day 0</span><span class="amt">R9,500</span><p>Diagnostic starts. The only cheque you write before seeing evidence.</p></div>
-        <div class="mo-step"><span class="chip">Day 14</span><span class="amt">R0 <small>decision day</small></span><p>Findings on the table. You decide: stop here and keep the report, or build.</p></div>
-        <div class="mo-step"><span class="chip">On build</span><span class="amt">R500</span><p>Setup balance: R10,000 less your R9,500 diagnostic credit.</p></div>
-        <div class="mo-step"><span class="chip">Go-live</span><span class="amt">R12,500</span><p>First month of the managed engine begins.</p></div>
+      <h3>How the money works</h3>
+      <p class="msub">One cheque before you've seen evidence, then a monthly fee you can walk away from once it stops earning its keep.</p>
+      <div class="mo-grid three">
+        <div class="mo-step"><span class="chip">Day 0</span><span class="amt">R9,500</span><p>The diagnostic. The only money that moves before the evidence is on the table.</p></div>
+        <div class="mo-step"><span class="chip">Day 14</span><span class="amt">R0 <small>decision day</small></span><p>Stop here and keep the report, or build, and the R9,500 comes off your setup in full.</p></div>
+        <div class="mo-step"><span class="chip">Go-live</span><span class="amt"><small>from </small>R9,500<small>/mo</small></span><p>The managed engine runs. Your exact number is in writing before we build a thing.</p></div>
       </div>
       <div class="mo-total">
-        <div class="lft"><span class="d">Month one, all-in</span><span class="a">R22,500</span></div>
-        <div class="rgt"><b>Then R12,500 a month.</b> No annual contract, month to month after the day-90 review. Additional offices only ever bill as they go live.</div>
+        <div class="lft"><span class="d">The engine, ongoing</span><span class="a">from R9,500<span style="font-size:17px">/mo</span></span></div>
+        <div class="rgt"><b>No annual contract.</b> Month to month after the day-90 review, and each additional office comes in cheaper than the first, billed only as it goes live.</div>
       </div>
     </div>
 
     <div class="calc rv" id="calculator">
       <div class="calc-head">
         <h3>What are the missed ones costing you?</h3>
-        <p>Drag the sliders to your agency's numbers. <b>These are your inputs, not our claims</b>, and the assumption behind the result is printed under it.</p>
+        <p>Drag the sliders to your agency's numbers. <b>You set the inputs.</b> The one assumption we make is printed under the result, where it belongs.</p>
       </div>
       <div class="calc-body">
         <div class="calc-inputs">
@@ -1011,9 +1029,9 @@
           <p class="bigsub">per year, from enquiries you already paid the portals for</p>
           <div class="co-row"><span>At-risk enquiries per year</span><span class="v" id="o-risk">576</span></div>
           <div class="co-row"><span>Extra sales, if the engine converts just 1 in 50 of them</span><span class="v" id="o-sales">≈ 12</span></div>
-          <div class="co-row"><span>Lead Engine cost, year one, one office</span><span class="v">R160,000</span></div>
-          <div class="co-row"><span>Return on the engine</span><span class="v good" id="o-roi">4.3× </span></div>
-          <div class="co-row"><span>Months one sale's commission covers</span><span class="v" id="o-months">4.8</span></div>
+          <div class="co-row"><span>The Lead Engine, one office</span><span class="v">from R9,500/mo</span></div>
+          <div class="co-row"><span>Return, measured against the from-price</span><span class="v good" id="o-roi">6.1×</span></div>
+          <div class="co-row"><span>Months one sale's commission covers</span><span class="v" id="o-months">6.3</span></div>
           <p class="calc-note"><b>The assumption, in plain sight:</b> we only count the enquiries you're already missing, and we assume the engine turns just 1 in 50 of those into a sale. Everything the engine does for the enquiries you already answer well is left out of this number on purpose.</p>
         </div>
       </div>
@@ -1041,11 +1059,11 @@
           <li>Custom reporting beyond the Owner Report</li>
         </ul>
       </div>
-      <div class="scope-note rv">The boundary is the point: <b>a bounded scope protects you from surprise invoices and us from unpaid scope creep.</b> Anything outside the left column is quoted in writing before it is built, always.</div>
+      <div class="scope-note rv">The boundary is the point: <b>a bounded scope protects you from surprise invoices and us from unpaid scope creep.</b> Anything outside the left column gets quoted in writing before we build it.</div>
     </div>
 
     <div class="anchor-box rv">
-      <b>Put it against something real:</b> for a ten-agent office, R12,500 a month is R1,250 per agent. One saved mandate, one buyer who would have gone cold on a Saturday night, pays for the year. And the first office pays for a build the others inherit, so <b>it gets cheaper per office as you grow</b>. That is not a discount. It is the honest shape of the work.
+      <b>Put it against something real:</b> for a ten-agent office, the engine starts under R1,000 per agent per month. One saved mandate, one buyer who would have gone cold on a Saturday night, covers the year. And because the first office pays for a build the others inherit, <b>it gets cheaper per office as you grow</b>. That's the honest shape of the work, priced the way the work actually happens.
     </div>
   </div>
 </section>
@@ -1063,7 +1081,7 @@
         <h3>The 90-day stop button</h3>
         <p>On day one we baseline three numbers: <b>median first-reply time, share of enquiries qualified before agent contact, and enquiries getting a second touch.</b></p>
         <p>At day ninety we put the same three numbers in front of you. <b>If fewer than two have improved, you stop, and you keep everything that was built.</b></p>
-        <p>No outcome theatre. No uncapped promises. A measured decision, on your own numbers.</p>
+        <p>We'd rather give you a measured decision point than a big promise with no cap on it. Your own numbers make the call.</p>
       </div>
     </div>
     <a class="deep-link rv" href="/lead-engine/inside/">
@@ -1094,7 +1112,7 @@
     </details>
     <details class="faq-item rv">
       <summary>Will the replies sound like a robot?</summary>
-      <div class="a">Read the conversation at the top of this page again. That is the standard: warm, specific to the listing, and asking useful questions. The engine is trained on your areas, your stock and your tone during the build, and we review real conversations with you in the first weeks and tune it. You approve the voice before it ever speaks to a buyer.</div>
+      <div class="a">Read the conversation at the top of this page again. That's the standard: warm, specific to the listing, asking useful questions. During the build we train the engine on your areas and your tone, then sit with you in the first weeks reviewing real conversations and tuning it. You approve the voice before it ever speaks to a buyer.</div>
     </details>
     <details class="faq-item rv">
       <summary>Do you work with our competitors?</summary>
@@ -1102,7 +1120,7 @@
     </details>
     <details class="faq-item rv">
       <summary>Is this POPIA-safe?</summary>
-      <div class="a">Materially safer than the status quo. Consent is captured at the point the buyer enquires, data lives in one system the agency controls instead of scattered across personal handsets, and every conversation is on the record. For most agencies this is the first time their lead data would survive an audit.</div>
+      <div class="a">Safer than what most agencies are doing now, honestly. Consent gets captured the moment the buyer enquires, the data lives in one system the agency controls instead of scattered across personal handsets, and every conversation is on the record. For most agencies this is the first time their lead data would survive an audit.</div>
     </details>
     <details class="faq-item rv">
       <summary>What happens if we stop?</summary>
@@ -1114,6 +1132,7 @@
 <section id="book" class="final-sec" style="padding-top:0">
   <div class="wrap">
     <div class="final rv">
+      <img class="final-bg" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=70&auto=format&fit=crop" alt="" aria-hidden="true" width="1600" height="1066" loading="lazy">
       <div>
         <h2>Find out what happened to last Saturday's leads.</h2>
         <p class="p">Book a 20-minute walkthrough. We'll open one of your live listings together on the call, and you'll watch your own enquiry path <b>the way a buyer experiences it</b>. Most principals don't enjoy that moment. All of them are glad they saw it.</p>
@@ -1258,7 +1277,7 @@
   var enq = document.getElementById('c-enq');
   if (enq) {
     var risk = document.getElementById('c-risk'), comm = document.getElementById('c-comm');
-    var COST_Y1 = 160000, MONTHLY = 12500, SAVE = 0.02;
+    var COST_Y1 = 114000, MONTHLY = 9500, SAVE = 0.02;
     function fmtR(n){ return 'R' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
     function fill(el){
       var p = (el.value - el.min) / (el.max - el.min) * 100;

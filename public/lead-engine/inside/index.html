@@ -141,7 +141,16 @@
   /* final */
   .final-sec{padding:20px 0 100px}
   .final{border-radius:30px;padding:64px 60px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0c1526,#090d18);border:1px solid rgba(59,130,246,.3);display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  .final::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(96,165,250,.9),transparent)}
+  .final::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(96,165,250,.9),transparent);z-index:3}
+  .final .final-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.14;filter:grayscale(30%)}
+  .final>div{position:relative;z-index:2}
+  .photo-band{position:relative;border-radius:26px;overflow:hidden;margin:8px 0 0;min-height:320px;display:flex;align-items:flex-end;border:1px solid var(--line2)}
+  .photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(35%) brightness(.72)}
+  .photo-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.05) 15%,rgba(10,10,10,.9) 90%),linear-gradient(90deg,rgba(9,13,24,.55),transparent 65%)}
+  .photo-band .txt{position:relative;z-index:2;padding:44px 48px;max-width:680px}
+  .photo-band .txt h3{font-size:clamp(21px,2.5vw,28px);margin-bottom:10px}
+  .photo-band .txt p{font-size:15px;color:#cfcfcf}
+  @media(max-width:760px){.photo-band{min-height:290px}.photo-band .txt{padding:26px 22px}}
   .final h2{margin-bottom:16px;font-size:clamp(28px,3.4vw,40px)}
   .final .p{font-size:17px;color:var(--muted);margin-bottom:26px}
   .final .p b{color:#fff}
@@ -358,6 +367,16 @@
   </div>
 </div>
 
+<div class="wrap">
+  <div class="photo-band rv">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=70&auto=format&fit=crop" alt="A modern South African home at dusk with its lights on" width="1600" height="1067" loading="lazy">
+    <div class="txt">
+      <h3>You've now seen more of this engine than most owners ever see of their own lead flow.</h3>
+      <p>That's the point. Every layer above is inspectable, measured and on the record. Bring the hard questions below to the walkthrough; they're the ones we enjoy.</p>
+    </div>
+  </div>
+</div>
+
 <section class="obj-sec" id="objections">
   <div class="wrap">
     <p class="kicker rv">The hard questions</p>
@@ -369,7 +388,7 @@
     </details>
     <details class="faq-item rv">
       <summary>Why not just hire an admin or an inside-sales person instead?</summary>
-      <div class="a">Hire one if you can find one who works Saturday 22:47, never takes leave, answers eight channels at once, writes everything down, and costs R12,500 a month all-in. The honest comparison: a person does empathy and judgement better; the engine does speed, coverage and record-keeping better. <b>Most agencies need the second list fixed first</b>, and the engine hands your existing people better mornings rather than replacing anyone.</div>
+      <div class="a">Hire one if you can find one who works Saturday 22:47, never takes leave, answers eight channels at once, writes everything down, and costs from R9,500 a month all-in. The honest comparison: a person does empathy and judgement better; the engine does speed, coverage and record-keeping better. <b>Most agencies need the second list fixed first</b>, and the engine hands your existing people better mornings rather than replacing anyone.</div>
     </details>
     <details class="faq-item rv">
       <summary>Our franchise head office mandates a CRM. Does this clash?</summary>
@@ -397,6 +416,7 @@
 <section id="book" class="final-sec">
   <div class="wrap">
     <div class="final rv">
+      <img class="final-bg" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=70&auto=format&fit=crop" alt="" aria-hidden="true" width="1600" height="1066" loading="lazy">
       <div>
         <h2>Convinced enough for twenty minutes?</h2>
         <p class="p">The walkthrough is the layers on this page, live, on <b>your own listings</b>. We open one together and you watch your current enquiry path the way a buyer experiences it. Then you decide about the diagnostic.</p>
