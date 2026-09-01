@@ -43,9 +43,9 @@
 
   /* ---------- nav ---------- */
   nav{position:sticky;top:0;z-index:100;background:rgba(10,17,32,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:background .3s}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
   .logo{display:flex;align-items:center;text-decoration:none}
-  .logo img{height:46px;width:auto;display:block}
+  .logo img{height:55px;width:auto;display:block}
   .nav-links{display:flex;gap:30px;align-items:center}
   .nav-links a:not(.btn){color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;position:relative;padding:4px 0;transition:color .2s}
   .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1.5px;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .3s cubic-bezier(.2,.65,.25,1)}
@@ -228,17 +228,6 @@
   .conn{position:absolute;top:50%;width:34px;height:2px;background-image:linear-gradient(90deg,var(--blue) 55%,transparent 45%);background-size:8px 2px;animation:dash 1s linear infinite}
   @keyframes dash{to{background-position:8px 0}}
   .conn.l{left:0}.conn.r{right:0}
-
-  /* journey */
-  .j-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative}
-  .j-line{position:absolute;top:23px;left:6%;right:6%;height:2px;background:linear-gradient(90deg,#b88a2a,#e8be61);transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.2,.65,.25,1) .2s;opacity:.5}
-  .in .j-line{transform:scaleX(1)}
-  .j-step{position:relative;background:var(--s2);border:1px solid var(--line);border-radius:16px;padding:52px 18px 20px;transition:border-color .2s}
-  .j-step:hover{border-color:rgba(212,169,65,.4)}
-  .j-step .num{position:absolute;top:-1px;left:50%;transform:translate(-50%,-40%);width:46px;height:46px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;box-shadow:0 8px 22px rgba(184,138,42,.45);border:3px solid var(--bg)}
-  .j-step .tm{display:block;text-align:center;font-size:11.5px;font-weight:700;color:var(--blue2);letter-spacing:.05em;margin-bottom:8px;font-variant-numeric:tabular-nums}
-  .j-step h3{font-size:15.5px;text-align:center;margin-bottom:7px}
-  .j-step p{font-size:12.8px;color:var(--muted);text-align:center}
 
   /* versus */
   .versus{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -487,8 +476,6 @@
     .flow{grid-template-columns:1fr}
     .flow-mid{padding:26px 0}
     .conn{display:none}
-    .j-grid{grid-template-columns:1fr 1fr;gap:34px 14px}
-    .j-line{display:none}
     .report-sec .wrap{grid-template-columns:1fr;gap:44px}
     .pv-body{grid-template-columns:1fr}
     .pv-left{border-right:none;border-bottom:1px solid var(--line)}
@@ -506,7 +493,6 @@
     .versus{grid-template-columns:1fr}
     .duo{grid-template-columns:1fr}
     .float-tag{display:none}
-    .j-grid{grid-template-columns:1fr}
     .story{grid-template-columns:1fr}
     .ob-cols{grid-template-columns:1fr}
     .maths{padding:32px 24px 28px}
@@ -525,8 +511,8 @@
     .br-user{display:none}
   }
   @media(max-width:560px){
-    nav .wrap{height:60px}
-    .logo img{height:36px!important}
+    nav .wrap{height:66px}
+    .logo img{height:43px!important}
     .btn-nav{padding:9px 16px;font-size:13px}
   }
 </style>
@@ -536,15 +522,14 @@
 <nav aria-label="Main navigation">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Real Estate Hero home">
-      <img src="assets/rh-logo-onDark.png" alt="Real Estate Hero" width="760" height="253" style="height:46px;width:auto">
+      <img src="assets/rh-logo-onDark.png" alt="Real Estate Hero" width="760" height="253" style="height:55px;width:auto">
     </a>
     <div class="nav-links">
-      <a href="#channels">Channels</a>
-      <a href="#journey">How it works</a>
+      <a href="#channels">How it works</a>
       <a href="#principal">For principals</a>
       <a href="#offer">The offer</a>
       <a href="/lead-engine/inside/">Inside the engine</a>
-      <a class="btn btn-nav" href="#book">Book a walkthrough</a>
+      <a class="btn btn-nav" href="#book">Test my lead response</a>
     </div>
   </div>
 </nav>
@@ -554,9 +539,9 @@
     <div>
       <div class="eyebrow rv in"><span class="dot" aria-hidden="true"></span>Built for SA agency principals</div>
       <h1 id="hline" aria-label="The enquiry came in at 22:47 on a Saturday. So did the reply.">The enquiry came in at <span class="time">22:47</span> on a Saturday. So did the reply.</h1>
-      <p class="sub rv" data-d="3"><b>Real Estate Hero is the 24/7 lead management system for South African estate agencies.</b> It answers every enquiry from every portal and channel in under a minute, qualifies the buyer, books the viewing, and hands your agent a warm client with the homework done. Then it shows you exactly who did what with it.</p>
+      <p class="sub rv" data-d="3"><b>Real Estate Hero is the 24/7 lead management system for South African estate agencies.</b> It answers every enquiry in under a minute, qualifies the buyer, books the viewing, and hands your agent a warm client. Then it shows you exactly who did what with it.</p>
       <div class="hero-ctas rv" data-d="4">
-        <a class="btn btn-cta magnetic" href="#book">Book a 20-minute walkthrough <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-cta magnetic" href="#book">Test My Agency's Lead Response <span class="arr" aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="#offer">See the full offer</a>
       </div>
       <p class="hero-note rv" data-d="5">Starts with a <b>R9,500 diagnostic, credited in full</b>. Walk away after it and keep everything we found.</p>
@@ -624,7 +609,7 @@
   <div class="wrap">
     <p class="kicker rv">The part nobody sees</p>
     <h2 class="rv" data-d="1">Portals don't lose your leads.<br>Phones do.</h2>
-    <p class="lede rv" data-d="2">We audit estate agencies for a living, reading their enquiry paths live, the way a buyer experiences them. Four findings come back so often we can predict them before we open the site. <b>From real audits of multi-office South African agencies:</b></p>
+    <p class="lede rv" data-d="2">We audit estate agencies for a living. Four findings come back so often we can predict them before we open the site. <b>From real audits of multi-office South African agencies:</b></p>
     <div class="findings">
       <div class="finding rv" data-d="1">
         <div class="viz" aria-hidden="true">
@@ -741,23 +726,7 @@
   </div>
 </section>
 
-<section id="journey">
-  <div class="wrap">
-    <p class="kicker rv">How a lead actually moves</p>
-    <h2 class="rv" data-d="1">From Property24 to a booked viewing in three minutes.</h2>
-    <p class="lede rv" data-d="2">This is the conversation from the phone above, as your systems record it. <b>No agent was awake. None needed to be.</b></p>
-    <div class="j-grid rv">
-      <div class="j-line" aria-hidden="true"></div>
-      <div class="j-step"><span class="num" aria-hidden="true">1</span><span class="tm">SAT 22:47:12</span><h3>Enquiry lands</h3><p>Buyer taps the WhatsApp button on your Property24 listing. On a Saturday night, naturally.</p></div>
-      <div class="j-step"><span class="num" aria-hidden="true">2</span><span class="tm">SAT 22:47:50</span><h3>Engine replies</h3><p>38 seconds later. Warm, specific to the listing, and asking the first qualifying question.</p></div>
-      <div class="j-step"><span class="num" aria-hidden="true">3</span><span class="tm">SAT 22:50</span><h3>Buyer qualified</h3><p>Budget, timeline, finance status and motive, all gathered in the chat itself. The buyer never sees a form.</p></div>
-      <div class="j-step"><span class="num" aria-hidden="true">4</span><span class="tm">SAT 22:51</span><h3>Viewing booked</h3><p>Sunday 10:00, written into the area specialist's diary, confirmation and reminder scheduled.</p></div>
-      <div class="j-step"><span class="num" aria-hidden="true">5</span><span class="tm">SUN 08:30</span><h3>Agent takes over</h3><p>Danie wakes up to a qualified, confirmed appointment with the full conversation attached.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="versus" style="padding-top:0">
+<section id="versus">
   <div class="wrap">
     <p class="kicker rv">The difference, side by side</p>
     <h2 class="rv" data-d="1">Same agency. Same leads. Different machine.</h2>
@@ -914,7 +883,7 @@
   <div class="wrap">
     <p class="kicker rv">The offer, in full</p>
     <h2 class="rv" data-d="1">Three steps. Every rand accounted for.<br>Nothing bought on faith.</h2>
-    <p class="lede rv" data-d="2">Nobody should buy a system off a demo. Start with <b>two weeks of evidence about your own agency</b>, then decide with your own numbers in front of you. Here's what each step is, what happens inside it, and what you walk away with.</p>
+    <p class="lede rv" data-d="2">Nobody should buy a system off a demo. Start with <b>two weeks of evidence about your own agency</b>, then decide with your own numbers in front of you.</p>
 
     <div class="offer-block rv">
       <div class="ob-price">
@@ -934,7 +903,7 @@
           <div class="ob-item"><span class="ok" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#e8be61" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Tracking and analytics health check: what's measured, what's been dead for years</div>
           <div class="ob-item"><span class="ok" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#e8be61" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>A written findings report with the four numbers your agency runs on, sourced and dated</div>
         </div>
-        <p class="ob-foot"><b>You walk away with:</b> the findings report, yours to keep and act on with anyone, even if we never speak again. It also doubles as your day-one baseline, so the engine's impact gets measured against recorded numbers rather than anyone's memory.</p>
+        <p class="ob-foot"><b>You walk away with:</b> the findings report, yours to keep and act on with anyone, even if we never speak again. It also becomes your day-one baseline, so progress gets measured against recorded numbers rather than memory.</p>
       </div>
     </div>
 
@@ -1014,7 +983,7 @@
           <div class="co-row"><span>Real Estate Hero, one office</span><span class="v">from R9,500/mo</span></div>
           <div class="co-row"><span>Return, measured against the from-price</span><span class="v good" id="o-roi">6.1×</span></div>
           <div class="co-row"><span>Months one sale's commission covers</span><span class="v" id="o-months">6.3</span></div>
-          <p class="calc-note"><b>The assumption, in plain sight:</b> we only count the enquiries you're already missing, and we assume the engine turns just 1 in 50 of those into a sale. Everything the engine does for the enquiries you already answer well is left out of this number on purpose.</p>
+          <p class="calc-note"><b>The assumption, in plain sight:</b> we count only the enquiries you're already missing, and assume just 1 in 50 becomes a sale. What the engine does for the leads you already answer well is left out on purpose.</p>
         </div>
       </div>
     </div>
@@ -1111,12 +1080,12 @@
       <img class="final-bg" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=70&auto=format&fit=crop" alt="" aria-hidden="true" width="1600" height="1066" loading="lazy">
       <div>
         <h2>Find out what happened to last Saturday's leads.</h2>
-        <p class="p">Book a 20-minute walkthrough. We'll open one of your live listings together on the call, and you'll watch your own enquiry path <b>the way a buyer experiences it</b>. Most principals don't enjoy that moment. All of them are glad they saw it.</p>
+        <p class="p">Twenty minutes. We open one of your live listings together and time your own enquiry path <b>the way a buyer experiences it</b>. Most principals don't enjoy that moment. All of them are glad they saw it.</p>
         <span class="capacity"><span class="dot" aria-hidden="true"></span>We take on two builds per calendar month. Diagnostics run in the order booked.</span>
       </div>
       <div class="form-card">
         <form id="leadForm" novalidate>
-          <h3>Book your walkthrough</h3>
+          <h3>Test your lead response</h3>
           <p class="fs">We reply within one working day. Usually much faster. We are, after all, the speed people.</p>
           <div class="field">
             <label for="f-name">Your name</label>
@@ -1134,7 +1103,7 @@
             <label for="f-hp">Company website</label>
             <input id="f-hp" name="company_website" type="text" tabindex="-1" autocomplete="off">
           </div>
-          <button class="btn btn-cta magnetic" type="submit" id="submitBtn">Book the walkthrough <span class="arr" aria-hidden="true">→</span></button>
+          <button class="btn btn-cta magnetic" type="submit" id="submitBtn">Test My Agency's Lead Response <span class="arr" aria-hidden="true">→</span></button>
           <p class="form-msg" id="formMsg" role="alert"></p>
         </form>
         <div class="form-ok" id="formOk">
@@ -1188,7 +1157,7 @@
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
   }, {threshold:.18, rootMargin:'0px 0px -6% 0px'});
-  document.querySelectorAll('.rv,.finding,.j-grid').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('.rv,.finding').forEach(function(el){ io.observe(el); });
 
   /* chat animation on scroll into view */
   var pz = document.getElementById('phoneZone');
@@ -1314,7 +1283,7 @@
       })
       .catch(function(){
         btn.disabled = false; btn.style.opacity = 1;
-        btn.firstChild.textContent = 'Book the walkthrough ';
+        btn.firstChild.textContent = "Test My Agency's Lead Response ";
         msg.textContent = 'That didn\'t go through. Email us instead: jacques@jcemedia.com';
         msg.classList.add('err');
       });
