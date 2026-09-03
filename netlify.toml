@@ -18,6 +18,12 @@
 # Lead Engine moved to its own brand and domain (Real Estate Hero, 1 Sep 2026).
 # Must sit BEFORE the SPA catch-all: Netlify evaluates redirects in file order.
 [[redirects]]
+  from = "/lead-engine/v2/*"
+  to = "https://realestatehero.co.za/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/lead-engine/*"
   to = "https://realestatehero.co.za/:splat"
   status = 301
