@@ -37,6 +37,14 @@
   .capture button:active{transform:translateY(1px)}
   .cap-note{font-size:13.5px;color:var(--muted);margin-top:12px}
   .cap-note b{color:var(--ink)}
+  .capture button[disabled]{opacity:.6;cursor:default}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .form-msg{flex-basis:100%;font-size:14px;margin-top:2px;display:none}
+  .form-msg.show{display:block}
+  .form-msg.err{color:#b4553c}
+  .form-msg.ok{color:#2c7a52}
+  .close .form-msg.err{color:#f0a58c}
+  .close .form-msg.ok{color:#8fd6ae}
 
   /* sections */
   section{padding:52px 0}
@@ -69,6 +77,17 @@
   .close input{background:#2a2724;border-color:#3a3630;color:#fff}
   footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13.5px}
   footer b{color:var(--ink)}
+  footer .flinks{margin-top:14px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  footer .flinks a{color:var(--clay);font-weight:700;text-decoration:none}
+  footer .flinks a:hover{text-decoration:underline}
+
+  /* hire band — the commercial exit */
+  .hire{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 32px;box-shadow:var(--shadow);
+    display:flex;gap:26px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .hire h3{font-size:22px;font-weight:800;margin-bottom:6px}
+  .hire p{font-size:15.5px;color:var(--muted);max-width:56ch}
+  .hire .cta{flex:0 0 auto;display:inline-block;background:var(--clay);color:#fff;font-weight:800;font-size:16px;
+    padding:15px 28px;border-radius:12px;text-decoration:none;box-shadow:0 8px 20px rgba(201,96,63,.28)}
 
   @media(max-width:640px){.tools{grid-template-columns:1fr}.prompt p{padding-right:0;margin-top:34px}.copy{top:14px}}
 </style>
@@ -80,13 +99,13 @@
     <div class="kick"><svg class="sun" viewBox="0 0 100 100"><path fill="#c9603f" d="M50 6c3 22 5 32 8 35s13 5 35 8c-22 3-32 5-35 8s-5 13-8 35c-3-22-5-32-8-35s-13-5-35-8c22-3 32-5 35-8s5-13 8-35Z"/></svg>The Small Business AI Toolkit</div>
     <h1>The prompts and tools I use to run my businesses.</h1>
     <p>Free. No fluff, no theory. The exact prompts I paste into AI every week to write content, win back customers, handle reviews and kill the busywork. <b>Copy, paste, done.</b></p>
-    <form class="capture" name="toolkit" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="toolkit">
-      <p style="display:none"><label>Skip: <input name="bot-field"></label></p>
-      <input type="email" name="email" placeholder="your@email.com" required>
+    <form class="capture js-toolkit-form" novalidate>
+      <div class="hp"><label>Skip this field <input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+      <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required>
       <button type="submit">Send me the pack</button>
+      <p class="form-msg" role="status" aria-live="polite"></p>
     </form>
-    <div class="cap-note">Get the pack as a PDF plus <b>new prompts every month</b>. No spam, unsubscribe anytime.</div>
+    <div class="cap-note">Get the pack as a PDF, <b>new prompts every month</b>, and a <b>Brand Brain written for your business</b>. No spam, unsubscribe anytime.</div>
   </div>
 </div>
 
@@ -232,6 +251,18 @@ Ask me if anything is unclear before you answer.</div>
   </div>
 </section>
 
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="hire">
+      <div>
+        <h3>Want this running for you, not by you?</h3>
+        <p>These prompts are the manual version. At JCE Media I build the automated one: the systems that follow up, book, review-chase and report while you get on with the job.</p>
+      </div>
+      <a class="cta" href="https://jcemedia.com/contact">Book a call</a>
+    </div>
+  </div>
+</section>
+
 <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-label">The tool stack</div>
@@ -251,22 +282,100 @@ Ask me if anything is unclear before you answer.</div>
   <div class="wrap">
     <div class="close">
       <h2>Want the next batch?</h2>
-      <p>I add new prompts and tools every month as I use them across my own businesses. Drop your email and I will send the whole pack plus whatever I find next.</p>
-      <form class="capture" name="toolkit" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="toolkit">
-        <p style="display:none"><label>Skip: <input name="bot-field"></label></p>
-        <input type="email" name="email" placeholder="your@email.com" required>
+      <p>Everything above stays free and on this page. The email gets you the two things that are not on it: <b>new prompts every month</b> as I find them, and a <b>Brand Brain written for your business</b> so every prompt here starts already knowing who you are.</p>
+      <form class="capture js-toolkit-form" novalidate>
+        <div class="hp"><label>Skip this field <input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+        <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required>
         <button type="submit">Send me the pack</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">Built by <b>Jacques Groenewald</b>. I run real businesses on this stack and share what works. <br>Follow for more AI and business.</div>
+  <div class="wrap">
+    Built by <b>Jacques Groenewald</b> at JCE Media. I run real businesses on this stack and share what works.
+    <div class="flinks">
+      <a href="https://jcemedia.com/">JCE Media</a>
+      <a href="https://jcemedia.com/work">Case studies</a>
+      <a href="https://jcemedia.com/services">What we do</a>
+      <a href="https://jcemedia.com/contact">Book a call</a>
+      <a href="https://jcemedia.com/privacy">Privacy</a>
+    </div>
+  </div>
 </footer>
 
 <script>
+  // Analytics shim — no-ops today (the site has no GA4 yet). The moment a
+  // gtag/dataLayer snippet is added site-wide, these events start reporting
+  // with no further changes here.
+  window.track = function (name, params) {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+      else if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: name, ...(params || {}) });
+    } catch (e) { /* never let tracking break the form */ }
+  };
+  window.track('toolkit_view', { page: 'toolkit' });
+
+  // Email capture → Netlify function → GoHighLevel, then on to the thanks page
+  // where the PDF and the Brand Brain questions live.
+  document.querySelectorAll('.js-toolkit-form').forEach(form => {
+    const input = form.querySelector('input[type=email]');
+    const button = form.querySelector('button');
+    const msg = form.querySelector('.form-msg');
+    const label = button.textContent;
+
+    const say = (text, kind) => {
+      msg.textContent = text;
+      msg.className = 'form-msg show ' + kind;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = input.value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        say('That email does not look right. Mind checking it?', 'err');
+        input.focus();
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Sending...';
+      msg.className = 'form-msg';
+
+      try {
+        const res = await fetch('/.netlify/functions/toolkit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            stage: 'subscribe',
+            email,
+            company_website: form.querySelector('[name=company_website]').value,
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok || !data.ok) {
+          say(data.error || 'Something went wrong. Email jacques@jcemedia.com and I will send it over.', 'err');
+          button.disabled = false;
+          button.textContent = label;
+          return;
+        }
+
+        window.track('toolkit_signup', { page: 'toolkit' });
+        // Carried in sessionStorage, never in the URL, so the address is not
+        // exposed in browser history, referrers or server logs.
+        try { sessionStorage.setItem('toolkitEmail', email); } catch (e) { /* ignore */ }
+        window.location.href = '/toolkit/thanks/';
+      } catch (err) {
+        say('Network hiccup. Try again, or email jacques@jcemedia.com.', 'err');
+        button.disabled = false;
+        button.textContent = label;
+      }
+    });
+  });
+
   document.querySelectorAll('.copy').forEach(btn => {
     btn.addEventListener('click', () => {
       const text = btn.parentElement.querySelector('p').innerText.trim();

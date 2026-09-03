@@ -15,6 +15,14 @@
 
 # SPA fallback — every route serves index.html so client-side routing works
 # on deep links / hard refreshes (e.g. /about, /services).
+# Lead Engine moved to its own brand and domain (Real Estate Hero, 1 Sep 2026).
+# Must sit BEFORE the SPA catch-all: Netlify evaluates redirects in file order.
+[[redirects]]
+  from = "/lead-engine/*"
+  to = "https://realestatehero.co.za/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

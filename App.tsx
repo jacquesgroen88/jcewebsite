@@ -21,6 +21,7 @@ const GtmThankYouPage = lazy(() => import('./pages/GtmThankYouPage'));
 const AiSalesEnablementPage = lazy(() => import('./pages/AiSalesEnablementPage'));
 const AiMarketingEnablementPage = lazy(() => import('./pages/AiMarketingEnablementPage'));
 const AgentsSetupPage = lazy(() => import('./pages/AgentsSetupPage'));
+const GoHighLevelPage = lazy(() => import('./pages/GoHighLevelPage'));
 const WorkPage = lazy(() => import('./pages/WorkPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 
@@ -37,6 +38,7 @@ const PAGE_TITLES: Record<string, string> = {
   '/ai-sales-enablement': 'AI Sales Enablement | JCE Media',
   '/ai-marketing-enablement': 'AI Marketing Enablement | JCE Media',
   '/agents-setup': 'AI Agents Setup | JCE Media',
+  '/gohighlevel-setup': 'GoHighLevel Setup & Support | JCE Media',
   '/work': 'Our Work | JCE Media',
   '/privacy': 'Privacy Policy | JCE Media',
 };
@@ -93,6 +95,7 @@ const RouteView: React.FC<{ location: ReturnType<typeof useLocation> }> = ({ loc
           <Route path="/ai-sales-enablement" element={<AiSalesEnablementPage />} />
           <Route path="/ai-marketing-enablement" element={<AiMarketingEnablementPage />} />
           <Route path="/agents-setup" element={<AgentsSetupPage />} />
+          <Route path="/gohighlevel-setup" element={<GoHighLevelPage />} />
           <Route path="/work" element={<WorkPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
