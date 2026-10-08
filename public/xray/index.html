@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Business X-Ray | JCE Media</title>
+<meta name="description" content="A free revenue leak check for South African businesses. We look at your business the way a new customer finds and contacts it, compare you with your three nearest competitors, and send you one page with the three biggest leaks and a rand figure on each. Within 48 hours.">
+<link rel="canonical" href="https://jcemedia.com/xray/">
+<meta property="og:title" content="Free Business X-Ray: find out where your business is leaking money">
+<meta property="og:description" content="Three leaks, three rand figures, one page. Free, in 48 hours. From the team behind ReviewTap.">
+<meta property="og:url" content="https://jcemedia.com/xray/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://jcemedia.com/assets/case-studies/jcemedialogomain.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f8fe;--card:#fff;--ink:#101a2e;--muted:#5b6b86;--line:#e7edf8;
+    --blue:#2f6bf6;--grad:linear-gradient(135deg,#2f6bf6,#6366f1,#8b5cf6);
+    --warm:linear-gradient(135deg,#ff6a45,#ffb020);
+    --shadow:0 6px 18px rgba(38,66,120,.07);--shadow-lg:0 18px 48px rgba(38,66,120,.14);
+    --good:#0f9d58;--bad:#dc3545;--radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased;font-size:16px}
+  a{color:var(--blue)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em;line-height:1.12}
+
+  /* nav */
+  .nav{padding:18px 0}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .logo{display:inline-flex;align-items:center;background:#0a0a0a;border-radius:10px;padding:8px 12px}
+  .logo img{height:22px;display:block}
+  .nav-cta{font:600 14px Inter;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:#fff;
+    padding:9px 16px;border-radius:9999px}
+
+  /* hero */
+  .hero{padding:26px 0 56px;background:radial-gradient(900px 480px at 85% -5%,rgba(99,102,241,.16),transparent 60%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+  .eyebrow{display:inline-block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;
+    background:var(--grad);padding:6px 14px;border-radius:9999px}
+  .hero h1{font-size:clamp(34px,5.4vw,56px);font-weight:700;margin:18px 0 16px;max-width:15ch}
+  .hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lede{font-size:18.5px;color:var(--muted);max-width:52ch;margin-bottom:22px}
+  .ticks{list-style:none;display:grid;gap:9px;margin-bottom:8px}
+  .ticks li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px}
+  .ticks svg{flex:0 0 20px;margin-top:2px}
+
+  /* form card */
+  .form-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:26px 24px}
+  .form-card h2{font-size:22px;margin-bottom:4px}
+  .form-card .sub{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .field{margin-bottom:13px}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:5px}
+  .field input,.field select{width:100%;height:48px;border:1.5px solid #dbe3f2;border-radius:11px;padding:0 14px;
+    font:500 15.5px Inter;color:var(--ink);background:#fbfcff;appearance:none;-webkit-appearance:none}
+  .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b6b86' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(47,107,246,.12)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .hint{font-size:12px;color:var(--muted);margin-top:4px}
+  .btn{width:100%;height:54px;border:none;border-radius:9999px;background:var(--warm);color:#fff;
+    font:700 16.5px 'Space Grotesk',sans-serif;letter-spacing:.01em;cursor:pointer;box-shadow:0 10px 24px rgba(255,106,69,.3);
+    margin-top:6px;transition:transform .12s, box-shadow .12s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(255,106,69,.36)}
+  .btn[disabled]{opacity:.65;cursor:default;transform:none}
+  .fine{font-size:12.5px;color:var(--muted);margin-top:12px;text-align:center}
+  .form-msg{display:none;font-size:14px;margin-top:10px;text-align:center}
+  .form-msg.show{display:block}
+  .form-msg.err{color:var(--bad)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  /* sections */
+  section{padding:64px 0}
+  .label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+  h2.big{font-size:clamp(26px,3.6vw,36px);margin-bottom:12px;max-width:22ch}
+  .sec-lede{font-size:17px;color:var(--muted);max-width:62ch;margin-bottom:30px}
+
+  /* example x-ray */
+  .xray-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+  .xray{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg);overflow:hidden}
+  .xray-top{background:var(--grad);color:#fff;padding:18px 22px}
+  .xray-top .t{font-family:'Space Grotesk';font-weight:700;font-size:18px}
+  .xray-top .s{font-size:12.5px;opacity:.9}
+  .leak{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:start;padding:16px 22px;border-bottom:1px solid var(--line)}
+  .leak:last-of-type{border-bottom:0}
+  .leak .n{width:30px;height:30px;border-radius:50%;background:#eef2fe;color:var(--blue);font:700 14px 'Space Grotesk';display:flex;align-items:center;justify-content:center}
+  .leak h3{font-size:15.5px;margin-bottom:3px}
+  .leak p{font-size:13.5px;color:var(--muted);line-height:1.45}
+  .leak .r{font-family:'Space Grotesk';font-weight:700;font-size:17px;color:var(--bad);white-space:nowrap;text-align:right}
+  .leak .r small{display:block;font:500 11px Inter;color:var(--muted)}
+  .fix{background:#f0f9f4;border-top:1px solid #d6efe1;padding:14px 22px;font-size:13.5px}
+  .fix b{color:var(--good)}
+  .xray-note{font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center}
+
+  /* checks */
+  .checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+  .check{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+  .check .ic{width:38px;height:38px;border-radius:11px;background:var(--grad);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .check h3{font-size:16px;margin-bottom:5px}
+  .check p{font-size:14px;color:var(--muted)}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+  .step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);position:relative}
+  .step::before{counter-increment:s;content:counter(s);width:32px;height:32px;border-radius:50%;background:var(--grad);color:#fff;
+    font:700 14px 'Space Grotesk';display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .step h3{font-size:17px;margin-bottom:5px}
+  .step p{font-size:14.5px;color:var(--muted)}
+
+  /* proof + fit */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+  .panel h3{font-size:19px;margin-bottom:10px}
+  .panel p{font-size:15px;color:var(--muted);margin-bottom:10px}
+  .panel p:last-child{margin-bottom:0}
+  .panel ul{list-style:none;display:grid;gap:8px}
+  .panel li{font-size:15px;padding-left:24px;position:relative}
+  .panel.yes li::before{content:"";position:absolute;left:2px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--good)}
+  .panel.no li::before{content:"";position:absolute;left:2px;top:9px;width:9px;height:9px;border-radius:50%;background:#c3cfe2}
+  .stat-row{display:flex;gap:26px;flex-wrap:wrap;margin-top:6px}
+  .stat .n{font-family:'Space Grotesk';font-weight:700;font-size:30px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}
+  .stat .k{font-size:13px;color:var(--muted)}
+
+  /* faq */
+  .faq{max-width:760px}
+  details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;box-shadow:var(--shadow)}
+  summary{cursor:pointer;list-style:none;padding:17px 20px;font:600 16px 'Space Grotesk';display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--blue);font-size:20px;line-height:1}
+  details[open] summary::after{content:"\2212"}
+  details p{padding:0 20px 18px;color:var(--muted);font-size:15px}
+
+  /* closing */
+  .close{background:var(--grad);border-radius:24px;color:#fff;padding:46px 34px;text-align:center;box-shadow:0 16px 44px rgba(47,107,246,.28)}
+  .close h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:10px}
+  .close p{opacity:.92;font-size:17px;max-width:52ch;margin:0 auto 24px}
+  .close a.cta{display:inline-block;background:#fff;color:var(--ink);font:700 16.5px 'Space Grotesk';text-decoration:none;
+    padding:16px 32px;border-radius:9999px;box-shadow:0 10px 24px rgba(16,26,46,.2)}
+  footer{padding:30px 0 40px;font-size:13px;color:var(--muted);text-align:center}
+  footer a{color:var(--muted)}
+
+  /* sticky mobile CTA */
+  .sticky{display:none}
+  @media (max-width:860px){
+    .hero-grid,.xray-wrap,.two{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .hero{padding-bottom:40px}
+    section{padding:48px 0}
+    .sticky{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:20;transition:opacity .2s,transform .2s}
+    .sticky a{display:block;text-align:center;background:var(--warm);color:#fff;font:700 16px 'Space Grotesk';text-decoration:none;
+      padding:15px;border-radius:9999px;box-shadow:0 10px 26px rgba(255,106,69,.38)}
+    .sticky.hide{opacity:0;transform:translateY(20px);pointer-events:none}
+    footer{padding-bottom:90px}
+  }
+  @media (max-width:420px){.row2{grid-template-columns:1fr}.form-card{padding:22px 18px}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="JCE Media home"><img src="/assets/case-studies/jcemedialogomain.png" alt="JCE Media"></a>
+    <a class="nav-cta" href="#get-xray">Get my X-Ray</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Free · 48 hours · no call needed</span>
+      <h1>Find out where your business is <em>leaking money.</em></h1>
+      <p class="lede">The Business X-Ray is a free revenue leak check. We look at your business the way a new customer finds and contacts it, compare you with your three nearest competitors, and send you one page with the three biggest leaks and a rand figure on each.</p>
+      <ul class="ticks">
+        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e6f6ec"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0f9d58" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Built by a person, for your business. Not an automated score.</li>
+        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e6f6ec"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0f9d58" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>The working is shown on every rand figure.</li>
+        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e6f6ec"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0f9d58" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>One fix you can make this week without anyone's help.</li>
+        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#e6f6ec"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#0f9d58" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Nothing to buy and nothing to sign.</li>
+      </ul>
+    </div>
+
+    <div class="form-card" id="get-xray">
+      <h2>Get your free Business X-Ray</h2>
+      <p class="sub">Two minutes to request. On your WhatsApp within two working days.</p>
+      <form id="xray-form" novalidate>
+        <div class="row2">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="business">Business name</label><input id="business" name="business" autocomplete="organization" required></div>
+        </div>
+        <div class="field">
+          <label for="website">Website or Google listing</label>
+          <input id="website" name="website" inputmode="url" placeholder="yourbusiness.co.za" required>
+          <div class="hint">Whichever a customer would find first.</div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="phone">WhatsApp number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="082 123 4567" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="field">
+          <label for="enquiries">Roughly how many enquiries do you get a month?</label>
+          <select id="enquiries" name="enquiries" required>
+            <option value="">Choose one</option>
+            <option>Under 20</option>
+            <option>20 to 50</option>
+            <option>50 to 150</option>
+            <option>150 to 500</option>
+            <option>More than 500</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="spend">What do you spend on marketing a month, all in?</label>
+          <select id="spend" name="spend" required>
+            <option value="">Choose one</option>
+            <option>Nothing yet</option>
+            <option>Under R5,000</option>
+            <option>R5,000 to R10,000</option>
+            <option>R10,000 to R25,000</option>
+            <option>More than R25,000</option>
+          </select>
+          <div class="hint">Agency, ads and people. A rough range is fine; it makes your rand figures accurate.</div>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="company_website">Leave this empty</label><input id="company_website" name="company_website" tabindex="-1" autocomplete="off"></div>
+        <button class="btn" type="submit">Send me my X-Ray</button>
+        <p class="form-msg" id="form-msg" role="alert"></p>
+        <p class="fine">We use your details only to build and send your X-Ray. No spam, no mailing list unless you ask.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap xray-wrap">
+    <div>
+      <p class="label">What you get</p>
+      <h2 class="big">One page. Three leaks. A rand figure on each.</h2>
+      <p class="sec-lede">Not a 40-page audit you will never read. One page that tells you where the money is going and roughly how much, with the working shown so you can check our numbers against yours.</p>
+      <p class="sec-lede" style="margin-bottom:0">Every X-Ray ends with one fix you can make this week on your own. If that is all you ever use it for, it has done its job.</p>
+    </div>
+    <div>
+      <div class="xray" aria-label="Example Business X-Ray">
+        <div class="xray-top"><div class="t">Business X-Ray</div><div class="s">Example · an events venue, Gauteng</div></div>
+        <div class="leak"><div class="n">1</div><div><h3>Slow replies to enquiries</h3><p>Website enquiry answered in 4 hours 12 minutes. Nearest competitor: 9 minutes.</p></div><div class="r">R36,000<small>a month at risk</small></div></div>
+        <div class="leak"><div class="n">2</div><div><h3>Review gap against the top 3</h3><p>4.7 stars from 74 reviews. The venue Google shows first: 4.4 from 1,210.</p></div><div class="r">R18,500<small>a month at risk</small></div></div>
+        <div class="leak"><div class="n">3</div><div><h3>Missing from AI answers</h3><p>Asked for the best function venue in the area, ChatGPT names three competitors.</p></div><div class="r">R9,000<small>a month at risk</small></div></div>
+        <div class="fix"><b>Fix this week:</b> add a WhatsApp button to the enquiry page and turn on an instant reply.</div>
+      </div>
+      <p class="xray-note">Illustrative example. Your X-Ray uses your business, your competitors and your numbers.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="label">What we check</p>
+    <h2 class="big">Five things a new customer runs into before they ever pay you</h2>
+    <p class="sec-lede">We check them the way a customer would, from the outside. Then we pick the three that are costing you the most.</p>
+    <div class="checks">
+      <div class="check"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.6L5.8 21l1.4-7L2 9.3l7-.8z"/></svg></div><h3>Reputation</h3><p>Your rating, review count and review pace against your three nearest competitors.</p></div>
+      <div class="check"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Speed to answer</h3><p>We send you a real enquiry and time how long it takes to get a reply.</p></div>
+      <div class="check"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg></div><h3>AI visibility</h3><p>Do ChatGPT and Perplexity name you when your customers ask for your kind of business?</p></div>
+      <div class="check"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="M3 20h18M6 16V9M11 16V5M16 16v-6M21 16v-3"/></svg></div><h3>Paid activity</h3><p>What you and your competitors are running on Meta and Google right now.</p></div>
+      <div class="check"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Website on a phone</h3><p>Load time, a clear next step, and a booking or quote path that actually works.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="label">How it works</p>
+    <h2 class="big">Three steps, and the last one is optional</h2>
+    <div class="steps" style="margin-top:22px">
+      <div class="step"><h3>You request it</h3><p>Two minutes, the form above. We need your business name and where customers find you.</p></div>
+      <div class="step"><h3>We build it</h3><p>A person on our team does it by hand, usually inside 48 hours. You get it on WhatsApp and email.</p></div>
+      <div class="step"><h3>We talk it through, if you want</h3><p>Fifteen minutes to go through the three leaks with your real numbers. There is nothing to buy.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap two">
+    <div class="panel">
+      <p class="label">Who does it</p>
+      <h3>The team behind ReviewTap</h3>
+      <p>We built ReviewTap, the Google review stands and cards used by South African restaurants, venues, salons, clinics and franchise groups. Looking at all those businesses taught us that reviews get people to your door, and what happens after they arrive is where most businesses lose money.</p>
+      <p>JCE Media is the marketing side of the same team. The X-Ray is how we start every conversation.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">1,200+</div><div class="k">SA businesses on ReviewTap</div></div>
+        <div class="stat"><div class="n">48 hrs</div><div class="k">to your X-Ray</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="panel yes" style="margin-bottom:16px">
+        <h3>It is built for</h3>
+        <ul>
+          <li>Owner-run businesses with real enquiry volume</li>
+          <li>Venues, restaurants, guesthouses, clinics and service businesses</li>
+          <li>Groups and franchisees running several sites</li>
+          <li>Anyone spending on marketing and not sure what it returns</li>
+        </ul>
+      </div>
+      <div class="panel no">
+        <h3>It is probably not for</h3>
+        <ul>
+          <li>Businesses not trading yet</li>
+          <li>Very small businesses where the only problem is reviews. <a href="https://reviewtap.co.za">ReviewTap</a> will serve you better and cost less</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap faq">
+    <p class="label">Questions</p>
+    <h2 class="big">The fair questions</h2>
+    <details><summary>What is the catch?</summary><p>There is not one. Some people who see their X-Ray ask us to help fix what it finds. Most do not, and that is fine. The X-Ray is yours either way.</p></details>
+    <details><summary>Do I have to get on a call?</summary><p>No. You will get the X-Ray on WhatsApp and email. If you want to talk it through, we will offer you 15 minutes. If not, keep the page and use it.</p></details>
+    <details><summary>Will you contact my customers or competitors?</summary><p>We send one ordinary enquiry to time how fast it gets answered, the same way any customer would. We do not contact your customers, and nothing we do is visible to your competitors.</p></details>
+    <details><summary>Why do you ask about enquiries and spend?</summary><p>So the rand figures are based on your business and not on our guesses. A rough range is enough. You can always correct the numbers when you see the page.</p></details>
+    <details><summary>I already have a marketing agency.</summary><p>Then the X-Ray is a useful second opinion. Plenty of people send it to their agency as a list of things to look at.</p></details>
+    <details><summary>What happens to my details?</summary><p>We use them to build and send your X-Ray and to follow up once. We do not sell or share them, and we do not add you to a mailing list unless you ask.</p></details>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="close">
+      <h2>Your competitors already know where you are slow.</h2>
+      <p>Find out what they can see, what it is costing you, and the one thing to fix first. Free, in 48 hours.</p>
+      <a class="cta" href="#get-xray">Get my free Business X-Ray</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">JCE Media · <a href="/">jcemedia.com</a> · <a href="mailto:jacques@jcemedia.com">jacques@jcemedia.com</a></div>
+</footer>
+
+<div class="sticky" id="sticky"><a href="#get-xray">Get my free X-Ray</a></div>
+
+<script>
+(function(){
+  var form=document.getElementById('xray-form');
+  var msg=document.getElementById('form-msg');
+  var btn=form.querySelector('button[type=submit]');
+  function show(t){msg.textContent=t;msg.className='form-msg show err';}
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var d={};new FormData(form).forEach(function(v,k){d[k]=String(v).trim();});
+    if(!d.name||!d.business||!d.website){return show('Please add your name, business and website or Google listing.');}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email||'')){return show('Please check your email address.');}
+    if((d.phone||'').replace(/\D/g,'').length<9){return show('Please add a WhatsApp number we can send it to.');}
+    if(!d.enquiries||!d.spend){return show('Please choose a rough range for enquiries and spend.');}
+    btn.disabled=true;btn.textContent='Sending...';msg.className='form-msg';
+    var p=new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_content','fbclid','gclid'].forEach(function(k){if(p.get(k))d[k]=p.get(k);});
+    try{
+      var res=await fetch('/.netlify/functions/xray',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+      var out=await res.json().catch(function(){return {};});
+      if(!res.ok||!out.ok)throw new Error(out.error||'Something went wrong.');
+      try{if(window.fbq)fbq('track','Lead');}catch(_){}
+      try{if(window.gtag)gtag('event','generate_lead');}catch(_){}
+      location.href='/xray/thanks/?n='+encodeURIComponent(d.name.split(' ')[0]);
+    }catch(err){
+      btn.disabled=false;btn.textContent='Send me my X-Ray';
+      show((err&&err.message)||'Something went wrong. Please WhatsApp us on 079 512 4292.');
+    }
+  });
+  // Hide the sticky mobile button while the form is on screen
+  var sticky=document.getElementById('sticky');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(en){sticky.classList.toggle('hide',en.isIntersecting);});},{threshold:.15})
+      .observe(document.getElementById('get-xray'));
+  }
+})();
+</script>
+</body>
+</html>

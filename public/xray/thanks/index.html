@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Your X-Ray is in the queue | JCE Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f5f8fe;--ink:#101a2e;--muted:#5b6b86;--line:#e7edf8;--blue:#2f6bf6;--grad:linear-gradient(135deg,#2f6bf6,#6366f1,#8b5cf6)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 18px;
+    background-image:radial-gradient(800px 420px at 80% -10%,rgba(99,102,241,.16),transparent 60%)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 48px rgba(38,66,120,.14);max-width:560px;width:100%;padding:36px 30px}
+  .tick{width:56px;height:56px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:30px;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+  p{color:var(--muted);margin-bottom:16px}
+  ol{list-style:none;counter-reset:s;margin:22px 0}
+  li{counter-increment:s;display:flex;gap:12px;margin-bottom:14px}
+  li::before{content:counter(s);flex:0 0 28px;height:28px;border-radius:50%;background:#eef2fe;color:var(--blue);font:700 13px 'Space Grotesk';display:flex;align-items:center;justify-content:center}
+  li b{display:block;color:var(--ink)}
+  li span{color:var(--muted);font-size:14.5px}
+  a.wa{display:inline-block;margin-top:4px;color:var(--blue);font-weight:600}
+  .back{display:block;margin-top:20px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="tick"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+  <h1 id="h">Thanks. Your X-Ray is in the queue.</h1>
+  <p>A person on our team will build it by hand for your business. Here is what happens next.</p>
+  <ol>
+    <li><div><b>We build it</b><span>Usually within two working days. We may send your business one ordinary enquiry as part of the speed check.</span></div></li>
+    <li><div><b>Jacques WhatsApps you</b><span>Your X-Ray arrives on WhatsApp and email, with the three leaks and a rand figure on each.</span></div></li>
+    <li><div><b>We talk, only if you want to</b><span>Fifteen minutes to go through it with your real numbers. Nothing to buy.</span></div></li>
+  </ol>
+  <p>Questions in the meantime? <a class="wa" href="https://wa.me/27795124292">WhatsApp us on 079 512 4292</a></p>
+  <a class="back" href="/">Back to jcemedia.com</a>
+</main>
+<script>
+(function(){var n=new URLSearchParams(location.search).get('n');if(n){n=n.replace(/[^\p{L}\p{M}' -]/gu,'').slice(0,30);if(n)document.getElementById('h').textContent='Thanks, '+n+'. Your X-Ray is in the queue.';}})();
+</script>
+</body>
+</html>
