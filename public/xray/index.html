@@ -74,6 +74,8 @@
   .form-msg.show{display:block}
   .form-msg.err{color:var(--bad)}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.45;margin:4px 0 12px;cursor:pointer}
+  .consent input{flex:0 0 18px;width:18px;height:18px;margin-top:1px;accent-color:var(--blue)}
 
   /* sections */
   section{padding:64px 0}
@@ -226,10 +228,11 @@
           </select>
           <div class="hint">Agency, ads and people. A rough range is fine; it makes your rand figures accurate.</div>
         </div>
+        <label class="consent"><input type="checkbox" id="marketing_consent" name="marketing_consent" value="yes"><span>Yes, JCE Systems Group (Pty) Ltd, trading as JCE Media, may also contact me by WhatsApp, email and phone about its marketing services. I can opt out at any time.</span></label>
         <div class="hp" aria-hidden="true"><label for="company_website">Leave this empty</label><input id="company_website" name="company_website" tabindex="-1" autocomplete="off"></div>
         <button class="btn" type="submit">Send me my X-Ray</button>
         <p class="form-msg" id="form-msg" role="alert"></p>
-        <p class="fine">We use your details only to build and send your X-Ray. No spam, no mailing list unless you ask.</p>
+        <p class="fine">By requesting an X-Ray you agree that we contact you by WhatsApp and email to send it. The box above is optional and the X-Ray is yours either way. <a href="#privacy">How we use your details</a></p>
       </form>
     </div>
   </div>
@@ -325,7 +328,7 @@
     <details><summary>Will you contact my customers or competitors?</summary><p>We send one ordinary enquiry to time how fast it gets answered, the same way any customer would. We do not contact your customers, and nothing we do is visible to your competitors.</p></details>
     <details><summary>Why do you ask about enquiries and spend?</summary><p>So the rand figures are based on your business and not on our guesses. A rough range is enough. You can always correct the numbers when you see the page.</p></details>
     <details><summary>I already have a marketing agency.</summary><p>Then the X-Ray is a useful second opinion. Plenty of people send it to their agency as a list of things to look at.</p></details>
-    <details><summary>What happens to my details?</summary><p>We use them to build and send your X-Ray and to follow up once. We do not sell or share them, and we do not add you to a mailing list unless you ask.</p></details>
+    <details id="privacy"><summary>What happens to my details?</summary><p>JCE Systems Group (Pty) Ltd, trading as JCE Media, uses them to build and send your X-Ray. We only contact you about our services if you tick the consent box, and you can ask us to stop at any time by replying "stop" or emailing jacques@jcemedia.com. We do not sell or share your details.</p></details>
   </div>
 </section>
 
@@ -341,7 +344,7 @@
 </main>
 
 <footer>
-  <div class="wrap">JCE Media · <a href="/">jcemedia.com</a> · <a href="mailto:jacques@jcemedia.com">jacques@jcemedia.com</a></div>
+  <div class="wrap">JCE Systems Group (Pty) Ltd, trading as JCE Media · Reg. 2026/131175/07 · <a href="tel:+27795124292">079 512 4292</a> · <a href="mailto:jacques@jcemedia.com">jacques@jcemedia.com</a> · <a href="/">jcemedia.com</a></div>
 </footer>
 
 <div class="sticky" id="sticky"><a href="#get-xray">Get my free X-Ray</a></div>
@@ -355,6 +358,7 @@
   form.addEventListener('submit',async function(e){
     e.preventDefault();
     var d={};new FormData(form).forEach(function(v,k){d[k]=String(v).trim();});
+    d.marketing_consent=document.getElementById('marketing_consent').checked?'yes':'no';
     if(!d.name||!d.business||!d.website){return show('Please add your name, business and website or Google listing.');}
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email||'')){return show('Please check your email address.');}
     if((d.phone||'').replace(/\D/g,'').length<9){return show('Please add a WhatsApp number we can send it to.');}
@@ -374,6 +378,8 @@
       show((err&&err.message)||'Something went wrong. Please WhatsApp us on 079 512 4292.');
     }
   });
+  // Pre-fill the business name from a ReviewTap consent link (?b=Business+Name)
+  try{var b=new URLSearchParams(location.search).get('b');if(b)document.getElementById('business').value=b.slice(0,160);}catch(_){}
   // Hide the sticky mobile button while the form is on screen
   var sticky=document.getElementById('sticky');
   if('IntersectionObserver' in window){

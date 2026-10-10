@@ -69,8 +69,9 @@ export const handler = async (event) => {
   if (phone.replace(/\D/g, '').length < 9) return json(400, { error: 'Please add a WhatsApp number we can send it to.' });
 
   const fit = fitBand(spend, enquiries);
+  const consent = d.marketing_consent === 'yes';
   const [firstName, ...rest] = name.split(' ');
-  const tags = ['Website Lead', 'Business X-Ray', `xray-fit-${fit}`];
+  const tags = ['Website Lead', 'Business X-Ray', `xray-fit-${fit}`, consent ? 'jce-consent-yes' : 'jce-consent-service-only'];
   const utm = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'fbclid', 'gclid']
     .filter((k) => d[k]).map((k) => `${k}: ${clip(d[k], 200)}`);
 
@@ -116,6 +117,9 @@ export const handler = async (event) => {
       `Marketing spend a month: ${spend || 'not given'}`,
       `First read of fit: ${fit.toUpperCase()} (full X-Ray if high or medium, light version if low)`,
       'Promised: X-Ray on WhatsApp + email within 2 working days.',
+      consent
+        ? `MARKETING CONSENT: YES, ticked on jcemedia.com/xray at ${new Date().toISOString()}. Wording: "Yes, JCE Systems Group (Pty) Ltd, trading as JCE Media, may also contact me by WhatsApp, email and phone about its marketing services. I can opt out at any time."`
+        : 'MARKETING CONSENT: NO. Contact only to deliver and discuss the requested X-Ray.',
       ...(utm.length ? ['', ...utm] : []),
     ].join('\n');
     try {
