@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Your seat is booked | JCE Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f5f8fe;--ink:#101a2e;--muted:#5b6b86;--line:#e7edf8;--blue:#2f6bf6;--grad:linear-gradient(135deg,#2f6bf6,#6366f1,#8b5cf6)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 18px;
+    background-image:radial-gradient(800px 420px at 80% -10%,rgba(99,102,241,.16),transparent 60%)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 48px rgba(38,66,120,.14);max-width:580px;width:100%;padding:36px 30px}
+  .tick{width:56px;height:56px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:30px;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+  p{color:var(--muted);margin-bottom:14px}
+  .when{background:#f0f5ff;border-radius:12px;padding:14px 16px;margin:18px 0;font-weight:600}
+  .when span{display:block;font-weight:400;color:var(--muted);font-size:14px}
+  ol{list-style:none;counter-reset:s;margin:20px 0}
+  li{counter-increment:s;display:flex;gap:12px;margin-bottom:14px}
+  li::before{content:counter(s);flex:0 0 28px;height:28px;border-radius:50%;background:#eef2fe;color:var(--blue);font:700 13px 'Space Grotesk';display:flex;align-items:center;justify-content:center}
+  li b{display:block;color:var(--ink)}
+  li span{color:var(--muted);font-size:14.5px}
+  .review{display:none;border:2px dashed #ffb020;background:#fffaf0;border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:14px}
+  a{color:var(--blue);font-weight:600}
+  .ics{display:inline-block;margin-top:4px;text-decoration:none;border:1px solid var(--line);border-radius:9999px;padding:9px 16px;font-size:14px}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="tick"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+  <h1>You're in. See you on Thursday.</h1>
+  <p>Thank you. As soon as Payfast confirms your payment, your Zoom link and calendar invite arrive by email. That's usually within a few minutes. Check your spam folder if you don't see it.</p>
+  <div class="when">The One-Page Growth Plan: live workshop<span>Thursday 15 October 2026 · 7pm to 8:30pm SAST · Zoom</span></div>
+  <p id="review" class="review"><b>Plan review added.</b> After the workshop, reply to the recording email with your finished page and I'll send written feedback within 5 working days.</p>
+  <ol>
+    <li><div><b>Print or open the template</b><span>It comes with your confirmation email. Having it in front of you makes the evening twice as useful.</span></div></li>
+    <li><div><b>Bring one number</b><span>Roughly how many enquiries your business got last month. A guess is fine.</span></div></li>
+    <li><div><b>Join a few minutes early</b><span>We start at 7pm sharp and finish on time.</span></div></li>
+  </ol>
+  <a class="ics" id="ics" download="one-page-growth-plan-workshop.ics" href="#">Add to my calendar</a>
+  <p style="margin-top:18px">No email after 30 minutes? <a href="https://wa.me/27795124292">WhatsApp us on 079 512 4292</a>.</p>
+</main>
+<script>
+(function(){
+  if(new URLSearchParams(location.search).get('r')==='1')document.getElementById('review').style.display='block';
+  var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//JCE Media//Workshop//EN','BEGIN:VEVENT',
+    'UID:opgp-2026-10-15@jcemedia.com','DTSTAMP:20261010T000000Z','DTSTART:20261015T170000Z','DTEND:20261015T183000Z',
+    'SUMMARY:The One-Page Growth Plan: live workshop',
+    'DESCRIPTION:Your Zoom link is in your confirmation email from JCE Media.',
+    'BEGIN:VALARM','TRIGGER:-PT30M','ACTION:DISPLAY','DESCRIPTION:Workshop in 30 minutes','END:VALARM',
+    'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  document.getElementById('ics').href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+})();
+</script>
+</body>
+</html>
